@@ -3,7 +3,7 @@ class PrivateMethodCheck {
 	private void privateFun() {
 		System.out.println("Private");
 	}
-	
+
 	public void publicFun() {
 		privateFun();
 		System.out.println("Public");
