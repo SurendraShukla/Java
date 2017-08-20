@@ -1,6 +1,6 @@
 package suren.thread;
 
-public class HeavyWorkRunnable implements Runnable {
+public class HeavyWorkRunnable extends Thread {
 
     @Override
     public void run() {
