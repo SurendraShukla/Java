@@ -1,6 +1,6 @@
 package suren.design_patterns.Builder.Pizza;
 
-public class PizzaBuilderDemo {
+public class PizzaBuilderTest {
     public static void main(String[] args) {
 
         Waiter waiter = new Waiter();
