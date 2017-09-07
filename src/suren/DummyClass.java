@@ -25,7 +25,7 @@ class SurenStatic {
 
 }
 
-public class DummyClass {
+public class DummyClass extends Object {
 
 
     @Test
@@ -34,6 +34,7 @@ public class DummyClass {
 //        SurenStatic.printName();
 
         SurenStatic obj = new SurenStatic();
+        System.out.println((obj instanceof Object));
 //        System.out.println(obj.name);
         obj.echoName();
 //        obj.printName();

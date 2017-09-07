@@ -1,6 +1,6 @@
 package suren.code_refactoring.before;
 
-public class GuessStatisticsMessage {
+public class MethodNeedsToBeRefactored {
 
     public static void printGuessStatistics(char candidate, int count) {
         String number;
@@ -25,7 +25,7 @@ public class GuessStatisticsMessage {
     }
 
     public static void main(String[] args) {
-        GuessStatisticsMessage.printGuessStatistics('W', 2);
+        MethodNeedsToBeRefactored.printGuessStatistics('W', 2);
     }
 
 }
