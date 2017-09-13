@@ -2,6 +2,9 @@ package org.fun.exercises;
 
 import java.util.function.UnaryOperator;
 
+// SAM - Single Abstract Method
+// "SAM-type" refers to interfaces like Runnable, Callable, etc. Lambda expressions, a new feature in Java 8, are considered a SAM type and can be freely converted to them.
+// https://stackoverflow.com/questions/17913409/what-is-a-sam-type-in-java
 public class MySamType {
 
 //    static int cube(int a) {

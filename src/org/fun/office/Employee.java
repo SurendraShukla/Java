@@ -9,7 +9,7 @@ import static org.fun.office.Department.*;
 import static org.fun.office.Gender.FEMALE;
 import static org.fun.office.Gender.MALE;
 
-public class Employee {
+public class Employee  implements Comparable<Employee>{
 
 	int id;
 	String firstName;
@@ -102,4 +102,8 @@ public class Employee {
 		members.add(new Employee(id, name, lastName, gender, LocalDate.of(year, month, day), department));
 	}
 
+	@Override
+	public int compareTo(Employee o) {
+		return this.id - o.id;
+	}
 }
