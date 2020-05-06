@@ -19,6 +19,9 @@ class PrivateMethodCheck {
 public class Test {
 
 	public static void main(String str[]) {
+		final PrivateMethodCheck privateMethodCheck = new PrivateMethodCheck();
+
+
 		Date jdkDate = DateTime.now().toDate();
 
 		System.out.println(jdkDate);

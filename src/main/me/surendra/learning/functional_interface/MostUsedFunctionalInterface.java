@@ -9,10 +9,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-interface SupplierConsumer<T>{
-    T something(T t1, T t2);
-}
-
 
 public class MostUsedFunctionalInterface {
 
@@ -38,8 +34,8 @@ public class MostUsedFunctionalInterface {
     }
 
     public static void main(String[] args) {
-        final SupplierConsumer<Integer> somethingLambda = (a, b) -> a + b;
-        somethingLambda.something(10, 20);
+        final SupplierAndConsumer<Integer> somethingLambda = (a, b) -> a + b;
+        somethingLambda.consumeAndThenSupply(10, 20);
     }
 
 }
