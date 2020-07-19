@@ -12,7 +12,46 @@ public class Strings {
             return inputList;
         }
         final List<Integer> outputList = generateAllStringsForBites(inputList, n-1);
-//        outputList.stream().
         return outputList;
     }
+
+    public static List<String> getAllPermutationRecursively(final String str) {
+        List<String> possiblePermutation = Lists.newArrayList();
+        if (str.length() == 1) {
+            possiblePermutation.add(str);
+            return possiblePermutation;
+        }
+
+        List<String> tmpPossiblePermutation = getAllPermutationRecursively(str.substring(1));
+        return addCharToPossiblePermutationString(tmpPossiblePermutation, str.charAt(0));
+    }
+
+
+    public static List<String> getAllPermutation(final String str) {
+        List<String> possiblePermutation = Lists.newArrayList();
+        for (int i = 0; i < str.length(); i++){
+            char ch = str.charAt(i);
+            if (possiblePermutation.size() == 0) {
+                possiblePermutation.add(Character.toString(ch));
+                continue;
+            } else {
+                possiblePermutation = addCharToPossiblePermutationString(possiblePermutation, ch);
+            }
+        }
+
+        return possiblePermutation;
+    }
+
+    private static List<String> addCharToPossiblePermutationString(final List<String> possiblePermutation, final char ch) {
+        final List<String> tmpPossiblePermutation = Lists.newArrayList();
+        for (String tmpStr : possiblePermutation) {
+            for (int position = 0; position <= tmpStr.length(); position++) {
+                StringBuffer sb = new StringBuffer(tmpStr);
+                sb.insert(position, ch);
+                tmpPossiblePermutation.add(sb.toString());
+            }
+        }
+        return tmpPossiblePermutation;
+    }
+
 }
