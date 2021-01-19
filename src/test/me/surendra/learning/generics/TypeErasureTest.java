@@ -8,7 +8,7 @@ import java.util.List;
 public class TypeErasureTest {
 
     @Test
-    public void arraysAreReifiableTypesAndPolymorphism() {
+    public void arraysLiskovSubstitution() {
         final Integer[] myInts = {1,2,3,4,5};
         final Long[] myLongs = {1L, 2L, 3L, 4L, 5L};
         final Double[] myDoubles = {1.0, 2.0, 3.0, 4.0, 5.0};
@@ -30,7 +30,7 @@ public class TypeErasureTest {
     }
 
     @Test
-    public void genericsAreReifiableTypesAndPolymorphism() {
+    public void genericLiskovSubstitutionIssue() {
         final Integer[] myInts = {1,2,3,4,5};
         final Long[] myLongs = {1L, 2L, 3L, 4L, 5L};
         final Double[] myDoubles = {1.0, 2.0, 3.0, 4.0, 5.0};
