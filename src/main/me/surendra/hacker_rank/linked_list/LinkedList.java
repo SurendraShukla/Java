@@ -10,6 +10,12 @@ public class LinkedList {
         return head;
     }
 
+    /**
+     * @param passedNode
+     * @return Node
+     *
+     * @see <a href="https://www.hackerrank.com/challenges/30-linked-list-deletion/problem?h_r=profile">Remove Duplicates</a>
+     */
     public static Node removeDuplicates(final Node passedNode) {
         Node returnNode = null;
         if(passedNode.next != null) {

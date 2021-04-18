@@ -19,6 +19,8 @@ public class StackWithPECS {
      *     - Producer Extends
      *     - Use producer to FETCH
      *     - Defines upper bound
+     *          - Define upper bound when code open for extension
+     *          - To support any new types getting added to type hierarchy.
      *
      *     CO_VARIANT:
      *     - Use when intend to take generic values out of a structure.
@@ -41,6 +43,9 @@ public class StackWithPECS {
      *     - Consumer Super
      *     - Use consumer to INSERT
      *     - Defines lower bound
+     *          - Define lower bound when code close for extension
+     *          - Not to support any new types in the hierarchy and
+     *          - Restrict to the types currently present.
      *
      *     CONTRA_VARIANT:
      *     - Use when intend to put generic values into a structure.
