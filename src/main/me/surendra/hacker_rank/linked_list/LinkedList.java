@@ -2,14 +2,6 @@ package me.surendra.hacker_rank.linked_list;
 
 public class LinkedList {
 
-    public static Node from(final int[] intArray)  {
-        Node head = null;
-        for (final int anInt : intArray) {
-            head = LinkedList.insert(head, anInt);
-        }
-        return head;
-    }
-
     /**
      * @param passedNode
      * @return Node
@@ -28,6 +20,14 @@ public class LinkedList {
             passedNode.next = returnNode.next;
         }
         return passedNode;
+    }
+
+    public static Node from(final int[] intArray)  {
+        Node head = null;
+        for (final int anInt : intArray) {
+            head = LinkedList.insert(head, anInt);
+        }
+        return head;
     }
 
     public static Node insert(Node head, int data) {
