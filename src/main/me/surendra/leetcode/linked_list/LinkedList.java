@@ -4,35 +4,8 @@ import java.util.Stack;
 
 public class LinkedList {
 
-    /**
-     * @param headA
-     * @param headB
-     * @return
-     *
-     * @see <a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">Intersection of 2 linked list</a>
-     */
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        final Stack<ListNode> stack1 = getListNodeInStack(headA);
-        final Stack<ListNode> stack2 = getListNodeInStack(headB);
-
-        ListNode intersectedListNode = null;
-
-        boolean terminateLoop = true;
-        while(terminateLoop && !stack1.empty() && !stack2.empty()) {
-            ListNode listNode1 = stack1.pop();
-            ListNode listNode2 = stack2.pop();
-            if (listNode1.equals(listNode2)) {
-                intersectedListNode = listNode1;
-            }else {
-                terminateLoop = false;
-            }
-        }
-        return intersectedListNode;
-    }
-
-    private static Stack<ListNode> getListNodeInStack(final ListNode listNode) {
+    public static Stack<ListNode> getListNodeInStack(final ListNode listNode) {
         final Stack<ListNode> listNodes = new Stack<>();
-
         ListNode localListNode = listNode;
         listNodes.add(localListNode);
         while(localListNode.next != null) {
@@ -40,6 +13,28 @@ public class LinkedList {
             listNodes.add(localListNode);
         }
         return listNodes;
+    }
+
+    public static Stack<Integer> getLinkedListValues(ListNode node) {
+        final Stack<Integer> integerStack = new Stack<>();
+        while(node.next != null) {
+            integerStack.push(node.val);
+            node = node.next;
+        }
+        integerStack.push(node.val);
+        return integerStack;
+    }
+
+    public static Stack<Integer> getLinkedListValuesInReverseOrder(ListNode node) {
+        Stack<Integer> integerStack = new Stack<>();
+        if (node == null) {
+            return integerStack;
+        }
+        if(node.next != null) {
+            integerStack = LinkedList.getLinkedListValuesInReverseOrder(node.next);
+        }
+        integerStack.push(node.val);
+        return integerStack;
     }
 
     public static ListNode from(int[] intArray) {
@@ -67,13 +62,25 @@ public class LinkedList {
         return head;
     }
 
+    /**
+     * @param node
+     *
+     * @see <a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a>
+     */
+    public static void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+
     public static void display(final ListNode head) {
-        System.out.println(" ");
-        ListNode start=head;
-        while(start!=null) {
-            System.out.print(start.val+" ");
-            start=start.next;
+        System.out.println("-----Display Started-----");
+        ListNode start = head;
+        while(start != null) {
+            System.out.print(start.val + " ");
+            start = start.next;
         }
+        System.out.println("");
+        System.out.println("-----Display Ended-----");
     }
 
 }
