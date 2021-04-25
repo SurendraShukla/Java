@@ -6,7 +6,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import java.util.UUID;
 
 public class ListNode {
-    UUID uuid = UUID.randomUUID();
+    final UUID uuid = UUID.randomUUID();
     int val;
     ListNode next;
 

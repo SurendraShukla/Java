@@ -1,16 +1,26 @@
 package me.surendra.leetcode.linked_list;
 
+import java.util.HashSet;
 import java.util.Stack;
 
 public class LinkedList {
 
-    public static Stack<ListNode> getListNodeInStack(final ListNode listNode) {
+    public static HashSet<ListNode> getListNodeInHashSet(ListNode listNode) {
+        final HashSet<ListNode> listNodes = new HashSet<>();
+        listNodes.add(listNode);
+        while(listNode.next != null) {
+            listNode = listNode.next;
+            listNodes.add(listNode);
+        }
+        return listNodes;
+    }
+
+    public static Stack<ListNode> getListNodeInStack(ListNode listNode) {
         final Stack<ListNode> listNodes = new Stack<>();
-        ListNode localListNode = listNode;
-        listNodes.add(localListNode);
-        while(localListNode.next != null) {
-            localListNode = localListNode.next;
-            listNodes.add(localListNode);
+        listNodes.add(listNode);
+        while(listNode.next != null) {
+            listNode = listNode.next;
+            listNodes.add(listNode);
         }
         return listNodes;
     }
@@ -62,14 +72,34 @@ public class LinkedList {
         return head;
     }
 
+    public static void append(ListNode listNode, ListNode nodeToBeAppended) {
+        while(listNode.next != null) {
+            listNode = listNode.next;
+        }
+        listNode.next = nodeToBeAppended;
+    }
+
     /**
      * @param node
      *
      * @see <a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a>
      */
     public static void deleteNode(ListNode node) {
+        // Todo - Why below doesn't delete node
+        // node.next = node.next.next;
+
+        // Todo - why doing this work fine.
         node.val = node.next.val;
         node.next = node.next.next;
+    }
+
+    public static int getSize(ListNode node) {
+        int size = 1;
+        while (node.next != null) {
+            size++;
+            node = node.next;
+        }
+        return size;
     }
 
     public static void display(final ListNode head) {
