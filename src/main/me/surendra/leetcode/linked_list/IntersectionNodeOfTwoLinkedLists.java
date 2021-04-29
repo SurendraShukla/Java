@@ -13,8 +13,8 @@ public class IntersectionNodeOfTwoLinkedLists {
         Space Complexity - O(n+m)
     */
     public static ListNode usingStack(ListNode headA, ListNode headB) {
-        final Stack<ListNode> stack1 = LinkedList.getListNodeInStack(headA);
-        final Stack<ListNode> stack2 = LinkedList.getListNodeInStack(headB);
+        final Stack<ListNode> stack1 = LinkedListNodeFetcher.getLinkedListNodeInStack(headA);
+        final Stack<ListNode> stack2 = LinkedListNodeFetcher.getLinkedListNodeInStack(headB);
 
         ListNode intersectedListNode = null;
 
@@ -36,7 +36,7 @@ public class IntersectionNodeOfTwoLinkedLists {
         Space Complexity - O(m)
     */
     public static ListNode usingHashSet(ListNode headA, ListNode headB) {
-        final HashSet<ListNode> hastSet = LinkedList.getListNodeInHashSet(headA);
+        final HashSet<ListNode> hastSet = LinkedListNodeFetcher.getLinkedListNodeInHashSet(headA);
         while(headB != null) {
             if (hastSet.contains(headB)) {
                 return headB;

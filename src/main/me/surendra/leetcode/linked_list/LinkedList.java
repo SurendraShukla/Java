@@ -1,51 +1,6 @@
 package me.surendra.leetcode.linked_list;
 
-import java.util.HashSet;
-import java.util.Stack;
-
 public class LinkedList {
-
-    public static HashSet<ListNode> getListNodeInHashSet(ListNode listNode) {
-        final HashSet<ListNode> listNodes = new HashSet<>();
-        listNodes.add(listNode);
-        while(listNode.next != null) {
-            listNode = listNode.next;
-            listNodes.add(listNode);
-        }
-        return listNodes;
-    }
-
-    public static Stack<ListNode> getListNodeInStack(ListNode listNode) {
-        final Stack<ListNode> listNodes = new Stack<>();
-        listNodes.add(listNode);
-        while(listNode.next != null) {
-            listNode = listNode.next;
-            listNodes.add(listNode);
-        }
-        return listNodes;
-    }
-
-    public static Stack<Integer> getLinkedListValues(ListNode node) {
-        final Stack<Integer> integerStack = new Stack<>();
-        while(node.next != null) {
-            integerStack.push(node.val);
-            node = node.next;
-        }
-        integerStack.push(node.val);
-        return integerStack;
-    }
-
-    public static Stack<Integer> getLinkedListValuesInReverseOrder(ListNode node) {
-        Stack<Integer> integerStack = new Stack<>();
-        if (node == null) {
-            return integerStack;
-        }
-        if(node.next != null) {
-            integerStack = LinkedList.getLinkedListValuesInReverseOrder(node.next);
-        }
-        integerStack.push(node.val);
-        return integerStack;
-    }
 
     public static ListNode from(int[] intArray) {
         ListNode listNode = null;
@@ -80,17 +35,27 @@ public class LinkedList {
     }
 
     /**
-     * @param node
      *
-     * @see <a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a>
+     * @param head
+     * @return
      */
-    public static void deleteNode(ListNode node) {
-        // Todo - Why below doesn't delete node
-        // node.next = node.next.next;
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(1)
+    */
+    public static ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode returnLinkedListNode;
+        ListNode nextLinkedListNode = null;
+        do{
+            returnLinkedListNode = new ListNode(head.val, nextLinkedListNode);
+            nextLinkedListNode = returnLinkedListNode;
+            head = head.next;
+        }while(head != null);
 
-        // Todo - why doing this work fine.
-        node.val = node.next.val;
-        node.next = node.next.next;
+        return returnLinkedListNode;
     }
 
     public static int getSize(ListNode node) {
