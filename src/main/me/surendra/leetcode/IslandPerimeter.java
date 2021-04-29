@@ -4,7 +4,11 @@ package me.surendra.leetcode;
  * @see <a href="https://leetcode.com/problems/island-perimeter/">Island Perimeter</a>
  */
 public class IslandPerimeter {
-
+    
+    /*
+    Time complexity: O(m*n)
+    Space complexity: O(1)
+     */
     public static int getLandPerimeterByCheckingAtAllFourSides(final int[][] grid) {
         int rows = grid.length;
         int cols = grid[0].length;
@@ -39,6 +43,10 @@ public class IslandPerimeter {
         return perimeter;
     }
 
+    /*
+    Time complexity: O(m*n)
+    Space complexity: O(1)
+     */
     public static int getLandPerimeterByCheckingUpAndLeftSide(final int[][] grid) {
         int perimeter = 0;
 
