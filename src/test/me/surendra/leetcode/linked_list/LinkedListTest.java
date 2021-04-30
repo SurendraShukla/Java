@@ -13,7 +13,4 @@ public class LinkedListTest {
         System.out.println(listNode);
     }
 
-
-
-
 }
