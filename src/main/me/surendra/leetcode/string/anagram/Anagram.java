@@ -1,4 +1,4 @@
-package me.surendra.leetcode.string;
+package me.surendra.leetcode.string.anagram;
 
 import java.util.ArrayList;
 import java.util.Arrays;

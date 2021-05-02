@@ -1,14 +1,12 @@
-package me.surendra.leetcode.string;
+package me.surendra.leetcode.string.anagram;
 
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.Arrays;
-
-import static me.surendra.leetcode.string.Anagram.checkInclusion;
-import static me.surendra.leetcode.string.Anagram.findAnagrams;
-import static me.surendra.leetcode.string.Anagram.longestCommonPrefix;
-import static me.surendra.leetcode.string.Anagram.minStepsToMake2StringAnagram;
+import static me.surendra.leetcode.string.anagram.Anagram.checkInclusion;
+import static me.surendra.leetcode.string.anagram.Anagram.findAnagrams;
+import static me.surendra.leetcode.string.anagram.Anagram.longestCommonPrefix;
+import static me.surendra.leetcode.string.anagram.Anagram.minStepsToMake2StringAnagram;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
