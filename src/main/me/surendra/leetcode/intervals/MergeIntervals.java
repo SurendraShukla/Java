@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
+/**
+ * @see <a href="https://leetcode.com/problems/merge-intervals/">Merge Intervals</a>
+ */
 public class MergeIntervals {
 
     /*
