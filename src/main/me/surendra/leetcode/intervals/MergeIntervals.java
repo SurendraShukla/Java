@@ -1,10 +1,13 @@
 package me.surendra.leetcode.intervals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -19,37 +22,37 @@ public class MergeIntervals {
         Space Complexity - 0(n)
      */
     public static int[][] merge(int[][] intervals) {
-        if (intervals.length < 2) {
-            return intervals;
-        }
-//        Arrays.sort(intervals, (a1, a2) -> Integer.compare(a1[0], a2[0]));
         Arrays.sort(intervals, Comparator.comparingInt(arr -> arr[0]));
 
-        final Map<Integer, Integer> hashMap = new HashMap<>();
-        for (int i = 0; i < intervals.length-1; i++) {
-            int firstIntervalStart = intervals[i][0];
-            int firstIntervalEnd = intervals[i][1];
-            int secondIntervalStart = intervals[i+1][0];
-            int secondIntervalEnd = intervals[i+1][1];
-            if(firstIntervalEnd < secondIntervalStart) {
-                hashMap.put(firstIntervalStart, firstIntervalEnd);
-                hashMap.put(secondIntervalStart, secondIntervalEnd);
-            }else{
-                int intervalEnd = secondIntervalEnd < firstIntervalEnd ? firstIntervalEnd : secondIntervalEnd;
-                intervals[i+1][0] = firstIntervalStart;
-                intervals[i+1][1] = intervalEnd;
-                hashMap.put(firstIntervalStart, intervalEnd);
+        final List<int[]> merged = new ArrayList<>();
+        for (int i = 0; i < intervals.length; i++) {
+            if ((i == intervals.length-1) ||
+                (intervals[i][1] < intervals[i+1][0])
+            ) {
+                merged.add(intervals[i]);
+                continue;
+            }
+            intervals[i+1][0] = intervals[i][0];
+            intervals[i+1][1] = Math.max(intervals[i+1][1], intervals[i][1]);
+        }
+        return merged.toArray(new int[merged.size()][]);
+    }
+
+    public static int[][] mergeItFirst(int[][] intervals) {
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        final LinkedList<int[]> merged = new LinkedList<>();
+        for (int[] interval : intervals) {
+            // if the list of merged intervals is empty or if the current
+            // interval does not overlap with the previous, simply append it.
+            if (merged.isEmpty() || merged.getLast()[1] < interval[0]) {
+                merged.add(interval);
+
+            // otherwise, there is overlap, so we merge the current and previous intervals.
+            } else {
+                merged.getLast()[1] = Math.max(merged.getLast()[1], interval[1]);
             }
         }
-
-        int[][] actual = new int[hashMap.size()][2];
-        int i = 0;
-        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
-            actual[i][0] = entry.getKey();
-            actual[i][1] = entry.getValue();
-            i++;
-        }
-        return actual;
+        return merged.toArray(new int[merged.size()][]);
     }
 
 }
