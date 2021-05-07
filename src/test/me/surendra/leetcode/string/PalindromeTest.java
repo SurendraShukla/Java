@@ -1,6 +1,7 @@
 package me.surendra.leetcode.string;
 
 import me.surendra.leetcode.string.palindrome.Palindrome;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -8,34 +9,44 @@ import static org.junit.Assert.assertThat;
 
 public class PalindromeTest {
 
+    private boolean callMethod(final String str) {
+//        return new Palindrome().isValidPalindrome_BruteForceAlgoUsesSubString(str);
+        return new Palindrome().isValidPalindrome_BruteForceUsesStringBuilder(str);
+    }
+
+    @Test
+    public void validPalindromeStringHavingOddLength1() {
+        assertThat(callMethod("abc"), equalTo(false));
+    }
+
     @Test
     public void validPalindromeStringHavingOddLength() {
-        assertThat(Palindrome.validPalindrome("aba"), equalTo(true));
+        assertThat(callMethod("aba"), equalTo(true));
     }
 
     @Test
     public void validPalindromeStringHavingEvenLength() {
-        assertThat(Palindrome.validPalindrome("abba"), equalTo(true));
+        assertThat(callMethod("abba"), equalTo(true));
     }
 
     @Test
     public void validPalindromeAfterRemovingFromStringHavingOddLength() {
-        assertThat(Palindrome.validPalindrome("abbac"), equalTo(true));
+        assertThat(callMethod("abbac"), equalTo(true));
     }
 
     @Test
     public void validPalindromeAfterRemovingFromStringHavingEvenLength() {
-        assertThat(Palindrome.validPalindrome("abba"), equalTo(true));
+        assertThat(callMethod("abba"), equalTo(true));
     }
 
     @Test
     public void inValidPalindromeAfterRemovingFromStringHavingOddLength() {
-        assertThat(Palindrome.validPalindrome("abbca"), equalTo(true));
+        assertThat(callMethod("abbca"), equalTo(true));
     }
 
     @Test
     public void inValidPalindromeAfterRemovingFromStringHavingEvenLength() {
-        assertThat(Palindrome.validPalindrome("abbba"), equalTo(true));
+        assertThat(callMethod("abbba"), equalTo(true));
     }
 
 }
