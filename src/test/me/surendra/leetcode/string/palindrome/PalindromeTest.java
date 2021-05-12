@@ -1,4 +1,4 @@
-package me.surendra.leetcode.string;
+package me.surendra.leetcode.string.palindrome;
 
 import me.surendra.leetcode.string.palindrome.Palindrome;
 import org.junit.Before;
@@ -11,7 +11,8 @@ public class PalindromeTest {
 
     private boolean callMethod(final String str) {
 //        return new Palindrome().isValidPalindrome_BruteForceAlgoUsesSubString(str);
-        return new Palindrome().isValidPalindrome_BruteForceUsesStringBuilder(str);
+//        return new Palindrome().isValidPalindrome_BruteForceUsesStringBuilder(str);
+        return new Palindrome().isValidPalindrome_2PointerApproach(str);
     }
 
     @Test
