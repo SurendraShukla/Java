@@ -14,35 +14,44 @@ public class MaximumDepth {
         Time complexity: O(n)
         Space complexity: O(n)
      */
-    public int getMaxDepth(final TreeNode root) {
+    public int getMaxDepthUsingIteration(final TreeNode root) {
         int level = 0;
         if (root == null) {
             return level;
         }
-        final Queue<Queue<TreeNode>> treeNodes = new LinkedList<>();
-        final Queue<TreeNode> rootNode = new LinkedList<>();
-        rootNode.add(root);
-        treeNodes.add(rootNode);
+        final Queue<TreeNode> treeNodes = new LinkedList<>();
+        treeNodes.add(root);
 
         while (!treeNodes.isEmpty()) {
             level++;
-            final Queue<TreeNode> currentLevelTreeNodes = treeNodes.remove();
-            final Queue<TreeNode> tmpLevelTreeNodes = new LinkedList<>();
-            while(!currentLevelTreeNodes.isEmpty()) {
-                final TreeNode treeNode = currentLevelTreeNodes.remove();
+            final int queueSize = treeNodes.size();
+            for (int i = 0; i < queueSize; i++) {
+                final TreeNode treeNode = treeNodes.remove();
                 if(treeNode.left != null) {
-                    tmpLevelTreeNodes.add(treeNode.left);
+                    treeNodes.add(treeNode.left);
                 }
                 if(treeNode.right != null) {
-                    tmpLevelTreeNodes.add(treeNode.right);
+                    treeNodes.add(treeNode.right);
                 }
-            }
-            if(!tmpLevelTreeNodes.isEmpty()) {
-                treeNodes.add(tmpLevelTreeNodes);
             }
         }
         return level;
     }
 
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    public int getMaxDepthUsingRecursion(final TreeNode root) {
+        return getMaxDepth(root, 0);
+    }
 
+    private int getMaxDepth(final TreeNode treeNode, final int level) {
+        if(treeNode == null) {
+            return level;
+        }
+        int maxDepthOfLeftTreeNode = getMaxDepth(treeNode.left, level + 1);
+        int maxDepthOfRightTreeNode = getMaxDepth(treeNode.right, level+1);
+        return Math.max(maxDepthOfLeftTreeNode, maxDepthOfRightTreeNode);
+    }
 }
