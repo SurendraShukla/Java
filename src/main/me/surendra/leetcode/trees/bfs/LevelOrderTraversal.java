@@ -19,6 +19,30 @@ public class LevelOrderTraversal {
         Time complexity: O(n)
         Space complexity: O(n)
      */
+    final List<List<Integer>> outputList = new ArrayList<>();
+    public List<List<Integer>> levelOrderUsingIterationUsingRecursion(TreeNode root) {
+        populateLevelOrder(root, 0);
+        return outputList;
+    }
+
+    private void populateLevelOrder(final TreeNode root, final int level) {
+        if(root == null) {
+            return;
+        }
+
+        if(outputList.size() == level) {
+            outputList.add(level, new ArrayList<>());
+        }
+        outputList.get(level).add(root.val);
+        populateLevelOrder(root.left, level+1);
+        populateLevelOrder(root.right, level+1);
+    }
+
+
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
     public List<List<Integer>> levelOrderUsingIterationUsingSingleQueue(TreeNode root) {
         final List<List<Integer>> outputList = new ArrayList<>();
         if(root == null) {
