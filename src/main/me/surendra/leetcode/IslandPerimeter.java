@@ -6,8 +6,8 @@ package me.surendra.leetcode;
 public class IslandPerimeter {
     
     /*
-    Time complexity: O(m*n)
-    Space complexity: O(1)
+        Time complexity: O(m*n)
+        Space complexity: O(1)
      */
     public static int getLandPerimeterByCheckingAtAllFourSides(final int[][] grid) {
         int rows = grid.length;

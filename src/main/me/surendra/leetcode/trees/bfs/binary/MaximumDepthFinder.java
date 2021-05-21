@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.binary;
+package me.surendra.leetcode.trees.bfs.binary;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * @see <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">Maximum Depth of Binary Tree</a>
  */
-public class MaximumDepth {
+public class MaximumDepthFinder {
 
     /*
         Time complexity: O(n)
