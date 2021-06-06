@@ -26,7 +26,7 @@ public class ArrayShuffler {
     }
 
     /*
-        Time complexity : O(n2)
+        Time complexity : O(n^2)
         Space complexity: O(n)
      */
     public int[] shuffleByBruteForce() {
