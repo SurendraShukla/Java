@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class ProvinceFinder {
 
     /*
-        Time complexity: O(n)
+        Time complexity: O(n*m)
         Space complexity: O(n)
      */
     public int findCircleNum(int[][] matrix) {
