@@ -6,7 +6,6 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import java.util.UUID;
 
 public class ListNode {
-    final UUID uuid = UUID.randomUUID();
     int val;
     ListNode next;
 
@@ -26,7 +25,6 @@ public class ListNode {
         return new HashCodeBuilder()
             .append(val)
             .append(next)
-            .append(uuid)
             .toHashCode();
     }
 
@@ -42,7 +40,6 @@ public class ListNode {
         return new EqualsBuilder()
             .append(this.val, other.val)
             .append(this.next, other.next)
-            .append(this.uuid, other.uuid)
             .isEquals();
     }
 
@@ -51,7 +48,6 @@ public class ListNode {
         return "ListNode{" +
             "val=" + val +
             ", next=" + next +
-            ", uuid=" + uuid +
             '}';
     }
 }

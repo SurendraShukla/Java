@@ -11,8 +11,12 @@ public class LinkedList {
         return listNode;
     }
 
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(1)
+    */
     public static ListNode insert(ListNode head, int data) {
-        ListNode p = new ListNode(data);
+        final ListNode p = new ListNode(data);
         if(head == null) {
             head = p;
         } else if(head.next == null) {
@@ -27,6 +31,20 @@ public class LinkedList {
         return head;
     }
 
+    /*
+        Time Complexity - O(1)
+        Space Complexity - O(1)
+    */
+    public static ListNode createUsingDummyNode(int[] intArray) {
+        final ListNode dummyNode = new ListNode(0);
+        ListNode currentNode = dummyNode;
+        for (final int aInt : intArray) {
+            currentNode.next = new ListNode(aInt);
+            currentNode = currentNode.next;
+        }
+        return dummyNode.next;
+    }
+
     public static void append(ListNode listNode, ListNode nodeToBeAppended) {
         while(listNode.next != null) {
             listNode = listNode.next;
@@ -34,29 +52,6 @@ public class LinkedList {
         listNode.next = nodeToBeAppended;
     }
 
-    /**
-     *
-     * @param head
-     * @return
-     */
-    /*
-        Time Complexity - O(n)
-        Space Complexity - O(1)
-    */
-    public static ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        ListNode returnLinkedListNode;
-        ListNode nextLinkedListNode = null;
-        do{
-            returnLinkedListNode = new ListNode(head.val, nextLinkedListNode);
-            nextLinkedListNode = returnLinkedListNode;
-            head = head.next;
-        }while(head != null);
-
-        return returnLinkedListNode;
-    }
 
     public static int getSize(ListNode node) {
         int size = 1;
@@ -68,14 +63,14 @@ public class LinkedList {
     }
 
     public static void display(final ListNode head) {
-        System.out.println("-----Display Started-----");
+        System.out.println("--------------------------------------------------");
         ListNode start = head;
         while(start != null) {
-            System.out.print(start.val + " ");
+            System.out.print(start.val + " -> ");
             start = start.next;
         }
-        System.out.println("");
-        System.out.println("-----Display Ended-----");
+        System.out.println(" ");
+        System.out.println("--------------------------------------------------");
     }
 
 }
