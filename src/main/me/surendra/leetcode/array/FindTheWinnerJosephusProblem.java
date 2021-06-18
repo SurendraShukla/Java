@@ -9,7 +9,7 @@ import java.util.List;
 public class FindTheWinnerJosephusProblem {
 
     /*
-        Time Complexity - O(n*n)
+        Time Complexity - O(n)
         Space Complexity - O(n)
      */
     public int findTheWinnerUsingList(int n, int k) {
