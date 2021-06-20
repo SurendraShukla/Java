@@ -14,6 +14,7 @@ public class KingAttackedByQueenTest {
 
     private List<List<Integer>> callMethod(final int[][] queens, final int[] king) {
         return new KingAttackedByQueen().queensAttackTheKing(queens, king);
+//        return new KingAttackedByQueen().queensAttackTheKingUsingDirectionMethods(queens, king);
     }
 
     private List<List<Integer>> convertArrayToList(final int[][] twoDArray) {

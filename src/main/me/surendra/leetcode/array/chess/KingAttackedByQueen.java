@@ -19,6 +19,37 @@ public class KingAttackedByQueen {
         Space Complexity - O(n)
      */
     public List<List<Integer>> queensAttackTheKing(int[][] queens, int[] king) {
+        final List<List<Integer>> list = new ArrayList<>();
+        final int[][] board = new int[8][8];
+        for (final int[] queen : queens) {
+            board[queen[0]][queen[1]] = 1;
+        }
+
+        final int kingRowIndex = king[0];
+        final int kingColIndex = king[1];
+        final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1,-1}, {-1, 1}, {1, -1}, {1, 1}};
+
+        for (final int[] direction : directions) {
+            for(
+                int row = kingRowIndex + direction[0], col = kingColIndex + direction[1];
+                row>=0 && row<8 && col>=0 && col<8;
+                row+=direction[0], col+=direction[1]
+            ) {
+                if(board[row][col] == 1) {
+                    list.add(Arrays.asList(row, col));
+                    break;
+                }
+            }
+        }
+
+        return list;
+    }
+
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+     */
+    public List<List<Integer>> queensAttackTheKingUsingDirectionMethods(int[][] queens, int[] king) {
 
         for (final int[] queen : queens) {
             chessBoard[queen[0]][queen[1]] = 1;
