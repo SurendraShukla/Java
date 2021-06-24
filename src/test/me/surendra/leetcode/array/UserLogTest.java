@@ -1,6 +1,5 @@
 package me.surendra.leetcode.array;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -8,9 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class UserLogTest {
+
+    private Map<String, List<Integer>> callMethod(final String[][] logs) {
+        return UserLog.getEarliestAndLatestAccessForUserBySortingEarly(logs);
+//        return UserLog.getEarliestAndLatestAccessForUser(logs);
+    }
 
     @Test
     public void test1() {
@@ -30,7 +35,6 @@ public class UserLogTest {
             { "100", "user_8", "resource_6" },
             {"54359", "user_1", "resource_3"},
         };
-
         final Map<String, List<Integer>> expected = new HashMap<>();
         expected.put("user_1", asList(54001, 58523));
         expected.put("user_2", asList(54060, 62314));
@@ -41,9 +45,10 @@ public class UserLogTest {
         expected.put("user_8", asList(100, 100));
         expected.put("user_22", asList(58522, 58522));
 
-        final Map<String, List<Integer>> actual = UserLog.getEarliestAndLatestAccessForUser(logs);
+        // execute
+        final Map<String, List<Integer>> actual = callMethod(logs);
 
-        assertThat(actual, Matchers.equalTo(expected));
+        assertThat(actual, equalTo(expected));
     }
 
     @Test
@@ -57,13 +62,14 @@ public class UserLogTest {
             {"1201", "user_1", "resource_3"},
             {"1202", "user_1", "resource_3"}
         };
-
         final Map<String, List<Integer>> expected = new HashMap<>();
         expected.put("user_1", asList(300, 1202));
 
-        final Map<String, List<Integer>> actual = UserLog.getEarliestAndLatestAccessForUser(logs);
+        // execute
+        final Map<String, List<Integer>> actual = callMethod(logs);
 
-        assertThat(actual, Matchers.equalTo(expected));
+        assertThat(actual, equalTo(expected));
     }
+
 
 }

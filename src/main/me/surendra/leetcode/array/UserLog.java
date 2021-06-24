@@ -1,6 +1,8 @@
 package me.surendra.leetcode.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +19,27 @@ public class UserLog {
                 The access time is represented as seconds since 00:00:00, and all times are assumed to be in the same day.
     Output: We would like to compute user sessions, specifically: write a function that takes the logs and returns a data structure that associates to each user their the aggregate earliest and latest access times.
      */
-    public static Map<String, List<Integer>> getEarliestAndLatestAccessForUser(final String[][] logs) {
+    public static Map<String, List<Integer>> getEarliestAndLatestAccessForUserBySortingEarly(final String[][] logs) {
+        Arrays.sort(logs, Comparator.comparingDouble(o -> Integer.valueOf(o[0])));
 
+        final Map<String, List<Integer>> returnHashMap = new HashMap<>();
+        for (final String[] log : logs) {
+            Integer time = Integer.valueOf(log[0]);
+            String user = log[1];
+            if(returnHashMap.containsKey(user)) {
+                final List<Integer> list = returnHashMap.get(user);
+                list.set(1, time);
+                returnHashMap.put(user, list);
+            }else{
+                returnHashMap.put(user, new ArrayList(Arrays.asList(time, time)));
+            }
+        }
+
+        return returnHashMap;
+    }
+
+
+    public static Map<String, List<Integer>> getEarliestAndLatestAccessForUser(final String[][] logs) {
         final Map<String, TreeSet<Integer>> userAccessLogs = new HashMap<>();
 
         for(int i=0; i<logs.length; i++) {
@@ -38,6 +59,7 @@ public class UserLog {
             accessTimeList.add(v.last());
             returnHashMap.put(k, accessTimeList);
         });
+
         return returnHashMap;
     }
 
