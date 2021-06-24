@@ -3,7 +3,7 @@ package me.surendra.leetcode.string.palindrome;
 /**
  * @see <a href="https://leetcode.com/problems/valid-palindrome-ii/">Valid Palindrome</a>
  */
-public class Palindrome {
+public class ValidPalindromeChecker {
 
     /*
         Time Complexity - O(n)

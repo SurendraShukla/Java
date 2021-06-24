@@ -1,18 +1,16 @@
 package me.surendra.leetcode.string.palindrome;
 
-import me.surendra.leetcode.string.palindrome.Palindrome;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class PalindromeTest {
+public class ValidPalindromeCheckerTest {
 
     private boolean callMethod(final String str) {
 //        return new Palindrome().isValidPalindrome_BruteForceAlgoUsesSubString(str);
 //        return new Palindrome().isValidPalindrome_BruteForceUsesStringBuilder(str);
-        return new Palindrome().isValidPalindrome_2PointerApproach(str);
+        return new ValidPalindromeChecker().isValidPalindrome_2PointerApproach(str);
     }
 
     @Test
