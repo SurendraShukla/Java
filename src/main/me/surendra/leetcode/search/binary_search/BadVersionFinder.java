@@ -1,4 +1,4 @@
-package me.surendra.leetcode.binary_search;
+package me.surendra.leetcode.search.binary_search;
 
 /**
  * @see <a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a>

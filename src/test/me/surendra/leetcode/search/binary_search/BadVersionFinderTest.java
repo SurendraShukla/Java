@@ -1,4 +1,4 @@
-package me.surendra.leetcode.binary_search;
+package me.surendra.leetcode.search.binary_search;
 
 import org.junit.Test;
 
