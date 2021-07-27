@@ -1,4 +1,4 @@
-package me.surendra.leetcode;
+package me.surendra.leetcode.graph;
 
 /**
  * @see <a href="https://leetcode.com/problems/island-perimeter/">Island Perimeter</a>

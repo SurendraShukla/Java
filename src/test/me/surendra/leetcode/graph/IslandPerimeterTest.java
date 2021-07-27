@@ -1,10 +1,10 @@
-package me.surendra.leetcode;
+package me.surendra.leetcode.graph;
 
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import static me.surendra.leetcode.IslandPerimeter.getLandPerimeterByCheckingAtAllFourSides;
-import static me.surendra.leetcode.IslandPerimeter.getLandPerimeterByCheckingUpAndLeftSide;
+import static me.surendra.leetcode.graph.IslandPerimeter.getLandPerimeterByCheckingAtAllFourSides;
+import static me.surendra.leetcode.graph.IslandPerimeter.getLandPerimeterByCheckingUpAndLeftSide;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
