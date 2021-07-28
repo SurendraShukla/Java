@@ -13,7 +13,7 @@ public class NonOverlappingIntervals {
         Time Complexity - O(n log n), sorting takes n log n
         Space Complexity - O(n)
      */
-    public int eraseOverlapIntervals(int[][] intervals) {
+    public int eraseOverlapIntervals(final int[][] intervals) {
         final List<int[]> intervalList = Arrays.stream(intervals)
             .sorted((interval1, interval2) -> interval1[0] - interval2[0])
             .collect(Collectors.toList());
@@ -21,20 +21,27 @@ public class NonOverlappingIntervals {
 
         int mergeIntervalCount = 0;
         int[] previousInterval = intervalList.get(0);
-
         /*
-            Greedy Approach to solve problem
+            Greedy Approach to solve the problem.
+            If two intervals are overlapping,
+                Remove the interval that has the longer end point.
+                The longer interval will always overlap with more or the same number of future intervals compared to the shorter one
          */
         for (int i = 1; i < intervalList.size(); i++) {
-            int[] currentInterval = intervalList.get(i);
-            if (currentInterval[0] < previousInterval[1]) {
-                if (currentInterval[1] < previousInterval[1]) {
+            final int[] currentInterval = intervalList.get(i);
+            final int currentStartInterval= currentInterval[0];
+            final int previousEndInterval = previousInterval[1];
+
+            if (currentStartInterval < previousEndInterval) {
+                int currentEndInterval = currentInterval[1];
+                if (currentEndInterval < previousEndInterval) {
                     previousInterval = currentInterval;
                 }
                 mergeIntervalCount++;
             }else{
                 previousInterval = currentInterval;
             }
+
         }
         return mergeIntervalCount;
     }
