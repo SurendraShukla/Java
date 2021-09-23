@@ -15,6 +15,13 @@ public class Isomorphic {
         Space Complexity - O(n)
      */
     public boolean isIsomorphic(String s, String t) {
+        /*
+            Key => Char from 1st String
+            Val => Char from 2nd String
+
+            If key (char from 1st string) is getting repeated,
+                Val (char from 2nd string) should be repeated.
+         */
         final Map<Character, Character> characterMap = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             char keyChar = s.charAt(i);
@@ -29,6 +36,10 @@ public class Isomorphic {
             }
         }
 
+        /*
+            Val (Char from 2nd string) should not have multiple
+            KEy (Char from 1st string)
+         */
         final Set<Character> characters = new HashSet<>();
         for (final Map.Entry<Character, Character> characterEntry : characterMap.entrySet()) {
             final char aChar = characterEntry.getValue();
