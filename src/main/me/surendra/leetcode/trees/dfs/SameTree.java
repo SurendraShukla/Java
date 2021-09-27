@@ -11,17 +11,17 @@ public class SameTree {
         Time Complexity - O(n)
         Space Complexity - O(1)
      */
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        if (p == null && q == null) {
+    public boolean isSameTree(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
             return true;
         }
-        if (p == null || q == null) {
+        if (left == null || right == null) {
             return false;
         }
-        if (p.val != q.val) {
+        if (left.val != right.val) {
             return false;
         }
-        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        return isSameTree(left.left, right.left) && isSameTree(left.right, right.right);
     }
 
 }

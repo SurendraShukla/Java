@@ -12,7 +12,52 @@ public class SymmetricFinder {
         Time complexity: O(n)
         Space complexity: O(n)
      */
-    public boolean isSymmetric(TreeNode root) {
+    public boolean isSymmetricUsingRecursion(TreeNode root) {
+        return isMirror(root.left, root.right);
+    }
+
+    private boolean isMirror(final TreeNode left, final TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.val != right.val) {
+            return false;
+        }
+        return isMirror(left.left, right.right) && isMirror(left.right, right.left);
+    }
+
+
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    public boolean isSymmetricUsingIteration(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode t1 = q.poll();
+            TreeNode t2 = q.poll();
+            if (t1 == null && t2 == null) continue;
+            if (t1 == null || t2 == null) return false;
+            if (t1.val != t2.val) return false;
+            q.add(t1.left);
+            q.add(t2.right);
+            q.add(t1.right);
+            q.add(t2.left);
+        }
+        return true;
+    }
+
+
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    public boolean isSymmetricSelfThought(TreeNode root) {
         Queue<TreeNode> treeNodeQueue = new LinkedList<>();
         treeNodeQueue.add(root);
 
