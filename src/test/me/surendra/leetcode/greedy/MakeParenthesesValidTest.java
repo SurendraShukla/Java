@@ -1,4 +1,4 @@
-package me.surendra.leetcode;
+package me.surendra.leetcode.greedy;
 
 import org.junit.Test;
 
