@@ -23,12 +23,11 @@ public class CommonCharacterFinder {
             diff();
         }
 
-        final List<String> charList = new ArrayList<>();
-        populateReturnString(charList);
-        return charList;
+        return getReturnList();
     }
 
-    private void populateReturnString(final List<String> charList) {
+    private List<String> getReturnList() {
+        final List<String> charList = new ArrayList<>();
         for (int idx = 0; idx < chars.length; idx++) {
             if (chars[idx] != 0) {
                 int charFrequency = chars[idx];
@@ -39,6 +38,7 @@ public class CommonCharacterFinder {
                 }
             }
         }
+        return charList;
     }
 
     private void diff() {
