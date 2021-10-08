@@ -9,7 +9,9 @@ import static org.junit.Assert.assertThat;
 public class ValidatorTest {
 
     private boolean callMethod(final TreeNode treeNode) {
-        return new Validator().isValidBST(treeNode);
+//        return new Validator().isValidBSTUsingInOrderTraversalIterativeApproach(treeNode);
+        return new Validator().isValidBSTUsingInOrderTraversalRecursionApproach(treeNode);
+//        return new Validator().isValidBST(treeNode);
     }
 
     @Test
