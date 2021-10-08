@@ -26,6 +26,13 @@ public class StringToIntegerAtoiTest {
     }
 
     @Test
+    public void signSetIssue() {
+        assertThat(callMethod("+-12"), equalTo(0));
+        assertThat(callMethod("00000-42a1234"), equalTo(0));
+        assertThat(callMethod("   +0 123"), equalTo(0));
+    }
+
+    @Test
     public void numberWithString() {
         assertThat(callMethod("4193 with words"), equalTo(4193));
         assertThat(callMethod("words and 987"), equalTo(0));
@@ -34,6 +41,7 @@ public class StringToIntegerAtoiTest {
 
     @Test
     public void numberOutOfRange() {
+        assertThat(callMethod("2147483646"), equalTo(2147483646));
         assertThat(callMethod("-91283472332"), equalTo(-2147483648));
     }
 
