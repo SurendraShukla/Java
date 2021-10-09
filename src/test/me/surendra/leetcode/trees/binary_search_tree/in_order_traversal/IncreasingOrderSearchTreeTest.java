@@ -1,11 +1,11 @@
-package me.surendra.leetcode.trees.dfs;
+package me.surendra.leetcode.trees.binary_search_tree.in_order_traversal;
 
 import com.google.common.collect.Lists;
 import me.surendra.leetcode.trees.TreeNode;
-import me.surendra.leetcode.trees.dfs.IncreasingOrderSearchTree;
 import org.junit.Test;
 
 import java.util.List;
+
 
 public class IncreasingOrderSearchTreeTest {
 

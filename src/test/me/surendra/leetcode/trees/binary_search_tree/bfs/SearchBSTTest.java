@@ -1,7 +1,8 @@
-package me.surendra.leetcode.trees;
+package me.surendra.leetcode.trees.binary_search_tree.bfs;
 
-
+import me.surendra.leetcode.trees.TreeNode;
 import org.junit.Test;
+
 
 public class SearchBSTTest {
 

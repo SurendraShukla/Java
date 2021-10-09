@@ -1,11 +1,11 @@
-package me.surendra.leetcode.trees.dfs;
-
+package me.surendra.leetcode.trees.breadth_first_search;
 
 import me.surendra.leetcode.trees.TreeNode;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+
 
 public class SameTreeTest {
 

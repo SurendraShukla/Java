@@ -1,4 +1,6 @@
-package me.surendra.leetcode.trees;
+package me.surendra.leetcode.trees.binary_search_tree.bfs;
+
+import me.surendra.leetcode.trees.TreeNode;
 
 /**
  * @see <a href="https://leetcode.com/problems/search-in-a-binary-search-tree/">Search in a Binary Search Tree</a>

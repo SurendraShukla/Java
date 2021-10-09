@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.dfs;
+package me.surendra.leetcode.trees.depth_first_search.in_order_traversal;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @see <a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
+ *
  * 1. Traverse the left subtree
  * 2. Visit the root
  * 3. Traverse the right subtree

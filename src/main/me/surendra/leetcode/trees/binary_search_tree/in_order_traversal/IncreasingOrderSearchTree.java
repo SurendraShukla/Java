@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.dfs;
+package me.surendra.leetcode.trees.binary_search_tree.in_order_traversal;
 
 import me.surendra.leetcode.trees.TreeNode;
 

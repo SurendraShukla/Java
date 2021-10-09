@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+
 public class ValidatorTest {
 
     private boolean callMethod(final TreeNode treeNode) {

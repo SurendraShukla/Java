@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.binary_search_tree;
+package me.surendra.leetcode.trees.breadth_first_search;
 
 import me.surendra.leetcode.trees.TreeNode;
 

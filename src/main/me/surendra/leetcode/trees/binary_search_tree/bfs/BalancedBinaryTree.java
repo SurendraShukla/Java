@@ -1,7 +1,9 @@
-package me.surendra.leetcode.trees;
+package me.surendra.leetcode.trees.binary_search_tree.bfs;
+
+import me.surendra.leetcode.trees.TreeNode;
 
 /**
- * @see <a href="https://leetcode.com/problems/balanced-binary-tree/"></a>
+ * @see <a href="https://leetcode.com/problems/balanced-binary-tree/">Balanced Binary Tree</a>
  */
 public class BalancedBinaryTree {
 

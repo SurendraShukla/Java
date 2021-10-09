@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.bfs;
+package me.surendra.leetcode.trees.breadth_first_search.in_order_traversal;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Queue;
 
 /**
+ * @see <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">Binary Tree Level Order Traversal</a>
+ *
  * 1. Starts with a root node and visit the node itself first.
  * 2. Then traverse its neighbors.
  * 3. Traverse its second level neighbors,

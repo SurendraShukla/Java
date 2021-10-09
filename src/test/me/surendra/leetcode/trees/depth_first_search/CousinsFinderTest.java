@@ -1,9 +1,11 @@
-package me.surendra.leetcode.trees;
+package me.surendra.leetcode.trees.depth_first_search;
 
+import me.surendra.leetcode.trees.TreeNode;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+
 
 public class CousinsFinderTest {
 

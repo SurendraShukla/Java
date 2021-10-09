@@ -1,4 +1,6 @@
-package me.surendra.leetcode.trees;
+package me.surendra.leetcode.trees.depth_first_search;
+
+import me.surendra.leetcode.trees.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
