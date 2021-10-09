@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.bfs.binary;
+package me.surendra.leetcode.trees.binary_search_tree;
 
 import me.surendra.leetcode.trees.TreeNode;
 

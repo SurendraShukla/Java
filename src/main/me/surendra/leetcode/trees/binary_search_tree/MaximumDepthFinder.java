@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.bfs.binary;
+package me.surendra.leetcode.trees.binary_search_tree;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -9,6 +9,23 @@ import java.util.Queue;
  * @see <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">Maximum Depth of Binary Tree</a>
  */
 public class MaximumDepthFinder {
+
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    public int getMaxDepthUsingRecursion(final TreeNode root) {
+        return getMaxDepth(root, 0);
+    }
+
+    private int getMaxDepth(final TreeNode treeNode, final int level) {
+        if(treeNode == null) {
+            return level;
+        }
+        int maxDepthOfLeftTreeNode = getMaxDepth(treeNode.left, level + 1);
+        int maxDepthOfRightTreeNode = getMaxDepth(treeNode.right, level+1);
+        return Math.max(maxDepthOfLeftTreeNode, maxDepthOfRightTreeNode);
+    }
 
     /*
         Time complexity: O(n)
@@ -38,20 +55,4 @@ public class MaximumDepthFinder {
         return level;
     }
 
-    /*
-        Time complexity: O(n)
-        Space complexity: O(n)
-     */
-    public int getMaxDepthUsingRecursion(final TreeNode root) {
-        return getMaxDepth(root, 0);
-    }
-
-    private int getMaxDepth(final TreeNode treeNode, final int level) {
-        if(treeNode == null) {
-            return level;
-        }
-        int maxDepthOfLeftTreeNode = getMaxDepth(treeNode.left, level + 1);
-        int maxDepthOfRightTreeNode = getMaxDepth(treeNode.right, level+1);
-        return Math.max(maxDepthOfLeftTreeNode, maxDepthOfRightTreeNode);
-    }
 }

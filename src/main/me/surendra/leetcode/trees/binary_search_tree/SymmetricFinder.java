@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.bfs.binary;
+package me.surendra.leetcode.trees.binary_search_tree;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * @see <a href="https://leetcode.com/problems/symmetric-tree/">Symmetric Tree</a>
+ */
 public class SymmetricFinder {
 
     /*
