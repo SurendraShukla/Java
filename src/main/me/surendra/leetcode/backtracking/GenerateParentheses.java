@@ -2,60 +2,62 @@ package me.surendra.leetcode.backtracking;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @see <a href="https://leetcode.com/problems/generate-parentheses/">Generate Parentheses</a>
  */
 public class GenerateParentheses {
 
-    /*
-        Insert () between already generated valid parenthesis
-     */
-    public List<String> generateParenthesisUsingIterativeInsertion(int n) {
-        Set<String> resultSet = new HashSet<>();
-        for (int i = 0; i < n; i++) {
-            final Set<String> tmp = new HashSet<>();
-            if (i == 0) {
-                tmp.add("()");
-            }else {
-                for (String str : resultSet) {
-                    for (int j = 1; j <= str.length(); j++) {
-                        final String tmpStr = str.substring(0, j) + "()" + str.substring(j);
-                        tmp.add(tmpStr);
-                    }
-                    tmp.add(str + "()");
-                }
-            }
-            resultSet = tmp;
-        }
-        return new LinkedList<>(resultSet);
+    int n;
+    int totalBrackets;
+    List<String> returnList = new ArrayList<>();
+    public List<String> generateParenthesisUsingBacktracking(final int n) {
+        this.n = n;
+        totalBrackets = n * 2;
+        backtracking(0, new StringBuilder());
+        return returnList;
     }
 
-    public List<String> generateParenthesisUsingBacktracking(int n) {
-        List<String> ans = new ArrayList();
-        backtrack(ans, new StringBuilder(), 0, 0, n);
-        return ans;
-    }
-
-    public void backtrack(List<String> ans, StringBuilder cur, int open, int close, int max){
-        if (cur.length() == max * 2) {
-            ans.add(cur.toString());
+    private void backtracking(final int idx, final StringBuilder stringBuilder) {
+        if (idx == totalBrackets) {
+            returnList.add(stringBuilder.toString());
             return;
         }
+        if (idx < n) {
+            stringBuilder.append("(");
+            backtracking(idx + 1, stringBuilder);
+            stringBuilder.deleteCharAt(idx);
+        }
+        if (stringBuilder.length() < totalBrackets) {
+            stringBuilder.append(")");
+            backtracking(idx + 1, stringBuilder);
+            stringBuilder.deleteCharAt(idx);
+        }
+    }
 
-        if (open < max) {
-            cur.append("(");
-            backtrack(ans, cur, open+1, close, max);
-            cur.deleteCharAt(cur.length() - 1);
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    public List<String> generateParenthesisUsingIterativeInsertion(final int n) {
+        Set<String> returnList = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            final Set<String> tmpList = new HashSet<>();
+            if (i == 0) {
+                tmpList.add("()");
+            }else{
+                for (final String str : returnList) {
+                    for (int j = 0; j < str.length(); j++) {
+                        tmpList.add(str.substring(0, j) + "()" + str.substring(j));
+                    }
+                }
+            }
+            returnList = tmpList;
         }
-        if (close < open) {
-            cur.append(")");
-            backtrack(ans, cur, open, close+1, max);
-            cur.deleteCharAt(cur.length() - 1);
-        }
+        return returnList.stream().collect(Collectors.toList());
     }
 
 }

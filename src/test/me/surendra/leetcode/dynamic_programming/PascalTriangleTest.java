@@ -1,5 +1,6 @@
 package me.surendra.leetcode.dynamic_programming;
 
+import me.surendra.TestUtil;
 import org.junit.Test;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class PascalTriangleTest {
 
         final List<List<Integer>> actual = callMethod(1);
 
-        assertion(expected, actual);
+        TestUtil.assertion(expected, actual);
     }
 
     @Test
@@ -30,7 +31,7 @@ public class PascalTriangleTest {
 
         final List<List<Integer>> actual = callMethod(2);
 
-        assertion(expected, actual);
+        TestUtil.assertion(expected, actual);
     }
 
     @Test
@@ -39,7 +40,7 @@ public class PascalTriangleTest {
 
         final List<List<Integer>> actual = callMethod(3);
 
-        assertion(expected, actual);
+        TestUtil.assertion(expected, actual);
     }
 
     @Test
@@ -48,7 +49,7 @@ public class PascalTriangleTest {
 
         final List<List<Integer>> actual = callMethod(4);
 
-        assertion(expected, actual);
+        TestUtil.assertion(expected, actual);
     }
 
     @Test
@@ -57,12 +58,7 @@ public class PascalTriangleTest {
 
         final List<List<Integer>> actual = callMethod(5);
 
-        assertion(expected, actual);
-    }
-
-    private void assertion(final List<List<Integer>> expected, final List<List<Integer>> actual) {
-        assertThat(actual.size(), equalTo(expected.size()));
-        assertTrue(actual.containsAll(expected) && expected.containsAll(actual));
+        TestUtil.assertion(expected, actual);
     }
 
 }
