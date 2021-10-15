@@ -1,4 +1,4 @@
-package me.surendra.leetcode.string;
+package me.surendra.leetcode.string.excel_sheet;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @see <a href="https://leetcode.com/problems/excel-sheet-column-number/">Excel Sheet Column Number</a>
  */
-public class ExcelSheetColumnTitleToNumberConverter {
+public class ColumnTitleToNumberConverter {
 
     /*
         Time Complexity - O(N)

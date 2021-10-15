@@ -1,4 +1,4 @@
-package me.surendra.leetcode.string;
+package me.surendra.leetcode.string.excel_sheet;
 
 import org.junit.Test;
 
@@ -6,11 +6,11 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 
-public class ExcelSheetColumnTitleToNumberConverterTest {
+public class ColumnTitleToNumberConverterTest {
 
     private int callMethod(final String columnTitle) {
 //        return new ExcelSheet().titleToNumberUsingRightToLeftApproach(columnTitle);
-        return new ExcelSheetColumnTitleToNumberConverter().titleToNumberUsingLeftToRightApproach(columnTitle);
+        return new ColumnTitleToNumberConverter().titleToNumberUsingLeftToRightApproach(columnTitle);
     }
 
     @Test
