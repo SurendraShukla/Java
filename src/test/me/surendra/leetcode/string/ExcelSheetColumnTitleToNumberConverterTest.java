@@ -5,18 +5,17 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class ExcelSheetTest {
 
-    private int callMethod(final String str) {
-//        return new ExcelSheet().titleToNumber(str);
-        return new ExcelSheet().titleToNumberUsingLeftToRightApproach(str);
+public class ExcelSheetColumnTitleToNumberConverterTest {
+
+    private int callMethod(final String columnTitle) {
+//        return new ExcelSheet().titleToNumberUsingRightToLeftApproach(columnTitle);
+        return new ExcelSheetColumnTitleToNumberConverter().titleToNumberUsingLeftToRightApproach(columnTitle);
     }
 
     @Test
     public void singleDigital() {
-        assertThat(callMethod("A"), equalTo(1));
         int val = 1;
-
         for (char ch='A'; ch <= 'Z'; ++ch, val++) {
             assertThat(callMethod(String.valueOf(ch)), equalTo(val));
         }

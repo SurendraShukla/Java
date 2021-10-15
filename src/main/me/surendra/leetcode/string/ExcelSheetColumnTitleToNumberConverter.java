@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @see <a href="https://leetcode.com/problems/excel-sheet-column-number/">Excel Sheet Column Number</a>
  */
-public class ExcelSheet {
+public class ExcelSheetColumnTitleToNumberConverter {
 
     /*
         Time Complexity - O(N)
@@ -14,7 +14,7 @@ public class ExcelSheet {
 
         Right to Left Approach
      */
-    public int titleToNumber(final String columnTitle) {
+    public int titleToNumberUsingRightToLeftApproach(final String columnTitle) {
 //        final Map<Character, Integer> alphabetToNumber = new HashMap<>();
 //        "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars().forEach(ch -> alphabetToNumber.put((char) ch, ch - 'A' + 1));
 
