@@ -10,6 +10,19 @@ public class BinarySearch {
         Space Complexity - O(1)
      */
     public int search(int[] nums, int target) {
+        int low = 0;
+        int max = nums.length-1;
+
+        while (low <= max) {
+            int mid = ((max-low)/2) + low;
+            if (target == nums[mid]) {
+                return mid;
+            }else if(target < nums[mid]) {
+                max = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
         return -1;
     }
 
