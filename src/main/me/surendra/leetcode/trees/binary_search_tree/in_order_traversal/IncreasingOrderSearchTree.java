@@ -2,6 +2,8 @@ package me.surendra.leetcode.trees.binary_search_tree.in_order_traversal;
 
 import me.surendra.leetcode.trees.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -9,52 +11,78 @@ import java.util.Stack;
  */
 public class IncreasingOrderSearchTree {
 
-    final Stack<Integer> integerStack = new Stack<>();
-
     /*
-        Time Complexity - O(n)
-        Space Complexity - O(n)
+        Time Complexity - O(n) - N is number of nodes in tree
+        Space Complexity - O(H) - H is tree height
      */
-    public TreeNode increasingBST(TreeNode root) {
-        populateStack(root);
-
-        TreeNode treeNode = null;
-        while(!integerStack.isEmpty()) {
-            final Integer integer = integerStack.pop();
-            treeNode = new TreeNode(integer, null, treeNode);
-        }
-
-        return treeNode;
+    TreeNode dummyNode;
+    public TreeNode increasingBstTraversalWithRelinking(TreeNode root) {
+        final TreeNode returnNode = new TreeNode(0);
+        dummyNode = returnNode;
+        inOrderTraversalWithRelinking(root);
+        return  returnNode.right;
     }
 
-    private void populateStack(final TreeNode root) {
+    private void inOrderTraversalWithRelinking(TreeNode root) {
         if (root == null) {
             return;
         }
-        populateStack(root.left);
-        integerStack.push(root.val);
-        populateStack(root.right);
+        inOrderTraversalWithRelinking(root.left);
+        root.left = null;
+        dummyNode.right = root;
+        dummyNode = dummyNode.right;
+        inOrderTraversalWithRelinking(root.right);
+    }
+
+    /*
+        Time Complexity - O(n) - N is number of nodes in tree
+        Space Complexity - O(H) - H is tree height
+     */
+    public TreeNode increasingBstTraversalWithIterationWithDummyNode(TreeNode root) {
+        final List<Integer> valList = new ArrayList();
+        inOrderTraversalWithIteration(root, valList);
+
+        final TreeNode returnNode = new TreeNode(0);
+        TreeNode dummyNode = returnNode;
+        for (int i = 0; i < valList.size(); i++) {
+            dummyNode.right = new TreeNode(valList.get(i));
+            dummyNode = dummyNode.right;
+        }
+        return  returnNode.right;
+    }
+
+    private void inOrderTraversalWithIteration(final TreeNode root, final List<Integer> valList) {
+        if (root == null) {
+            return;
+        }
+        inOrderTraversalWithIteration(root.left, valList);
+        valList.add(root.val);
+        inOrderTraversalWithIteration(root.right, valList);
     }
 
 
     /*
-        Sentinel
+        Time Complexity - O(n) - N is number of nodes in tree
+        Space Complexity - O(H) - H is tree height
      */
-    TreeNode cur;
-    public TreeNode increasingBSTUsingDummyNode(TreeNode root) {
-        TreeNode ans = new TreeNode(0);
-        cur = ans;
-        inorder(root);
-        return ans.right;
+    public TreeNode increasingBstTraversalWithIterationWithoutDummyNode(TreeNode root) {
+        final Stack<Integer> integerStack = new Stack<>();
+        inOrderTraversalWithIteration(root, integerStack);
+
+        TreeNode returnNode = new TreeNode(integerStack.pop());
+        while(!integerStack.isEmpty()) {
+            returnNode = new TreeNode(integerStack.pop(), null, returnNode);
+        }
+        return  returnNode;
     }
 
-    public void inorder(TreeNode node) {
-        if (node == null) return;
-        inorder(node.left);
-        node.left = null;
-        cur.right = node;
-        cur = node;
-        inorder(node.right);
+    private void inOrderTraversalWithIteration(final TreeNode root, final Stack<Integer> integerStack) {
+        if (root == null) {
+            return;
+        }
+        inOrderTraversalWithIteration(root.left, integerStack);
+        integerStack.push(root.val);
+        inOrderTraversalWithIteration(root.right, integerStack);
     }
 
 
