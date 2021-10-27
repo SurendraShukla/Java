@@ -14,7 +14,7 @@ public class BinaryTreeFlatterTest {
 
     private void callMethod(final TreeNode treeNode) {
 //        new BinaryTreeFlatter().flattenUsingList(treeNode);
-        new BinaryTreeFlatter().flattenUsingDummyNode(treeNode);
+        new BinaryTreeFlatter().flattenTreeRecursionUsingPreviousNode(treeNode);
     }
 
     @Test

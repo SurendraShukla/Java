@@ -16,20 +16,13 @@ public class BinaryTreeFlatter {
         Space complexity: O(1)
      */
     TreeNode previousNode = null;
-    public void flattenUsingDummyNode(TreeNode root) {
+    public void flattenTreeRecursionUsingPreviousNode(TreeNode root) {
         if (root == null) {
             return;
         }
-        traversal(root);
-    }
-
-    private void traversal(final TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        traversal(root.right);
+        flattenTreeRecursionUsingPreviousNode(root.right);
         if (root.left != null) {
-            traversal(root.left);
+            flattenTreeRecursionUsingPreviousNode(root.left);
         }
         root.left = null;
         root.right= previousNode;
@@ -42,11 +35,10 @@ public class BinaryTreeFlatter {
      */
     public void flattenUsingList(TreeNode root) {
         final List<TreeNode> integerList = new ArrayList<>();
-        if (root == null) {
+        traversal(root, integerList);
+        if (integerList.isEmpty()) {
             return;
         }
-
-        traversal(root, integerList);
 
         TreeNode prevNode = integerList.get(0);
         for (int i = 1; i < integerList.size(); i++) {
