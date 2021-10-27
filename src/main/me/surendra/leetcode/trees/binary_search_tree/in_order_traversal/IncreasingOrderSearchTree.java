@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+
 /**
  * @see <a href="https://leetcode.com/problems/increasing-order-search-tree/">Increasing Order Search Tree</a>
  */
@@ -44,8 +45,8 @@ public class IncreasingOrderSearchTree {
 
         final TreeNode returnNode = new TreeNode(0);
         TreeNode dummyNode = returnNode;
-        for (int i = 0; i < valList.size(); i++) {
-            dummyNode.right = new TreeNode(valList.get(i));
+        for (final Integer integer : valList) {
+            dummyNode.right = new TreeNode(integer);
             dummyNode = dummyNode.right;
         }
         return  returnNode.right;
