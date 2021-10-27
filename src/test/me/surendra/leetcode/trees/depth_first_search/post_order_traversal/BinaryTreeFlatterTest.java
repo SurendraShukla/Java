@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.depth_first_search;
+package me.surendra.leetcode.trees.depth_first_search.post_order_traversal;
 
 import com.google.common.collect.Lists;
 import me.surendra.leetcode.trees.TreeNode;
