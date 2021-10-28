@@ -11,6 +11,54 @@ public class ReverseNodesInKGroup {
         Time Complexity - O(n)
         Space Complexity - O(n)
     */
+    public ListNode reverseKGroup(ListNode head, int k) {
+
+        ListNode tmpListNode = head;
+        ListNode returnNode = new ListNode(0);
+        ListNode dummyNode = returnNode;
+        ListNode nonReversedNode = null;
+
+        int counter = 0;
+
+        while(tmpListNode != null) {
+            if (counter == 0) {
+                nonReversedNode = tmpListNode;
+            }
+            if (counter == k) {
+                counter = 0;
+                dummyNode.next = reverse(nonReversedNode);
+                dummyNode = dummyNode.next;
+            }else{
+                counter++;
+            }
+            tmpListNode = tmpListNode.next;
+        }
+
+        if (counter < k) {
+            dummyNode.next = nonReversedNode;
+        }
+
+        return returnNode.next;
+    }
+
+    public ListNode reverse(final ListNode listNode) {
+        ListNode tmpListNode = listNode;
+        ListNode currentNode = listNode;
+        ListNode nextNode = null;
+        while (tmpListNode != null) {
+            tmpListNode = tmpListNode.next;
+            currentNode.next = nextNode;
+            nextNode = currentNode;
+            currentNode = tmpListNode;
+        }
+        return nextNode;
+    }
+
+
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+    */
     public ListNode reverseKGroupUsingStack(ListNode head, int k) {
         int tmpK = k;
         ListNode firstNodeReference = null;

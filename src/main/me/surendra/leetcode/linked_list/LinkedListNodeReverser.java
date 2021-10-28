@@ -7,13 +7,58 @@ public class LinkedListNodeReverser {
 
     /*
         Time Complexity - O(n)
+        Space Complexity - O(n)
+     */
+    ListNode returnListNode;
+    ListNode dummyListNode;
+    public ListNode reverseListUsingRecursionWithDummyNode(ListNode head) {
+        populate(head);
+        return returnListNode;
+    }
+
+    private void populate(final ListNode head) {
+        if(head == null) {
+            return;
+        }
+        populate(head.next);
+        if (returnListNode == null) {
+            returnListNode = head;
+            dummyListNode = returnListNode;
+        }else{
+            head.next = null;
+            dummyListNode.next = head;
+            dummyListNode = dummyListNode.next;
+        }
+    }
+
+
+    /*
+        Time Complexity - O(n)
         Space Complexity - O(1)
     */
     public static ListNode reverseListUsing3Pointers(ListNode head) {
-        ListNode previousNode = null;
+        ListNode previousNodeReferredAsNextNode = null;
         ListNode currentNode = head;
         while(currentNode != null) {
             ListNode nextNode = currentNode.next;
+            currentNode.next = previousNodeReferredAsNextNode;
+            previousNodeReferredAsNextNode = currentNode;
+            currentNode = nextNode;
+        }
+        return previousNodeReferredAsNextNode;
+    }
+
+
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+     */
+    public ListNode reverseListUsingIterationWithDummyNode(ListNode head) {
+        ListNode previousNode = null;
+        ListNode currentNode = head;
+        while(head != null) {
+            ListNode nextNode = head.next;
+            head = head.next;
             currentNode.next = previousNode;
             previousNode = currentNode;
             currentNode = nextNode;
@@ -30,14 +75,11 @@ public class LinkedListNodeReverser {
         if (head == null) {
             return null;
         }
-        ListNode returnListNode;
-        ListNode currentListNode = null;
-        do{
-            returnListNode = new ListNode(head.val, currentListNode);
-            currentListNode = returnListNode;
+        ListNode returnListNode = null;
+        while(head != null) {
+            returnListNode = new ListNode(head.val, returnListNode);
             head = head.next;
-        }while(head != null);
-
+        }
         return returnListNode;
     }
 

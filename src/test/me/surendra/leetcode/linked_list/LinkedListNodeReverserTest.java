@@ -8,10 +8,13 @@ import static org.junit.Assert.assertThat;
 
 public class LinkedListNodeReverserTest {
 
+
     private ListNode callMethod(final ListNode input) {
-        return LinkedListNodeReverser.reverseListUsing3Pointers(input);
-//        return LinkedListNodeReverser.reverseListUsing2PointersAndNodeCreation(input);
-//        return LinkedListNodeReverser.reverseListUsingRecursion(input);
+//        return new LinkedListNodeReverser().reverseListUsingRecursion(input);
+//        return new LinkedListNodeReverser().reverseListUsingRecursionWithDummyNode(input);
+//        return new LinkedListNodeReverser().reverseListUsing2PointersAndNodeCreation(input);
+//        return new LinkedListNodeReverser().reverseListUsing3Pointers(input);
+        return new LinkedListNodeReverser().reverseListUsingIterationWithDummyNode(input);
     }
 
     @Test
@@ -38,6 +41,17 @@ public class LinkedListNodeReverserTest {
 
     @Test
     public void test3() {
+        final ListNode input = LinkedList.createUsingDummyNode(new int[]{1,2,3});
+        final ListNode expected = LinkedList.createUsingDummyNode(new int[]{3,2,1});
+
+        // execute
+        final ListNode output = callMethod(input);
+
+        assertThat(output, equalTo(expected));
+    }
+
+    @Test
+    public void test5() {
         final ListNode input = LinkedList.createUsingDummyNode(new int[]{1,2,3,4,5});
         final ListNode expected = LinkedList.createUsingDummyNode(new int[]{5,4,3,2,1});
 
