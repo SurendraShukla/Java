@@ -21,10 +21,10 @@ public class VowelReversal {
         int rightPointer= stringBuilder.length()-1;
 
         while(leftPointer < rightPointer) {
-            char leftChar = stringBuilder.charAt(leftPointer);
-            char rightChar = stringBuilder.charAt(rightPointer);
-            boolean leftContainsVowel = vowels.contains(leftChar);
-            boolean rightContainsVowel = vowels.contains(rightChar);
+            final char leftChar = stringBuilder.charAt(leftPointer);
+            final char rightChar = stringBuilder.charAt(rightPointer);
+            final boolean leftContainsVowel = vowels.contains(leftChar);
+            final boolean rightContainsVowel = vowels.contains(rightChar);
             if(leftContainsVowel && rightContainsVowel) {
                 stringBuilder.setCharAt(rightPointer, leftChar);
                 stringBuilder.setCharAt(leftPointer, rightChar);

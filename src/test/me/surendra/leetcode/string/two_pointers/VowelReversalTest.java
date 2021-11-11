@@ -1,8 +1,9 @@
 package me.surendra.leetcode.string.two_pointers;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 
 public class VowelReversalTest {
@@ -13,9 +14,9 @@ public class VowelReversalTest {
 
     @Test
     public void test() {
-        Assert.assertThat(callMethod("hello"), Matchers.equalTo("holle"));
-        Assert.assertThat(callMethod("leetcode"), Matchers.equalTo("leotcede"));
-        Assert.assertThat(callMethod("aA"), Matchers.equalTo("Aa"));
+        assertThat(callMethod("hello"), equalTo("holle"));
+        assertThat(callMethod("leetcode"), equalTo("leotcede"));
+        assertThat(callMethod("aA"), equalTo("Aa"));
     }
 
 }
