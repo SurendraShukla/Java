@@ -9,8 +9,8 @@ import me.surendra.leetcode.trees.TreeNode;
 public class RangeSumFinder {
 
     /*
-        Time complexity : O(N)
-        Space complexity: O(1)
+        Time complexity : O(n)
+        Space complexity: O(n)
      */
     int sum = 0;
     public int rangeSumBST(TreeNode root, int low, int high) {
