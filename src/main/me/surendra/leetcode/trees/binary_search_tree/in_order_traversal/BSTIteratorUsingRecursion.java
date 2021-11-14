@@ -72,9 +72,7 @@ class BSTIteratorUsingIteration implements BSTIterator {
     @Override
     public int next() {
         TreeNode treeNode = stack.pop();
-        if (treeNode.right != null) {
-            populateLeftNodes(treeNode.right);
-        }
+        populateLeftNodes(treeNode.right);
         return treeNode.val;
     }
 
