@@ -1,64 +1,97 @@
 package me.surendra.leetcode.graph;
 
-import org.apache.commons.lang.math.RandomUtils;
-
 /**
  * @see <a href="https://leetcode.com/problems/find-the-celebrity/">Find the Celebrity</a>
  */
 public class CelebrityFinder {
 
-//    [[1,0],[0,1]]
+    final int[][] relations;
+
+    public CelebrityFinder(final int[][] relations) {
+        this.relations = relations;
+    }
 
     /*
         Time Complexity - O(n)
-        Space Complexity - O(n)
+        Space Complexity - O(1)
      */
     public int findCelebrity(int n) {
-        final int[] persons = new int[n];
-        int person1 = 0;
-        int person2 = n-1;
-        while(person1 < person2) {
-            boolean knows = knows(person1, person2);
-            System.out.println("person1=["+ person1 + "] know person1=[" + person2 + "] [" + knows + "]");
-            if (knows) {
-                System.out.println("Person1 knows person2");
-                persons[person1] = 1;
-                person1++;
-            }else{
-                System.out.println("Person1 does not know person2");
-                persons[person1] = 1;
-                person2--;
+        int celebrityCandidate = 0;
+        for (int otherCandidate=1; otherCandidate<n; otherCandidate++) {
+            if (knows(celebrityCandidate, otherCandidate)) {
+                celebrityCandidate = otherCandidate;
             }
         }
-        for (int i = 0; i < persons.length; i++) {
-            if (persons[i] == 0) {
-                if (!celebrityKnows(persons, i)) {
-                    return i;
+        return isCelebrity(celebrityCandidate, n) ? celebrityCandidate : -1;
+    }
+
+    private boolean isCelebrity(final int celebrityCandidate, final int n) {
+        for (int otherCandidate = 0; otherCandidate < n; otherCandidate++) {
+            if (otherCandidate == celebrityCandidate) {
+                continue;
+            }
+            if (!knows(otherCandidate, celebrityCandidate) || knows(celebrityCandidate, otherCandidate)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+        Time Complexity - O(n^2)
+        Space Complexity - O(n)
+     */
+    public int findCelebrityByConsideringFirstCelebrityAndThenFinding(int n) {
+        final int[] celebrityStatus = new int[n];
+        for (int person1=0; person1<n; person1++) {
+            for (int person2=0; person2<n; person2++) {
+                if (person1 == person2) {
+                    continue;
                 }
+                if (knows(person1, person2)) {
+                    celebrityStatus[person1] = 1;
+                }
+            }
+        }
+
+        for (int i=0; i<n; i++) {
+            if ((celebrityStatus[i] == 0) && isCelebrity(i, n)) {
+                return i;
             }
         }
         return -1;
     }
 
-    private boolean celebrityKnows(final int[] persons, final int i) {
-
-        for (int j = 0; j < persons.length; j++) {
-            System.out.println("i=["+ i + "] j=[" + j + "]");
-            if (i == j) {
-                continue;
-            }
-            boolean knows = knows(i, j);
-            System.out.println("i=["+ i + "] know j=[" + j + "] [" + knows + "]");
-            if(knows) {
-                return true;
+    /*
+        Time Complexity - O(n^2)
+        Space Complexity - O(n)
+     */
+    public int findCelebrityWithBothCount_OtherAndHeKnows(int n) {
+        final int[] celebrityStatus = new int[n];
+        final int[] celebrityKnowsOther = new int[n];
+        for (int person1=0; person1<n; person1++) {
+            for (int person2=0; person2<n; person2++) {
+                if (person1 == person2) {
+                    celebrityKnowsOther[person1]+=1;
+                    continue;
+                }
+                if (knows(person1, person2)) {
+                    celebrityKnowsOther[person2]+=1;
+                    celebrityStatus[person1] = 1;
+                }
             }
         }
-        return false;
+
+        for (int i=0; i<n; i++) {
+            if (celebrityKnowsOther[i] == n && celebrityStatus[i] == 0) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private boolean knows(final int person1, final int person2) {
-        return RandomUtils.nextBoolean();
+        return relations[person1][person2] == 1;
     }
-
 
 }
