@@ -1,6 +1,8 @@
 package me.surendra.leetcode.trees.binary_search_tree.in_order_traversal;
 
 
+import me.surendra.leetcode.trees.Node;
+
 /**
  * @see <a href="https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/">Convert Binary Search Tree to Sorted Doubly Linked List</a>
  */
@@ -39,22 +41,3 @@ public class BstToSortedDoublyLinkedListConverter {
     }
 
 }
-
-
-class Node {
-    public int val;
-    public Node left;
-    public Node right;
-
-    public Node() {}
-
-    public Node(int _val) {
-        val = _val;
-    }
-
-    public Node(int _val,Node _left,Node _right) {
-        val = _val;
-        left = _left;
-        right = _right;
-    }
-};

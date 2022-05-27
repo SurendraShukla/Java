@@ -1,12 +1,13 @@
 package me.surendra.leetcode.trees.binary_search_tree.in_order_traversal;
 
+import me.surendra.leetcode.trees.Node;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class BstToSortedDoublyLinkedListConverterTest {
 
+public class BstToSortedDoublyLinkedListConverterTest {
 
     private Node callMethod(final Node input) {
         return new BstToSortedDoublyLinkedListConverter().treeToDoublyList(input);
