@@ -1,4 +1,4 @@
-package me.surendra.leetcode.array;
+package me.surendra.leetcode.array.hard;
 
 /**
  * @see <a href="https://leetcode.com/problems/container-with-most-water/"></a>
@@ -9,7 +9,7 @@ public class ContainerWithMostWater {
         Time complexity: O(n)
         Space complexity: O(1)
      */
-    public static int maxAreaUsing2Pointers(int[] height) {
+    public int maxAreaUsing2Pointers(int[] height) {
         int maxArea = 0, leftPointer = 0, rightPointer = height.length-1;
         while(leftPointer < rightPointer) {
             final int containerWidth = rightPointer - leftPointer;
@@ -28,7 +28,7 @@ public class ContainerWithMostWater {
         Time complexity: O(n^2)
         Space complexity: O(1)
      */
-    public static int maxAreaUsingBruteForce(int[] height) {
+    public int maxAreaUsingBruteForce(int[] height) {
         int maxArea = 0;
         for (int i = 0; i < height.length; i++) {
             for (int j = i; j < height.length; j++) {
