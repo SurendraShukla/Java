@@ -10,15 +10,13 @@ public class LinkedListNodeReverserTest {
 
 
     private ListNode callMethod(final ListNode input) {
-//        return new LinkedListNodeReverser().reverseListUsingRecursion(input);
-//        return new LinkedListNodeReverser().reverseListUsingRecursionWithDummyNode(input);
-//        return new LinkedListNodeReverser().reverseListUsing2PointersAndNodeCreation(input);
+        return new LinkedListNodeReverser().reverseListUsingRecursionUsingGlobalVariable(input);
 //        return new LinkedListNodeReverser().reverseListUsing3Pointers(input);
-        return new LinkedListNodeReverser().reverseListUsingIterationWithDummyNode(input);
+//        return new LinkedListNodeReverser().reverseListUsingRecursion(input);
     }
 
     @Test
-    public void test1() {
+    public void test0() {
         final ListNode input = LinkedList.createUsingDummyNode(new int[]{});
         final ListNode expected = LinkedList.createUsingDummyNode(new int[]{});
 
@@ -27,6 +25,18 @@ public class LinkedListNodeReverserTest {
 
         assertThat(output, equalTo(expected));
     }
+
+    @Test
+    public void test1() {
+        final ListNode input = LinkedList.createUsingDummyNode(new int[]{1});
+        final ListNode expected = LinkedList.createUsingDummyNode(new int[]{1});
+
+        // execute
+        final ListNode output = callMethod(input);
+
+        assertThat(output, equalTo(expected));
+    }
+
 
     @Test
     public void test2() {

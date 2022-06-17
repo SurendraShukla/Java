@@ -11,7 +11,7 @@ public class LinkedListNodeReverser {
      */
     ListNode returnListNode;
     ListNode dummyListNode;
-    public ListNode reverseListUsingRecursionWithDummyNode(ListNode head) {
+    public ListNode reverseListUsingRecursionUsingGlobalVariable(ListNode head) {
         populate(head);
         return returnListNode;
     }
@@ -46,41 +46,6 @@ public class LinkedListNodeReverser {
             currentNode = nextNode;
         }
         return previousNodeReferredAsNextNode;
-    }
-
-
-    /*
-        Time Complexity - O(n)
-        Space Complexity - O(n)
-     */
-    public ListNode reverseListUsingIterationWithDummyNode(ListNode head) {
-        ListNode previousNode = null;
-        ListNode currentNode = head;
-        while(head != null) {
-            ListNode nextNode = head.next;
-            head = head.next;
-            currentNode.next = previousNode;
-            previousNode = currentNode;
-            currentNode = nextNode;
-        }
-        return previousNode;
-    }
-
-
-    /*
-        Time Complexity - O(n)
-        Space Complexity - O(1)
-    */
-    public static ListNode reverseListUsing2PointersAndNodeCreation(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        ListNode returnListNode = null;
-        while(head != null) {
-            returnListNode = new ListNode(head.val, returnListNode);
-            head = head.next;
-        }
-        return returnListNode;
     }
 
 
