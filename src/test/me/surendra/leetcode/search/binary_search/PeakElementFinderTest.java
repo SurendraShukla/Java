@@ -1,5 +1,6 @@
-package me.surendra.leetcode.array;
+package me.surendra.leetcode.search.binary_search;
 
+import me.surendra.leetcode.search.binary_search.PeakElementFinder;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -9,8 +10,14 @@ import static org.junit.Assert.assertThat;
 public class PeakElementFinderTest {
 
     private int callMethod(final int[] nums) {
+        return new PeakElementFinder().findPeakElementUsingBinarySearch(nums);
+//        return new PeakElementFinder().findPeakElementComparingNextValueOnly(nums);
 //        return new PeakElementFinder().findPeakElement(nums);
-        return new PeakElementFinder().findPeakElementComparingNextValueOnly(nums);
+    }
+
+    @Test
+    public void noPeakElement() {
+        assertThat(callMethod(new int[]{1}), equalTo(0));
     }
 
     @Test
