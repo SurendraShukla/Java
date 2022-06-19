@@ -8,7 +8,6 @@ import static org.junit.Assert.assertThat;
 public class MajorityElementTest {
 
     private int callMethod(final int[] nums) {
-
 //        return new MajorityElement().majorityElementUsingArraySort(nums);
         return new MajorityElement().majorityElementUsingBoyerMooreVotingAlgorithm(nums);
     }
