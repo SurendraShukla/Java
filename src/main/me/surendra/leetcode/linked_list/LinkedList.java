@@ -5,7 +5,6 @@ public class LinkedList {
     public static ListNode from(int[] intArray) {
         ListNode listNode = null;
         for (final int aInt : intArray) {
-//            listNode = new ListNode(aInt, listNode);
             listNode = LinkedList.insert(listNode, aInt);
         }
         return listNode;
@@ -18,16 +17,13 @@ public class LinkedList {
     public static ListNode insert(ListNode head, int data) {
         final ListNode p = new ListNode(data);
         if(head == null) {
-            head = p;
-        } else if(head.next == null) {
-            head.next = p;
-        } else {
-            ListNode start = head;
-            while(start.next != null) {
-                start = start.next;
-            }
-            start.next = p;
+            return p;
         }
+        ListNode start = head;
+        while(start.next != null) {
+            start = start.next;
+        }
+        start.next = p;
         return head;
     }
 

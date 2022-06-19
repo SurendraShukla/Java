@@ -9,11 +9,13 @@ public class LinkedListNodeReverser {
         Time Complexity - O(n)
         Space Complexity - O(n)
      */
-    ListNode returnListNode;
-    ListNode dummyListNode;
+    ListNode returnHeadNode;
+    ListNode returnTailNode;
     public ListNode reverseListUsingRecursionUsingGlobalVariable(ListNode head) {
+        returnHeadNode = new ListNode(-1);
+        returnTailNode = returnHeadNode;
         populate(head);
-        return returnListNode;
+        return returnHeadNode.next;
     }
 
     private void populate(final ListNode head) {
@@ -21,14 +23,9 @@ public class LinkedListNodeReverser {
             return;
         }
         populate(head.next);
-        if (returnListNode == null) {
-            returnListNode = head;
-            dummyListNode = returnListNode;
-        }else{
-            head.next = null;
-            dummyListNode.next = head;
-            dummyListNode = dummyListNode.next;
-        }
+        head.next = null;
+        returnTailNode.next = head;
+        returnTailNode = returnTailNode.next;
     }
 
 
@@ -36,14 +33,14 @@ public class LinkedListNodeReverser {
         Time Complexity - O(n)
         Space Complexity - O(1)
     */
-    public static ListNode reverseListUsing3Pointers(ListNode head) {
+    public static ListNode reverseListUsing3Pointers(ListNode currentNode) {
         ListNode previousNodeReferredAsNextNode = null;
-        ListNode currentNode = head;
+        ListNode previousNode = currentNode;
         while(currentNode != null) {
-            ListNode nextNode = currentNode.next;
-            currentNode.next = previousNodeReferredAsNextNode;
-            previousNodeReferredAsNextNode = currentNode;
-            currentNode = nextNode;
+            currentNode = previousNode.next;
+            previousNode.next = previousNodeReferredAsNextNode;
+            previousNodeReferredAsNextNode = previousNode;
+            previousNode = currentNode;
         }
         return previousNodeReferredAsNextNode;
     }
@@ -53,15 +50,14 @@ public class LinkedListNodeReverser {
         Time Complexity - O(n)
         Space Complexity - O(n)
     */
-    public static ListNode reverseListUsingRecursion(ListNode head) {
+    public static ListNode reverseListUsingRecursionAdvance(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode dummyNode = reverseListUsingRecursion(head.next);
+        ListNode dummyNode = reverseListUsingRecursionAdvance(head.next);
         head.next.next = head;
         head.next = null;
         return dummyNode;
     }
-
 
 }

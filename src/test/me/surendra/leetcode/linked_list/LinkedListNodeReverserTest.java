@@ -8,11 +8,10 @@ import static org.junit.Assert.assertThat;
 
 public class LinkedListNodeReverserTest {
 
-
     private ListNode callMethod(final ListNode input) {
-        return new LinkedListNodeReverser().reverseListUsingRecursionUsingGlobalVariable(input);
-//        return new LinkedListNodeReverser().reverseListUsing3Pointers(input);
-//        return new LinkedListNodeReverser().reverseListUsingRecursion(input);
+//        return new LinkedListNodeReverser().reverseListUsingRecursionUsingGlobalVariable(input);
+        return new LinkedListNodeReverser().reverseListUsing3Pointers(input);
+//        return new LinkedListNodeReverser().reverseListUsingRecursionAdvance(input);
     }
 
     @Test
