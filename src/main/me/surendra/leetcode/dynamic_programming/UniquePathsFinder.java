@@ -1,8 +1,6 @@
 package me.surendra.leetcode.dynamic_programming;
 
 
-import java.util.Arrays;
-
 /**
  * @see <a href="https://leetcode.com/problems/unique-paths/">Unique Paths</a>
  */
