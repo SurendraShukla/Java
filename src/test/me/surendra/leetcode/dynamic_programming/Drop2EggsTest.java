@@ -5,16 +5,17 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class EggDrop2EggsTest {
+public class Drop2EggsTest {
 
     @Test
     public void test() {
-        final EggDrop2Eggs eggDrop2Eggs = new EggDrop2Eggs();
-        int no = 100000;
+        final Drop2Eggs drop2Eggs = new Drop2Eggs();
+        int no = 100;
         for (int i = 0; i < no; i++) {
-            int actual = eggDrop2Eggs.twoEggDrop(i);
+            int actual = drop2Eggs.twoEggDrop(i);
             int expected = (int)Math.round(Math.sqrt(i*2));
 
+            System.out.println("No=[" + i + "]\t =[" + actual + "]");
             assertThat(actual, equalTo(expected));
         }
     }

@@ -1,9 +1,10 @@
 package me.surendra.leetcode.dynamic_programming;
 
+
 /**
  * @see <a href="https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/">Egg Drop With 2 Eggs and N Floors</a>
  */
-public class EggDrop2Eggs {
+public class Drop2Eggs {
 
     /*
         Time complexity : O(log n)
