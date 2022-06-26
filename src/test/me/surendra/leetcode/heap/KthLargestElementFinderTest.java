@@ -15,8 +15,8 @@ public class KthLargestElementFinderTest {
     @Test
     public void test1() {
         assertThat(callMethod(new int[]{3,3,2,1}, 2), equalTo(3));
-//        assertThat(callMethod(new int[]{3,2,1,5,6,4}, 2), equalTo(5));
-//        assertThat(callMethod(new int[]{3,2,3,1,2,4,5,5,6}, 4), equalTo(4));
+        assertThat(callMethod(new int[]{3,2,1,5,6,4}, 2), equalTo(5));
+        assertThat(callMethod(new int[]{3,2,3,1,2,4,5,5,6}, 4), equalTo(4));
     }
 
 }
