@@ -1,7 +1,8 @@
-package me.surendra.leetcode;
+package me.surendra.leetcode.array.matrix;
 
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.Matchers.equalTo;
@@ -9,47 +10,43 @@ import static org.junit.Assert.assertThat;
 
 public class SpiralMatrixTest {
 
-    @Test
-    public void sprialMatrixWith0x0() {
-        final int[][] matrix = {};
-        final ArrayList<Integer> expectedList = newArrayList();
-
-        assertThat(new SpiralMatrix().spiralOrder(matrix), equalTo(expectedList));
+    private List<Integer> callMethod(final int[][] matrix) {
+        return new SpiralMatrix().spiralOrder(matrix);
     }
 
     @Test
-    public void sprialMatrixWith1x1() {
+    public void spiralMatrixWith1x1() {
         final int[][] matrix = {
             {1}
         };
         final ArrayList<Integer> expectedList = newArrayList(1);
 
-        assertThat(new SpiralMatrix().spiralOrder(matrix), equalTo(expectedList));
+        assertThat(callMethod(matrix), equalTo(expectedList));
     }
 
     @Test
-    public void sprialMatrixWith1x2() {
+    public void spiralMatrixWith1x2() {
         final int[][] matrix = {
             {1, 2}
         };
         final ArrayList<Integer> expectedList = newArrayList(1, 2);
 
-        assertThat(new SpiralMatrix().spiralOrder(matrix), equalTo(expectedList));
+        assertThat(callMethod(matrix), equalTo(expectedList));
     }
 
     @Test
-    public void sprialMatrixWith2x1() {
+    public void spiralMatrixWith2x1() {
         final int[][] matrix = {
             {1},
             {2}
         };
         final ArrayList<Integer> expectedList = newArrayList(1, 2);
 
-        assertThat(new SpiralMatrix().spiralOrder(matrix), equalTo(expectedList));
+        assertThat(callMethod(matrix), equalTo(expectedList));
     }
 
     @Test
-    public void sprialMatrixWith3x3() {
+    public void spiralMatrixWith3x3() {
         final int[][] matrix = {
             { 1, 2, 3 },
             { 4, 5, 6 },
@@ -57,11 +54,11 @@ public class SpiralMatrixTest {
         };
         final ArrayList<Integer> expectedList = newArrayList(1, 2, 3, 6, 9, 8, 7, 4, 5);
 
-        assertThat(new SpiralMatrix().spiralOrder(matrix), equalTo(expectedList));
+        assertThat(callMethod(matrix), equalTo(expectedList));
     }
 
     @Test
-    public void sprialMatrixWith3x4() {
+    public void spiralMatrixWith3x4() {
         final int[][] matrix = {
             {1, 2, 3, 4},
             {5, 6, 7, 8},
@@ -69,7 +66,7 @@ public class SpiralMatrixTest {
         };
         final ArrayList<Integer> expectedList = newArrayList(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7);
 
-        assertThat(new SpiralMatrix().spiralOrder(matrix), equalTo(expectedList));
+        assertThat(callMethod(matrix), equalTo(expectedList));
     }
 
 }
