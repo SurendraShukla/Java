@@ -9,8 +9,8 @@ import java.util.PriorityQueue;
 public class KthLargestElementFinder {
 
     /*
-        Time complexity : O(n log k) n is the elements in array and k is heap size
-        Space complexity: O(k)
+        Time complexity : O(n log k) n for iterating over nums and k keeping k elements
+        Space complexity: O(k) to store the heap elements.
      */
     public int findKthLargestUsingHeap(int[] nums, int k) {
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
