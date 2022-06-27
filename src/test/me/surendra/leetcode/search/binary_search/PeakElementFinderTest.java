@@ -11,8 +11,8 @@ public class PeakElementFinderTest {
 
     private int callMethod(final int[] nums) {
         return new PeakElementFinder().findPeakElementUsingBinarySearch(nums);
-//        return new PeakElementFinder().findPeakElementComparingNextValueOnly(nums);
-//        return new PeakElementFinder().findPeakElement(nums);
+//        return new PeakElementFinder().findPeakElementByComparingNextValueOnly(nums);
+//        return new PeakElementFinder().findPeakElementByBothSideValues(nums);
     }
 
     @Test

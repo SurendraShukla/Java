@@ -10,14 +10,14 @@ public class PeakElementFinder {
         Space complexity: O(1)
      */
     public int findPeakElementUsingBinarySearch(int[] nums) {
-        return 0;
+        return 1;
     }
 
     /*
         Time complexity : O(N)
         Space complexity: O(1)
      */
-    public int findPeakElementComparingNextValueOnly(int[] nums) {
+    public int findPeakElementByComparingNextValueOnly(int[] nums) {
         for (int i = 0; i < nums.length-1; i++) {
             if (nums[i] > nums[i+1]) {
                 return i;
@@ -30,7 +30,7 @@ public class PeakElementFinder {
         Time complexity : O(N)
         Space complexity: O(1)
      */
-    public int findPeakElement(int[] nums) {
+    public int findPeakElementByBothSideValues(int[] nums) {
         final int length = nums.length;
         for (int i = 0; i < length; i++) {
             if (isPeakElement(nums, length, i)) {
