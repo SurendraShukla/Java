@@ -4,16 +4,52 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
- * @see <a href="https://leetcode.com/problems/find-the-duplicate-number/">287. Find the Duplicate Number</a>
+ * @see <a href="https://leetcode.com/problems/find-the-duplicate-number/">Find the Duplicate Number</a>
  */
-public class DuplicateFinder {
+public class DuplicateNumberFinder {
+
+    /*
+        Time complexity : O(n)
+        Space complexity: O(1)
+
+        // 0 position to store next index for swapping/check
+     */
+    public int findDuplicateUsingArray(int[] nums) {
+        while (nums[0] != nums[nums[0]]) {
+            int tmp = nums[nums[0]];
+            nums[nums[0]] = nums[0];
+            nums[0] = tmp;
+        }
+        return nums[0];
+    }
 
     /*
         Time complexity : O(n)
         Space complexity: O(1)
      */
-    public int findDuplicateBySeenAlgorithmUsingSameArray(int[] nums) {
+    public int findDuplicateByFloydsAlog_TortoiseAndHare(int[] nums) {
+        int tortoise = nums[0];
+        int hare = nums[0];
+        do {
+            tortoise = nums[tortoise];
+            hare = nums[nums[hare]];
+        }while (tortoise != hare);
+
+        tortoise = nums[0];
+        while (tortoise != hare) {
+            tortoise = nums[tortoise];
+            hare = nums[hare];
+        }
+        return tortoise;
+    }
+
+    /*
+        Time complexity : O(n)
+        Space complexity: O(1)
+     */
+    public int findDuplicateBySeenAlgorithmUsingNegativeMarking(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             int val = Math.abs(nums[i]);
             if (nums[val] < 0) {
@@ -41,7 +77,7 @@ public class DuplicateFinder {
     }
 
     /*
-        Time complexity : O(nLOGn)
+        Time complexity : O(n log n)
         Space complexity: O(n) - Sorting an array
      */
     public int findDuplicateUsingSorting(int[] nums) {
@@ -57,23 +93,4 @@ public class DuplicateFinder {
         return 0;
     }
 
-    /*
-        Time complexity : O(n)
-        Space complexity: O(1)
-     */
-    public int findDuplicateByFloydsAlog_TortoiseAndHare(int[] nums) {
-        int tortoise = nums[0];
-        int hare = nums[0];
-        do {
-            tortoise = nums[tortoise];
-            hare = nums[nums[hare]];
-        }while (tortoise != hare);
-
-        tortoise = nums[0];
-        while (tortoise != hare) {
-            tortoise = nums[tortoise];
-            hare = nums[hare];
-        }
-        return tortoise;
-    }
 }
