@@ -8,14 +8,18 @@ import static org.junit.Assert.assertThat;
 
 public class MinCostClimbingStairsCostFinderTest {
 
+    private final MinCostClimbingStairsCostFinder minCostClimbingStairsCostFinder = new MinCostClimbingStairsCostFinder();
+
     private int callMethod(final int[] cost) {
-        return new MinCostClimbingStairsCostFinder().minCostClimbingStairs(cost);
+        return minCostClimbingStairsCostFinder.minCostClimbingStairsUsingTabulation(cost);
+//        return minCostClimbingStairsCostFinder.minCostClimbingStairsUsingConstantSpace(cost);
+//        return minCostClimbingStairsCostFinder.minCostClimbingStairsUsingRecursion(cost);
     }
 
     @Test
     public void test1() {
-        assertThat(callMethod(new int[]{10,15,20}), equalTo(15));
-        assertThat(callMethod(new int[]{1,100,1,1,1,100,1,1,100,1}), equalTo(6));
+        assertThat(callMethod(new int[]{10, 15, 20}), equalTo(15));
+        assertThat(callMethod(new int[]{1, 100, 1, 1, 1, 100, 1 , 1, 100, 1}), equalTo(6));
     }
 
 }
