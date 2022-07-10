@@ -7,49 +7,51 @@ import static org.junit.Assert.assertThat;
 
 public class MergeIntervalsTest {
 
-    @Test
-    public void mergeOne() {
-        int[][] input = {{1,3}, {8,10}, {2,6}, {15,18}};
-        int [][] expected = {{1,6}, {8,10}, {15,18}};
+    private MergeIntervals mergeIntervals = new MergeIntervals();
 
-        assertThat(MergeIntervals.merge(input), equalTo(expected));
-        assertThat(MergeIntervals.mergeItFirst(input), equalTo(expected));
+    private int[][] callMethod(final int[][] input) {
+        return mergeIntervals.mergeItFirst(input);
+//        return mergeIntervals.merge(input);
+//        return mergeIntervals.mergeSelfThought(input);
     }
 
     @Test
-    public void mergeAll() {
-        int[][] input = {{1,4}, {4,5}};
-        int [][] expected = {{1,5}};
+    public void mergeOne() {
+        final int[][] input = {{1, 3}, {8, 10}, {2, 6}, {15, 18}};
+        final int [][] expected = {{1, 6}, {8, 10}, {15, 18}};
 
-        assertThat(MergeIntervals.merge(input), equalTo(expected));
-        assertThat(MergeIntervals.mergeItFirst(input), equalTo(expected));
+        assertThat(callMethod(input), equalTo(expected));
+    }
+
+    public void mergeAll() {
+        final int[][] input = {{1, 4}, {4, 5}};
+        final int [][] expected = {{1, 5}};
+
+        assertThat(callMethod(input), equalTo(expected));
     }
 
     @Test
     public void noMerge() {
-        int[][] input = {{1,4},{5,6}};
-        int [][] expected = {{1,4},{5,6}};
+        final int[][] input = {{1, 4}, {5, 6}};
+        final int [][] expected = {{1, 4}, {5, 6}};
 
-        assertThat(MergeIntervals.merge(input), equalTo(expected));
-        assertThat(MergeIntervals.mergeItFirst(input), equalTo(expected));
+        assertThat(callMethod(input), equalTo(expected));
     }
 
     @Test
     public void justOneInterval() {
-        int[][] input = {{1,3}};
-        int [][] expected = {{1,3}};
+        final int[][] input = {{1, 3}};
+        final int [][] expected = {{1, 3}};
 
-        assertThat(MergeIntervals.merge(input), equalTo(expected));
-        assertThat(MergeIntervals.mergeItFirst(input), equalTo(expected));
+        assertThat(callMethod(input), equalTo(expected));
     }
 
     @Test
     public void secondIntervalCompletelyMergesIntoFirstOne() {
-        int[][] input = {{1,4},{2,3}};
-        int [][] expected = {{1,4}};
+        final int[][] input = {{1, 4}, {2, 3}};
+        final int [][] expected = {{1, 4}};
 
-        assertThat(MergeIntervals.merge(input), equalTo(expected));
-        assertThat(MergeIntervals.mergeItFirst(input), equalTo(expected));
+        assertThat(callMethod(input), equalTo(expected));
     }
 
 }
