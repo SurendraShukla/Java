@@ -12,10 +12,10 @@ public class RightSideViewer {
 
     /*
         Time complexity: O(n) Need to visit all nodes
-        Space complexity: O(H) Height of the tree
+        Space complexity: O(h) Height of the tree
      */
     final List<Integer> rightSideViewNodeValues = new ArrayList<>();
-    public List<Integer> rightSideView(TreeNode root) {
+    public List<Integer> rightSideView(final TreeNode root) {
         populateRightSideViewNodeValues(root, 0);
         return rightSideViewNodeValues;
     }
