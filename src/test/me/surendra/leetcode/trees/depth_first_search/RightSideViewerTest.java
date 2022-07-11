@@ -62,6 +62,6 @@ public class RightSideViewerTest {
         // execute
         final List<Integer> actual = callMethod(treeValuesList);
 
-        assertThat(actual, Matchers.equalTo(null));
+        assertThat(actual, Matchers.equalTo(Arrays.asList(1, 3, 6, 9, 13, 14)));
     }
 }
