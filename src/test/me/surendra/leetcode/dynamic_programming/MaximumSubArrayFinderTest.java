@@ -14,9 +14,10 @@ public class MaximumSubArrayFinderTest {
 
     @Test
     public void test1() {
-        assertThat(callMethod(new int[]{-2,1,-3,4,-1,2,1,-5,4}), equalTo(6));
-        assertThat(callMethod(new int[]{1}), equalTo(1));
-        assertThat(callMethod(new int[]{5,4,-1,7,8}), equalTo(23));
+//        assertThat(callMethod(new int[]{1}), equalTo(1));
+        assertThat(callMethod(new int[]{-2, -3}), equalTo(-2));
+//        assertThat(callMethod(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}), equalTo(6));
+//        assertThat(callMethod(new int[]{5, 4, -1, 7, 8}), equalTo(23));
     }
 
 }
