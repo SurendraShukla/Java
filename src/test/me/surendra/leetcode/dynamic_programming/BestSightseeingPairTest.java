@@ -15,12 +15,12 @@ public class BestSightseeingPairTest {
 
     @Test
     public void test1() {
-        assertThat(callMethod(new int[]{8,1,5,2,6}), equalTo(11));
-        assertThat(callMethod(new int[]{1,2}), equalTo(2));
+        assertThat(callMethod(new int[]{8, 1, 5, 2, 6}), equalTo(11));
+        assertThat(callMethod(new int[]{1, 2}), equalTo(2));
     }
 
     @Test
     public void test2() {
-        assertThat(callMethod(new int[]{2,2,2}), equalTo(3));
+        assertThat(callMethod(new int[]{2, 2, 2}), equalTo(3));
     }
 }

@@ -9,11 +9,11 @@ public class BestSightseeingPair {
         Time Complexity - O(n)
         Space Complexity - O(1)
      */
-    public int maxScoreSightSeeingPair(int[] values) {
+    public int maxScoreSightSeeingPair(final int[] values) {
         int firstPairMax = values[0];
         int maximumScore = 0;
         for (int i = 1; i < values.length; i++) {
-            firstPairMax = Math.max(firstPairMax, values[i-1] + i-1);
+            firstPairMax = Math.max(firstPairMax, values[i - 1] + i - 1);
             maximumScore = Math.max(maximumScore, firstPairMax + values[i] - i);
         }
         return maximumScore;
@@ -23,9 +23,9 @@ public class BestSightseeingPair {
         Time Complexity - O(n)
         Space Complexity - O(1)
      */
-    public int maxScoreSightSeeingPairUsing2Iteration(int[] values) {
-        int length = values.length;
-        int[] firstPair = new int[length];
+    public int maxScoreSightSeeingPairUsing2Iteration(final int[] values) {
+        final int length = values.length;
+        final int[] firstPair = new int[length];
         firstPair[0] = values[0];
         int firstPairMax = values[0];
         for (int i = 1; i < length; i++) {
