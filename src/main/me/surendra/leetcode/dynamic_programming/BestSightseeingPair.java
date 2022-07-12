@@ -35,7 +35,7 @@ public class BestSightseeingPair {
 
         int maximumScore = 0;
         for (int j = 1; j < length; j++) {
-            maximumScore = Math.max(maximumScore, firstPair[j-1] + values[j] - j);
+            maximumScore = Math.max(maximumScore, firstPair[j - 1] + values[j] - j);
         }
         return maximumScore;
     }
