@@ -19,11 +19,11 @@ public class MaximumDepthFinder {
     }
 
     private int getMaxDepth(final TreeNode treeNode, final int level) {
-        if(treeNode == null) {
+        if (treeNode == null) {
             return level;
         }
-        int maxDepthOfLeftTreeNode = getMaxDepth(treeNode.left, level + 1);
-        int maxDepthOfRightTreeNode = getMaxDepth(treeNode.right, level+1);
+        final int maxDepthOfLeftTreeNode = getMaxDepth(treeNode.left, level + 1);
+        final int maxDepthOfRightTreeNode = getMaxDepth(treeNode.right, level + 1);
         return Math.max(maxDepthOfLeftTreeNode, maxDepthOfRightTreeNode);
     }
 
@@ -44,10 +44,10 @@ public class MaximumDepthFinder {
             final int queueSize = treeNodes.size();
             for (int i = 0; i < queueSize; i++) {
                 final TreeNode treeNode = treeNodes.remove();
-                if(treeNode.left != null) {
+                if (treeNode.left != null) {
                     treeNodes.add(treeNode.left);
                 }
-                if(treeNode.right != null) {
+                if (treeNode.right != null) {
                     treeNodes.add(treeNode.right);
                 }
             }

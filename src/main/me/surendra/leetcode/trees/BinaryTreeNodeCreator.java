@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 
-public class TreeNodeCreator {
+public class BinaryTreeNodeCreator {
 
     public static TreeNode fromPreOrder(final Integer ...numbers) {
         if (numbers == null) {
