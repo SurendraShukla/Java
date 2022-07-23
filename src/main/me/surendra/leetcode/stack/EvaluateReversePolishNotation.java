@@ -10,11 +10,38 @@ import java.util.Stack;
  */
 public class EvaluateReversePolishNotation {
 
+    public int evalRPN(final String[] tokens) {
+        final Stack<Integer> integerStack = new Stack<>();
+        Integer no2;
+
+        for (final String token : tokens) {
+            switch (token) {
+                case "+":
+                    integerStack.push(integerStack.pop() + integerStack.pop());
+                    break;
+                case "-":
+                    no2 = integerStack.pop();
+                    integerStack.push(integerStack.pop() - no2);
+                    break;
+                case "*":
+                    integerStack.push(integerStack.pop() * integerStack.pop());
+                    break;
+                case "/":
+                    no2 = integerStack.pop();
+                    integerStack.push(integerStack.pop() / no2);
+                    break;
+                default:
+                    integerStack.push(Integer.valueOf(token));
+            }
+        }
+        return integerStack.pop();
+    }
+
     /*
         Time Complexity - O(n)
         Space Complexity - O(n)
      */
-    public int evalRPN(String[] tokens) {
+    public int evalRPNUsingHashMap(final String[] tokens) {
         final Set<String> operators = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
         final Stack<Integer> integerStack = new Stack<>();
 
