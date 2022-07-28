@@ -20,25 +20,29 @@ public class Pair<L, R> {
     private final L left;
     private final R right;
 
-
     @Nonnull
     public static <L, R> Pair<L, R> of(final L left, final R right) {
         return new Pair<>(left, right);
     }
-
 
     public Pair(final L left, final R right) {
         this.left = left;
         this.right = right;
     }
 
-
     public final L getLeft() {
         return left;
     }
 
-
     public final R getRight() {
+        return right;
+    }
+
+    public final L getKey() {
+        return left;
+    }
+
+    public final R getValue() {
         return right;
     }
 
