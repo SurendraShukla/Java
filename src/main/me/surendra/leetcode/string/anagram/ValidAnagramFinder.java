@@ -11,12 +11,12 @@ public class ValidAnagramFinder {
         Time complexity : O(n)
         Space complexity: O(1) because the table's size stays constant no matter how large n is.
      */
-    public boolean isAnagramUsingArrayForCharFrequency(String s, String t) {
+    public boolean isAnagramUsingArrayForCharFrequency(final String s, final String t) {
         if (s.length() != t.length()) {
             return false;
         }
-        int[] chars = new int[26];
-        for(int i=0; i<s.length(); i++) {
+        final int[] chars = new int[26];
+        for (int i = 0; i < s.length(); i++) {
             chars[s.charAt(i) - 'a']++;
             chars[t.charAt(i) - 'a']--;
         }
@@ -33,12 +33,12 @@ public class ValidAnagramFinder {
         Time complexity : O(n log n)
         Space complexity: O(n)
      */
-    public boolean isAnagramUsingSorting(String s, String t) {
+    public boolean isAnagramUsingSorting(final String s, final String t) {
         if (s.length() != t.length()) {
             return false;
         }
-        char[] str1 = s.toCharArray();
-        char[] str2 = t.toCharArray();
+        final char[] str1 = s.toCharArray();
+        final char[] str2 = t.toCharArray();
         Arrays.sort(str1);
         Arrays.sort(str2);
         return Arrays.equals(str1, str2);
