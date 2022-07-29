@@ -16,7 +16,7 @@ public class PatternMatchers {
 
         Character count for current index should match in both string
      */
-    public static List<String> findAndReplacePattern(final String[] words, final String pattern) {
+    public static List<String> findAndReplacePatternByCheckingCharacterCountAtPosition(final String[] words, final String pattern) {
         final List<String> list = new ArrayList<>();
 
         for (int i = 0; i < words.length; i++) {
@@ -36,6 +36,54 @@ public class PatternMatchers {
                 return false;
         }
         return  true;
+    }
+
+
+    /**
+         Time Complexity - O(n * k) N is the number of words, and K is the length of each word.
+         Space Complexity - O(n * k)
+
+         2 Maps for mapping pattern and word character
+             HashMap<PatternCharacter, WordCharacter>
+             HashMap<WordCharacter, PatternCharacter>
+     */
+    public List<String> findAndReplacePatternByMappingWordAndPatternCharacters(final String[] words, final String pattern) {
+        final List<String> result = new ArrayList<>();
+        for (String word: words) {
+            if (match(word, pattern)) {
+                result.add(word);
+            }
+        }
+        return result;
+    }
+
+    /*
+        2 Maps for mapping pattern and word character
+            HashMap<PatternCharacter, WordCharacter>
+            HashMap<WordCharacter, PatternCharacter>
+
+        Search for word character should give pattern charcter and vice versa
+     */
+    public boolean match(final String pattern, final String word) {
+        final Map<Character, Character> m1 = new HashMap();
+        final Map<Character, Character> m2 = new HashMap();
+
+        for (int i = 0; i < word.length(); ++i) {
+            final char w = word.charAt(i);
+            final char p = pattern.charAt(i);
+
+            if (!m1.containsKey(w)) {
+                m1.put(w, p);
+            }
+            if (!m2.containsKey(p)) {
+                m2.put(p, w);
+            }
+
+            if (m1.get(w) != p || m2.get(p) != w) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

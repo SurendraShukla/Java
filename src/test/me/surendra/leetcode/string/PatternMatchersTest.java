@@ -2,11 +2,8 @@ package me.surendra.leetcode.string;
 
 
 import com.google.common.collect.Lists;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -15,7 +12,8 @@ import static org.junit.Assert.assertThat;
 public class PatternMatchersTest {
 
     private List<String> callMethod(final String[] words, final String abb) {
-        return new PatternMatchers().findAndReplacePatternIdentifyPatternFirst(words, abb);
+        return new PatternMatchers().findAndReplacePatternByCheckingCharacterCountAtPosition(words, abb);
+//        return new PatternMatchers().findAndReplacePatternByMappingWordAndPatternCharacters(words, abb);
 //        return new PatternMatchers().findAndReplacePatternIdentifyPatternFirst(words, abb);
     }
 
