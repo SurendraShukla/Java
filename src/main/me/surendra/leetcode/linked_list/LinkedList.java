@@ -1,10 +1,28 @@
 package me.surendra.leetcode.linked_list;
 
+import java.util.List;
+
 public class LinkedList {
 
-    public static ListNode from(int[] intArray) {
+    public static ListNode from(final Integer ...integers) {
         ListNode listNode = null;
-        for (final int aInt : intArray) {
+        for (final int aInt : integers) {
+            listNode = LinkedList.insert(listNode, aInt);
+        }
+        return listNode;
+    }
+
+    public static ListNode from(final List<Integer> integers) {
+        ListNode listNode = null;
+        for (final int aInt : integers) {
+            listNode = LinkedList.insert(listNode, aInt);
+        }
+        return listNode;
+    }
+
+    public static ListNode from(final int[] integers) {
+        ListNode listNode = null;
+        for (final int aInt : integers) {
             listNode = LinkedList.insert(listNode, aInt);
         }
         return listNode;
@@ -14,13 +32,13 @@ public class LinkedList {
         Time Complexity - O(n)
         Space Complexity - O(1)
     */
-    public static ListNode insert(ListNode head, int data) {
+    public static ListNode insert(final ListNode head, final int data) {
         final ListNode p = new ListNode(data);
-        if(head == null) {
+        if (head == null) {
             return p;
         }
         ListNode start = head;
-        while(start.next != null) {
+        while (start.next != null) {
             start = start.next;
         }
         start.next = p;
@@ -31,29 +49,44 @@ public class LinkedList {
         Time Complexity - O(1)
         Space Complexity - O(1)
     */
-    public static ListNode createUsingDummyNode(int[] intArray) {
+    public static ListNode createUsingDummyNode(final List<Integer> integers) {
         final ListNode dummyNode = new ListNode(0);
         ListNode currentNode = dummyNode;
-        for (final int aInt : intArray) {
+        for (final int aInt : integers) {
             currentNode.next = new ListNode(aInt);
             currentNode = currentNode.next;
         }
         return dummyNode.next;
     }
 
-    public static void append(ListNode listNode, ListNode nodeToBeAppended) {
-        while(listNode.next != null) {
+    /*
+        Time Complexity - O(1)
+        Space Complexity - O(1)
+    */
+    public static ListNode createUsingDummyNode(final int[] integers) {
+        final ListNode dummyNode = new ListNode(0);
+        ListNode currentNode = dummyNode;
+        for (final int aInt : integers) {
+            currentNode.next = new ListNode(aInt);
+            currentNode = currentNode.next;
+        }
+        return dummyNode.next;
+    }
+
+    public static void append( ListNode listNode, final ListNode nodeToBeAppended) {
+        while (listNode.next != null) {
             listNode = listNode.next;
         }
         listNode.next = nodeToBeAppended;
     }
 
 
-    public static int getSize(ListNode node) {
+    public static int getSize(final ListNode node) {
+        ListNode currentNode = node;
         int size = 1;
-        while (node.next != null) {
+        while (currentNode.next != null) {
             size++;
-            node = node.next;
+            currentNode = node.next;
         }
         return size;
     }
@@ -61,7 +94,7 @@ public class LinkedList {
     public static void display(final ListNode head) {
         System.out.println("--------------------------------------------------");
         ListNode start = head;
-        while(start != null) {
+        while (start != null) {
             System.out.print(start.val + " -> ");
             start = start.next;
         }

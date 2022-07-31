@@ -10,32 +10,16 @@ public class LinkedListNodeChecker {
 
     /*
         Time Complexity - O(n)
-        Space Complexity - O(n)
-     */
-    public static boolean hasCycle(ListNode head) {
-        final Set<ListNode> nodesSeen = new HashSet<>();
-        while(head != null) {
-            if (nodesSeen.contains(head)) {
-                return true;
-            }
-            nodesSeen.add(head);
-            head = head.next;
-        }
-        return false;
-    }
-
-    /*
-        Time Complexity - O(n)
         Space Complexity - O(1)
      */
-    public static boolean hasCycleUsing2Runner(ListNode head) {
-        if(head == null || head.next == null)
+    public static boolean hasCycleUsing2Pointers(final ListNode head) {
+        if (head == null || head.next == null)
             return false;
 
         ListNode slowRunnerNode = head;
         ListNode fastRunnerNode = head.next;
 
-        while(slowRunnerNode != fastRunnerNode) {
+        while (slowRunnerNode != fastRunnerNode) {
             if (fastRunnerNode == null || fastRunnerNode.next == null) {
                 return false;
             }
@@ -43,6 +27,22 @@ public class LinkedListNodeChecker {
             fastRunnerNode = head.next.next;
         }
         return true;
+    }
+
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(n)
+     */
+    public static boolean hasCycle(ListNode head) {
+        final Set<ListNode> nodesSeen = new HashSet<>();
+        while (head != null) {
+            if (nodesSeen.contains(head)) {
+                return true;
+            }
+            nodesSeen.add(head);
+            head = head.next;
+        }
+        return false;
     }
 
 }

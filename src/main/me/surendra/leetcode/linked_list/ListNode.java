@@ -3,17 +3,16 @@ package me.surendra.leetcode.linked_list;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import java.util.UUID;
 
 public class ListNode {
     int val;
     ListNode next;
 
-    ListNode(int val) {
+    ListNode(final int val) {
         this.val = val;
     }
 
-    ListNode(int val, ListNode next) {
+    ListNode(final int val, final ListNode next) {
         this.val = val;
         this.next = next;
     }
@@ -48,4 +47,5 @@ public class ListNode {
             ", next=" + next +
             '}';
     }
+    
 }
