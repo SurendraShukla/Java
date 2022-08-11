@@ -8,31 +8,31 @@ import java.util.List;
 /**
  * @see <a href="https://leetcode.com/problems/validate-binary-search-tree/">Validate Binary Search Tree</a>
  */
-public class Validator {
+public class BinarySearchTreeValidator {
 
     /*
         Time Complexity - O(n)
         Space Complexity - O(n)
      */
-    public boolean isValidBST(TreeNode root) {
+    public boolean isValidBST(final TreeNode root) {
         return isValidBST(root, null, null);
     }
 
-    private boolean isValidBST(final TreeNode root, final Integer min, final Integer max) {
+    private boolean isValidBST(final TreeNode root, final Integer lowerLimit, final Integer upperLimit) {
         // Empty trees are valid BSTs.
         if (root == null) {
             return true;
         }
         // The current node's value must be between low and high.
-        if ((min != null && root.val >= min) ||
-            (max != null && root.val <= max)
+        if ((lowerLimit != null && root.val >= lowerLimit) ||
+            (upperLimit != null && root.val <= upperLimit)
         ) {
             return false;
         }
 
         // The left and right subtree must also be valid.
-        return isValidBST(root.left, root.val, max)
-            && isValidBST(root.right, min, root.val);
+        return isValidBST(root.left, root.val, upperLimit)
+            && isValidBST(root.right, lowerLimit, root.val);
     }
 
 
@@ -41,7 +41,7 @@ public class Validator {
         Space Complexity - O(n)
      */
     Integer previousVal = null;
-    public boolean isValidBSTUsingInOrderTraversalRecursionApproach(TreeNode root) {
+    public boolean isValidBSTUsingInOrderTraversalRecursionApproach(final TreeNode root) {
         if (root == null) {
             return true;
         }
@@ -52,10 +52,7 @@ public class Validator {
             return false;
         }
         previousVal = root.val;
-        if (!isValidBSTUsingInOrderTraversalRecursionApproach(root.right)) {
-            return false;
-        }
-        return true;
+        return isValidBSTUsingInOrderTraversalRecursionApproach(root.right);
     }
 
 
@@ -64,9 +61,9 @@ public class Validator {
         Space Complexity - O(n)
      */
     final List<Integer> integerList = new ArrayList<>();
-    public boolean isValidBSTUsingInOrderTraversalIterativeApproach(TreeNode root) {
+    public boolean isValidBSTUsingInOrderTraversalIterativeApproach(final TreeNode root) {
         populateQueue(root);
-        for (int i = 1; i<integerList.size(); i++) {
+        for (int i = 1; i < integerList.size(); i++) {
             if (integerList.get(i - 1).intValue() >= integerList.get(i).intValue()) {
                 return false;
             }

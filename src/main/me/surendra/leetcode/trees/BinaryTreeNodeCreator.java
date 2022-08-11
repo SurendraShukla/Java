@@ -24,7 +24,6 @@ public class BinaryTreeNodeCreator {
         if (integerList == null || integerList.isEmpty()) {
             return null;
         }
-        final int size = integerList.size();
         final TreeNode root = new TreeNode(integerList.get(0));
         final Queue<TreeNode> treeNodeQueue = new LinkedList<>();
         treeNodeQueue.add(root);
@@ -34,15 +33,12 @@ public class BinaryTreeNodeCreator {
             final int queueSize = treeNodeQueue.size();
             for (int i = 0; i < queueSize; i++) {
                 final TreeNode currentNode = treeNodeQueue.remove();
-                if (idx >= size) {
-                    break;
-                }
-                final Integer leftVal = integerList.get(idx++);
+                final Integer leftVal = getVal(idx++, integerList);
                 if (leftVal != null) {
                     currentNode.left = new TreeNode(leftVal);
                     treeNodeQueue.add(currentNode.left);
                 }
-                final Integer rightVal = integerList.get(idx++);
+                final Integer rightVal = getVal(idx++, integerList);
                 if (rightVal != null) {
                     currentNode.right = new TreeNode(rightVal);
                     treeNodeQueue.add(currentNode.right);
@@ -50,6 +46,13 @@ public class BinaryTreeNodeCreator {
             }
         }
         return root;
+    }
+
+    private static Integer getVal(final int idx, final List<Integer> integerList) {
+        if (idx >= integerList.size()) {
+            return null;
+        }
+        return integerList.get(idx);
     }
 
 }
