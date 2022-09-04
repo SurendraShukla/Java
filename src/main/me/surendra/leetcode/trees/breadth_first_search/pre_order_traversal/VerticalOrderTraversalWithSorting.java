@@ -33,23 +33,12 @@ public class VerticalOrderTraversalWithSorting {
         if (treeNode == null) {
             return;
         }
-        final int val = treeNode.val;
-        if (verticalLevelTraversal.containsKey(col)) {
-            final TreeMap<Integer, List<Integer>> colLevelMap = verticalLevelTraversal.get(col);
-            if (colLevelMap.containsKey(row)) {
-                colLevelMap.get(row).add(val);
-            } else {
-                final List<Integer> valList = new ArrayList<>();
-                valList.add(val);
-                colLevelMap.put(row, valList);
-            }
-        } else {
-            final TreeMap<Integer, List<Integer>> colLevelMap = new TreeMap<>();
-            final List<Integer> valList = new ArrayList<>();
-            valList.add(val);
-            colLevelMap.put(row, valList);
-            verticalLevelTraversal.put(col, colLevelMap);
-        }
+        final TreeMap<Integer, List<Integer>> colLevelMap = verticalLevelTraversal.getOrDefault(col, new TreeMap<>());
+        final List<Integer> valList = colLevelMap.getOrDefault(row, new ArrayList<>());
+        valList.add(treeNode.val);
+        colLevelMap.put(row, valList);
+        verticalLevelTraversal.put(col, colLevelMap);
+
         populate(treeNode.left, col - 1, row + 1);
         populate(treeNode.right, col + 1, row + 1);
     }
