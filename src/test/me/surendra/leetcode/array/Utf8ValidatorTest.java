@@ -15,20 +15,20 @@ public class Utf8ValidatorTest {
 
     @Test
     public void test() {
-//        assertThat(
-//            callMethod(new int[]{197, 130, 1}),
-//            equalTo(true)
-//        );
-//
-//        assertThat(
-//            callMethod(new int[]{235, 140, 4}),
-//            equalTo(false)
-//        );
-//
-//        assertThat(
-//            callMethod(new int[]{250, 145, 145, 145, 145}),
-//            equalTo(false)
-//        );
+        assertThat(
+            callMethod(new int[]{197, 130, 1}),
+            equalTo(true)
+        );
+
+        assertThat(
+            callMethod(new int[]{235, 140, 4}),
+            equalTo(false)
+        );
+
+        assertThat(
+            callMethod(new int[]{250, 145, 145, 145, 145}),
+            equalTo(false)
+        );
 
         assertThat(
             callMethod(new int[]{425, 130}),

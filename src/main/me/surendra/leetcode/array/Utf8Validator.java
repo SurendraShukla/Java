@@ -70,8 +70,7 @@ public class Utf8Validator {
             // Get the binary representation. We only need the least significant 8 bits
             // for any given number.
             String binRep = Integer.toBinaryString(data[i]);
-            binRep =
-                binRep.length() >= 8
+            binRep = binRep.length() >= 8
                     ? binRep.substring(binRep.length() - 8)
                     : "00000000".substring(binRep.length() % 8) + binRep;
 
