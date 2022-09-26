@@ -17,11 +17,11 @@ public class Trie {
      */
     public void insert(final String word) {
         TrieNode currentTrieNode = trieNode;
-        for (int i = 0; i < word.length(); i++) {
-            if (!currentTrieNode.containsKey(word.charAt(i))) {
-                currentTrieNode.put(word.charAt(i), new TrieNode());
+        for (final char aChar: word.toCharArray()) {
+            if (!currentTrieNode.containsKey(aChar)) {
+                currentTrieNode.put(aChar, new TrieNode());
             }
-            currentTrieNode = currentTrieNode.get(word.charAt(i));
+            currentTrieNode = currentTrieNode.get(aChar);
         }
         currentTrieNode.setEnd();
     }
@@ -36,11 +36,12 @@ public class Trie {
      */
     public TrieNode startsPrefix(final String prefix) {
         TrieNode currentTrieNode = trieNode;
-        for (int i = 0; i < prefix.length(); i++) {
-            if (!currentTrieNode.containsKey(prefix.charAt(i))) {
+        for (final char aChar: prefix.toCharArray()) {
+            if (currentTrieNode.containsKey(aChar)) {
+                currentTrieNode = currentTrieNode.get(aChar);
+            } else {
                 return null;
             }
-            currentTrieNode = currentTrieNode.get(prefix.charAt(i));
         }
         return currentTrieNode;
     }
