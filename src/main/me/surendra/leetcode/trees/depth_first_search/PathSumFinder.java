@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.breadth_first_search;
+package me.surendra.leetcode.trees.depth_first_search;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -7,7 +7,6 @@ import me.surendra.leetcode.trees.TreeNode;
  * @see <a href="https://leetcode.com/problems/path-sum/">Path Sum</a>
  */
 public class PathSumFinder {
-
 
     /*
         Time complexity : O(n)
@@ -20,7 +19,8 @@ public class PathSumFinder {
         if (root.left == null && root.right == null && targetSum == root.val) {
             return true;
         }
-        return hasPathSumUsingRecursion(root.left, targetSum-root.val) || hasPathSumUsingRecursion(root.right, targetSum-root.val);
+        return hasPathSumUsingRecursion(root.left, targetSum - root.val)
+            || hasPathSumUsingRecursion(root.right, targetSum - root.val);
     }
 
 
@@ -37,11 +37,7 @@ public class PathSumFinder {
 
     public boolean hasPathSum(final TreeNode root, final int targetSum, final int levelSum) {
         if (root.left == null && root.right == null) {
-            if (targetSum == levelSum) {
-                return true;
-            }else{
-                return false;
-            }
+            return targetSum == levelSum;
         }
         if (root.left != null) {
             if (hasPathSum(root.left, targetSum, levelSum + root.left.val)) {
