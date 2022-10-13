@@ -4,7 +4,7 @@ import java.util.Stack;
 
 
 /**
- * @see <a href="https://leetcode.com/problems/delete-node-in-a-linked-list/">Delete Node in a Linked List</a>
+ * @see <a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">Remove Nth Node From End of List</a>
  */
 public class LinkedListNodeRemoval {
 
