@@ -8,8 +8,10 @@ import static org.junit.Assert.assertThat;
 
 public class UniquePathsFinderTest {
 
+    private final UniquePathsFinder uniquePathsFinder = new UniquePathsFinder();
+
     private long callMethod(final int m, final int n) {
-        return new UniquePathsFinder().uniquePaths(m, n);
+        return uniquePathsFinder.uniquePaths(m, n);
     }
 
     @Test
