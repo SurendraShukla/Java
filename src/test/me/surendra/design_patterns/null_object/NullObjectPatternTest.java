@@ -41,7 +41,7 @@ public class NullObjectPatternTest {
         private final int id;
         private final Date date;
 
-        public AddCustomerRequest(final String name, final int id, final Date date) {
+        AddCustomerRequest(final String name, final int id, final Date date) {
             this.name = name;
             this.id = id;
             this.date = date;
