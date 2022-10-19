@@ -1,4 +1,4 @@
-package me.surendra.design_pattern;
+package me.surendra.design_patterns.null_object;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
