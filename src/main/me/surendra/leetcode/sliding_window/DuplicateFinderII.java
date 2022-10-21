@@ -18,15 +18,15 @@ public class DuplicateFinderII {
         Time complexity : O(n)
         Space complexity: O(k)
     */
-    public boolean containsNearbyDuplicateUsingHashSetToKeepLastKElements(int[] nums, int k) {
-        Set<Integer> set = new HashSet<>();
-        for(int i=0; i<nums.length; i++) {
+    public boolean containsNearbyDuplicateUsingHashSetToKeepLastKElements(final int[] nums, final int k) {
+        final Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
             if (set.contains(nums[i])) {
                 return true;
             }
             set.add(nums[i]);
             if (set.size() > k) {
-                set.remove(nums[i-k]);
+                set.remove(nums[i - k]);
             }
         }
         return false;
@@ -36,15 +36,15 @@ public class DuplicateFinderII {
         Time complexity : O(n * log n)
         Space complexity: O(k)
     */
-    public boolean containsNearbyDuplicateUsingTreeSetToKeepLastKElements(int[] nums, int k) {
-        Set<Integer> set = new TreeSet<>();
-        for(int i=0; i<nums.length; i++) {
+    public boolean containsNearbyDuplicateUsingTreeSetToKeepLastKElements(final int[] nums, final int k) {
+        final Set<Integer> set = new TreeSet<>();
+        for (int i = 0; i < nums.length; i++) {
             if (set.contains(nums[i])) {
                 return true;
             }
             set.add(nums[i]);
             if (set.size() > k) {
-                set.remove(nums[i-k]);
+                set.remove(nums[i - k]);
             }
         }
         return false;
@@ -71,10 +71,10 @@ public class DuplicateFinderII {
 
         Look for last index should be sufficient to get index diff which is less or equal to k
      */
-    public boolean containsNearUsingSlidingWindowToKeepOnlyLastIndex(int[] nums, int k) {
+    public boolean containsNearUsingSlidingWindowToKeepOnlyLastIndex(final int[] nums, final int k) {
         final Map<Integer, Integer> map = new HashMap<>();
 
-        for(int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
+        for (int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
             final int val = nums[currentIndex];
 
             if (map.containsKey(val)) {
@@ -94,23 +94,23 @@ public class DuplicateFinderII {
         Time complexity : O(n)
         Space complexity: O(n)
      */
-    public boolean containsNearbyDuplicateUsingPreviousIndexesInHashMap(int[] nums, int k) {
+    public boolean containsNearbyDuplicateUsingPreviousIndexesInHashMap(final int[] nums, final int k) {
         final Map<Integer, List<Integer>> seenValuesHashMap = new HashMap<>();
 
-        for(int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
-            int val = nums[currentIndex];
-            List<Integer> seenValIndexes;
+        for (int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
+            final int val = nums[currentIndex];
+            final List<Integer> seenValIndexes;
 
             if (seenValuesHashMap.containsKey(val)) {
                 seenValIndexes = seenValuesHashMap.get(val);
 
-                for(Integer previousIndex: seenValIndexes) {
-                    if (Math.abs(currentIndex-previousIndex) <= k) {
+                for (Integer previousIndex: seenValIndexes) {
+                    if (Math.abs(currentIndex - previousIndex) <= k) {
                         return true;
                     }
                 }
 
-            }else{
+            } else {
                 seenValIndexes = new ArrayList<>();
             }
 

@@ -18,17 +18,17 @@ public class DuplicateFinderIITest {
 
     @Test
     public void neighbouringElement() {
-        assertThat(callMethod(new int[]{1,0,1,1}, 1), equalTo(true));
+        assertThat(callMethod(new int[]{1, 0, 1, 1}, 1), equalTo(true));
     }
 
     @Test
     public void inRangeOfKDiff() {
-        assertThat(callMethod(new int[]{1,2,3,1}, 3), equalTo(true));
+        assertThat(callMethod(new int[]{1, 2, 3, 1}, 3), equalTo(true));
     }
 
     @Test
     public void notInRangeOfKDiff() {
-        assertThat(callMethod(new int[]{1,2,3,1,2,3}, 2), equalTo(false));
+        assertThat(callMethod(new int[]{1, 2, 3, 1, 2, 3}, 2), equalTo(false));
     }
 
 }
