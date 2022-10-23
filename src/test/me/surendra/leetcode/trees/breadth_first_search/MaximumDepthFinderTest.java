@@ -13,7 +13,8 @@ public class MaximumDepthFinderTest {
     private int callMethod(final Integer ...numbers) {
         final TreeNode treeNode = BinaryTreeNodeCreator.fromPreOrder(numbers);
 
-        return new MaximumDepthFinder().getMaxDepthUsingRecursion(treeNode);
+//        return new MaximumDepthFinder().getMaxDepth(treeNode);
+        return new MaximumDepthFinder().maxDepthCalculationAtLeafNode(treeNode);
 //        return new MaximumDepthFinder().getMaxDepthUsingIteration(root);
     }
 

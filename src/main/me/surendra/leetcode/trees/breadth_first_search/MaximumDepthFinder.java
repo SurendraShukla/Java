@@ -14,17 +14,33 @@ public class MaximumDepthFinder {
         Time complexity: O(n)
         Space complexity: O(n)
      */
-    public int getMaxDepthUsingRecursion(final TreeNode root) {
-        return getMaxDepth(root, 0);
+    public int getMaxDepth(final TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        final int maxDepthOfLeftTreeNode = getMaxDepth(root.left);
+        final int maxDepthOfRightTreeNode = getMaxDepth(root.right);
+        return Math.max(maxDepthOfLeftTreeNode, maxDepthOfRightTreeNode) + 1;
     }
 
-    private int getMaxDepth(final TreeNode treeNode, final int level) {
+
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    int maxCount = 0;
+    public int maxDepthCalculationAtLeafNode(final TreeNode root) {
+        populateMaxDepth(root, 0);
+        return maxCount;
+    }
+
+    private void populateMaxDepth(final TreeNode treeNode, final int level) {
         if (treeNode == null) {
-            return level;
+            maxCount = Math.max(level, maxCount);
+            return;
         }
-        final int maxDepthOfLeftTreeNode = getMaxDepth(treeNode.left, level + 1);
-        final int maxDepthOfRightTreeNode = getMaxDepth(treeNode.right, level + 1);
-        return Math.max(maxDepthOfLeftTreeNode, maxDepthOfRightTreeNode);
+        populateMaxDepth(treeNode.left, level + 1);
+        populateMaxDepth(treeNode.right, level + 1);
     }
 
     /*
