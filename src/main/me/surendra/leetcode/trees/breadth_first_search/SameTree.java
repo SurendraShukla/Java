@@ -9,9 +9,9 @@ public class SameTree {
 
     /*
         Time Complexity - O(n)
-        Space Complexity - O(1)
+        Space Complexity - O(n)
      */
-    public boolean isSameTree(TreeNode left, TreeNode right) {
+    public boolean isSameTree(final TreeNode left, final TreeNode right) {
         if (left == null && right == null) {
             return true;
         }
