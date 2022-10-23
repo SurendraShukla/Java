@@ -11,7 +11,7 @@ public class LinkedListNodeReverser {
      */
     ListNode returnHeadNode;
     ListNode returnTailNode;
-    public ListNode reverseListUsingRecursionUsingGlobalVariable(ListNode head) {
+    public ListNode reverseListUsingRecursionUsingGlobalVariable(final ListNode head) {
         returnHeadNode = new ListNode(-1);
         returnTailNode = returnHeadNode;
         populate(head);
@@ -19,7 +19,7 @@ public class LinkedListNodeReverser {
     }
 
     private void populate(final ListNode head) {
-        if(head == null) {
+        if (head == null) {
             return;
         }
         populate(head.next);
@@ -36,7 +36,7 @@ public class LinkedListNodeReverser {
     public static ListNode reverseListUsing3Pointers(ListNode currentNode) {
         ListNode previousNodeReferredAsNextNode = null;
         ListNode previousNode = currentNode;
-        while(currentNode != null) {
+        while (currentNode != null) {
             currentNode = previousNode.next;
             previousNode.next = previousNodeReferredAsNextNode;
             previousNodeReferredAsNextNode = previousNode;
@@ -50,14 +50,14 @@ public class LinkedListNodeReverser {
         Time Complexity - O(n)
         Space Complexity - O(n)
     */
-    public static ListNode reverseListUsingRecursionAdvance(ListNode head) {
+    public static ListNode reverseListUsingRecursionAdvance(final ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode dummyNode = reverseListUsingRecursionAdvance(head.next);
+        final ListNode reversedNode = reverseListUsingRecursionAdvance(head.next);
         head.next.next = head;
         head.next = null;
-        return dummyNode;
+        return reversedNode;
     }
 
 }
