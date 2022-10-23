@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.breadth_first_search.post_order_traversal;
+package me.surendra.leetcode.trees.breadth_first_search;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -9,12 +9,12 @@ public class InvertBinaryTree {
 
     /*
         Time complexity : O(n)
-        Space complexity: O(1)
+        Space complexity: O(n)
      */
-    public TreeNode invertTree(TreeNode root) {
-        if(root == null) return null;
-        TreeNode leftTreeNode = invertTree(root.left);
-        TreeNode rightTreeNode = invertTree(root.right);
+    public TreeNode invertTree(final TreeNode root) {
+        if (root == null) return null;
+        final TreeNode leftTreeNode = invertTree(root.left);
+        final TreeNode rightTreeNode = invertTree(root.right);
         root.left = rightTreeNode;
         root.right = leftTreeNode;
         return root;
