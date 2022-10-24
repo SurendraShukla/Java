@@ -16,16 +16,14 @@ public class BinaryTreeFlatter {
         Space complexity: O(1)
      */
     TreeNode previousNode = null;
-    public void flattenTreeRecursionUsingPreviousNode(TreeNode root) {
+    public void flattenTreeRecursionUsingPreviousNode(final TreeNode root) {
         if (root == null) {
             return;
         }
         flattenTreeRecursionUsingPreviousNode(root.right);
-        if (root.left != null) {
-            flattenTreeRecursionUsingPreviousNode(root.left);
-        }
+        flattenTreeRecursionUsingPreviousNode(root.left);
         root.left = null;
-        root.right= previousNode;
+        root.right = previousNode;
         previousNode = root;
     }
 
@@ -33,7 +31,7 @@ public class BinaryTreeFlatter {
         Time complexity : O(n)
         Space complexity: O(n)
      */
-    public void flattenUsingList(TreeNode root) {
+    public void flattenUsingList(final TreeNode root) {
         final List<TreeNode> integerList = new ArrayList<>();
         traversal(root, integerList);
         if (integerList.isEmpty()) {
@@ -42,9 +40,9 @@ public class BinaryTreeFlatter {
 
         TreeNode prevNode = integerList.get(0);
         for (int i = 1; i < integerList.size(); i++) {
-            TreeNode treeNode = integerList.get(i);
+            final TreeNode treeNode = integerList.get(i);
             treeNode.left = null;
-            treeNode.right= prevNode;
+            treeNode.right = prevNode;
             prevNode = treeNode;
         }
     }
@@ -53,9 +51,7 @@ public class BinaryTreeFlatter {
         if (root == null) {
             return;
         }
-
         traversal(root.right, integerList);
-
         if (root.left != null) {
             traversal(root.left, integerList);
         }
