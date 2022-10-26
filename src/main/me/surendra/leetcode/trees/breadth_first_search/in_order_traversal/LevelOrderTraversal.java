@@ -108,20 +108,4 @@ public class LevelOrderTraversal {
         return returnList;
     }
 
-    private void printVars(final String msg,
-                           final Queue<Queue<TreeNode>> allLevelTreeNodes,
-                           final List<List<Integer>> outputList,
-                           final Queue<TreeNode> currentLevelTreeNodes,
-                           final Queue<TreeNode> tmpTreeNodes,
-                           final List<Integer> tmpList
-    ) {
-        System.out.println(msg);
-        System.out.println("allLevelTreeNodes=\t[" + allLevelTreeNodes.size() + "]");
-        System.out.println("currentLevelTreeNodes=\t[" + currentLevelTreeNodes.size() + "]");
-        System.out.println("tmpTreeNodes=\t[" + tmpTreeNodes.size() + "]");
-        System.out.println("tmpList=\t[" + tmpList.size() + "]");
-        System.out.println("outputList=\t[" + outputList.size() + "]");
-        System.out.println("                                    ");
-    }
-
 }
