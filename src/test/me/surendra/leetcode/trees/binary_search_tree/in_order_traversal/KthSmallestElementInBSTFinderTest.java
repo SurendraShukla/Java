@@ -1,6 +1,7 @@
 package me.surendra.leetcode.trees.binary_search_tree.in_order_traversal;
 
 
+import me.surendra.leetcode.trees.BinaryTreeNodeCreator;
 import me.surendra.leetcode.trees.TreeNode;
 import org.junit.Test;
 
@@ -11,32 +12,29 @@ import static org.junit.Assert.assertThat;
 public class KthSmallestElementInBSTFinderTest {
 
     private int callMethod(final TreeNode root, final int k) {
-        return new KthSmallestElementInBSTFinder().kthSmallest(root, k);
+        final KthSmallestElementInBSTFinder kthSmallestElementInBSTFinder = new KthSmallestElementInBSTFinder();
+        return kthSmallestElementInBSTFinder.kthSmallest(root, k);
+    }
+
+    private void callAndVerify(final TreeNode root, final int minVal, final int maxVal) {
+        for (int i = minVal; i < maxVal; i++) {
+            final int no = callMethod(root, i);
+            assertThat("Failed for " + no, no, equalTo(i));
+        }
     }
 
     @Test
     public void test1() {
-        final TreeNode left = new TreeNode(1, null, new TreeNode(2));
-        final TreeNode right= new TreeNode(4, null, null);
-        final TreeNode root= new TreeNode(3, left, right);
+        final TreeNode root = BinaryTreeNodeCreator.fromPreOrder(3, 1, 4, null, 2);
 
-        for (int i = 1; i < 5; i++) {
-            int no = callMethod(root, i);
-            assertThat("Failed for " + no, no, equalTo(i));
-        }
+        callAndVerify(root, 1, 5);
     }
 
     @Test
     public void test2() {
-        final TreeNode left1= new TreeNode(2, new TreeNode(1), null);
-        final TreeNode left = new TreeNode(3, left1, new TreeNode(4));
-        final TreeNode root= new TreeNode(5, left, new TreeNode(6));
+        final TreeNode root = BinaryTreeNodeCreator.fromPreOrder(5, 3, 6, 2, 4, null, null, 1);
 
-        for (int i = 1; i < 7; i++) {
-            int tmpNo = i;
-            int no = callMethod(root, tmpNo);
-            assertThat("Failed for " + no, no, equalTo(i));
-        }
+        callAndVerify(root, 1, 7);
     }
 
 }

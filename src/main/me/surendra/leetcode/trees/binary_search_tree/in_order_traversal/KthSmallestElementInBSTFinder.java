@@ -9,26 +9,24 @@ import me.surendra.leetcode.trees.TreeNode;
 public class KthSmallestElementInBSTFinder {
 
     /*
-        Time complexity : O(N)
-        Space complexity: O(1)
+        Time complexity : O(n) All nodes search
+        Space complexity: O(n) Recursion stack
      */
     Integer kthNumber = null;
-    public int kthSmallest(TreeNode root, int k) {
+    int foundCounter = 0;
+    public int kthSmallest(final TreeNode root, final int k) {
         populate(root, k);
         return kthNumber.intValue();
     }
 
-    void populate(TreeNode root, int k) {
-        if (root == null) {
+    private void populate(final TreeNode root, final int k) {
+        if (root == null || foundCounter >= k) {
             return;
         }
         populate(root.left, k);
-        if (kthNumber != null) {
-            return;
-        }
-        if (--k == 0) {
+        foundCounter++;
+        if (foundCounter == k) {
             kthNumber = root.val;
-            return;
         }
         populate(root.right, k);
     }
