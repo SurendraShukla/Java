@@ -1,21 +1,58 @@
 package com.surendra.hazelcast.cluster;
 
+import com.google.common.collect.Sets;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
+import com.hazelcast.config.Config;
+import com.hazelcast.config.JoinConfig;
+import com.hazelcast.config.NetworkConfig;
+import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class NativeClient {
 
     public static void main(final String[] args) {
+        System.out.println("Surendra1");
+        usingClientConfig();
+        System.out.println("Surendra2");
+    }
+
+
+    private static void usingClientConfig() {
         final ClientConfig config = new ClientConfig();
-        config.setClusterName("dev");
+//        config.setClusterName("dev");
+//        config.getNetworkConfig().addAddress("127.0.0.1:7000");
+        config.setClusterName("local-cerium");
+        config.getNetworkConfig().addAddress("127.0.0.1:6700", "localhost:6700", "0.0.0.0:6700");
         final HazelcastInstance hazelcastInstanceClient = HazelcastClient.newHazelcastClient(config);
         final Map<Long, String> map = hazelcastInstanceClient.getMap("data");
         for (Map.Entry<Long, String> entry : map.entrySet()) {
             System.out.printf("Key: %d, Value: %s%n", entry.getKey(), entry.getValue());
         }
+    }
+
+
+    private static void configure() {
+        final Config config = new Config();
+        config.setInstanceName("Programtic_Hazelcast_Instance");
+
+        final NetworkConfig network = config.getNetworkConfig();
+        network.setPort(7000).setPortCount(20);
+        network.setPortAutoIncrement(true);
+        final JoinConfig join = network.getJoin();
+        join.getMulticastConfig().setEnabled(false);
+        join.getTcpIpConfig()
+            .addMember("127.0.0.1")
+            .addMember("localhost").setEnabled(true);
+
+        // initialize hazelcast server/instance
+        final HazelcastInstance hazelcast = Hazelcast.newHazelcastInstance(config);
+        System.out.println(String.format("Name of the instance: %s", hazelcast.getName()));
     }
 
 }

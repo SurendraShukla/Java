@@ -8,7 +8,7 @@
         <join>
             <multicast enabled="false"/>
             <tcp-ip enabled="true">
-                <member>machine1</member>
+                <member>127.0.0.1</member>
                 <member>localhost</member>
             </tcp-ip>
         </join>
