@@ -13,7 +13,7 @@ public class StringConstructor {
         Space complexity: O(n)
      */
     final StringBuilder stringBuilder = new StringBuilder();
-    public String tree2str(TreeNode root) {
+    public String tree2strUsingHelper(final TreeNode root) {
         populateString(root);
         return stringBuilder.toString();
     }
@@ -23,7 +23,7 @@ public class StringConstructor {
             return;
         }
         stringBuilder.append(root.val);
-        if (root.left == null && root.right ==null) {
+        if (root.left == null && root.right == null) {
             return;
         }
         stringBuilder.append("(");
@@ -34,6 +34,31 @@ public class StringConstructor {
             populateString(root.right);
             stringBuilder.append(")");
         }
+    }
+
+
+    /*
+        Time complexity: O(n)
+        Space complexity: O(n)
+     */
+    public String tree2str(final TreeNode root) {
+        final StringBuilder sb = new StringBuilder();
+        if (root == null) {
+            return sb.toString();
+        }
+        sb.append(root.val);
+        if (root.left != null) {
+            sb.append("(" + tree2str(root.left) + ")");
+        } else {
+            if (root.right != null) {
+                sb.append("()");
+            }
+        }
+        if (root.right != null) {
+            sb.append("(" + tree2str(root.right) + ")");
+        }
+
+        return sb.toString();
     }
 
 }
