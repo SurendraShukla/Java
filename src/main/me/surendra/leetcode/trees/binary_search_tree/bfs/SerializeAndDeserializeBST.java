@@ -3,6 +3,7 @@ package me.surendra.leetcode.trees.binary_search_tree.bfs;
 import me.surendra.leetcode.trees.TreeNode;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 
@@ -11,95 +12,162 @@ import java.util.Queue;
  */
 public class SerializeAndDeserializeBST {
 
-    final Character NULL_NODE = ' ';
-    final String NODE_DELIMITER = ",";
-    final String LEVEL_END = "\n";
+    public class DFS {
 
-    // Encodes a tree to a single string.
-    /*
-        Time complexity : O(n)
-        Space complexity: O(n)
-     */
-    public String serialize(TreeNode root) {
-        if (root == null) {
-            return "";
+        /*
+            Time complexity : O(n)
+            Space complexity: O(n)
+         */
+        private static final String NULL_NODE = " ";
+        private final static String NODE_DELIMITER = ",";
+
+        public String serialize(final TreeNode root) {
+            final StringBuilder sb = new StringBuilder();
+            preOrder(root, sb);
+            return sb.toString();
         }
-        final StringBuilder stringBuilder = new StringBuilder();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        stringBuilder.append(root.val);
-        stringBuilder.append(LEVEL_END);
 
-        while (!queue.isEmpty()) {
-            int queueSize = queue.size();
-            for (int i = 0; i < queueSize; i++) {
-                TreeNode currentNode = queue.poll();
-                if (currentNode.left == null) {
-                    stringBuilder.append(NULL_NODE + NODE_DELIMITER);
-                } else {
-                    stringBuilder.append(currentNode.left.val + NODE_DELIMITER);
-                    queue.add(currentNode.left);
-                }
-                if (currentNode.right == null) {
-                    stringBuilder.append(NULL_NODE + NODE_DELIMITER);
-                } else {
-                    stringBuilder.append(currentNode.right.val + NODE_DELIMITER);
-                    queue.add(currentNode.right);
-                }
+        private void preOrder(final TreeNode root, final StringBuilder sb) {
+            if (root == null) {
+                sb.append(NULL_NODE).append(NODE_DELIMITER);
+                return;
             }
-            stringBuilder.append(LEVEL_END);
+            sb.append(root.val).append(NODE_DELIMITER);
+            preOrder(root.left, sb);
+            preOrder(root.right, sb);
         }
 
-        return stringBuilder.toString();
+        /*
+            Time complexity : O(n)
+            Space complexity: O(n)
+         */
+        public TreeNode deserialize(final String data) {
+            final List<String> preOrderList = new LinkedList<>();
+            for (String str: data.split(NODE_DELIMITER)) {
+                preOrderList.add(str);
+            }
+
+            return createTreeNodeFromPreOrderList(preOrderList);
+        }
+
+        private TreeNode createTreeNodeFromPreOrderList(final List<String> preOrderList) {
+            if (preOrderList.isEmpty()) {
+                return null;
+            }
+            final String rootVal = preOrderList.get(0);
+            preOrderList.remove(0);
+            if (NULL_NODE.equals(rootVal)) {
+                return null;
+            }
+            final TreeNode root = new TreeNode(Integer.parseInt(rootVal));
+            root.left = createTreeNodeFromPreOrderList(preOrderList);
+            root.right = createTreeNodeFromPreOrderList(preOrderList);
+            return root;
+        }
+
     }
 
+    public class BFS {
 
-    // Decodes your encoded data to tree.
-    /*
-        Time complexity : O(n)
-        Space complexity: O(n)
-     */
-    public TreeNode deserialize(String data) {
-        if (data.length() == 0) {
-            return null;
-        }
-        final String[] treeNodeInfo = data.split(LEVEL_END);
-        final Queue<TreeNode> queue = new LinkedList<>();
-        int val = Integer.parseInt(treeNodeInfo[0]);
-        final TreeNode returnNode = new TreeNode(val);
-        queue.add(returnNode);
+        final static String NULL_NODE = " ";
+        final static String NODE_DELIMITER = ",";
+        final static String LEVEL_END = "\n";
 
-        int treeNodeInfoCounter = 0;
-        while (!queue.isEmpty()) {
-            treeNodeInfoCounter++;
-            final String[] nodes = treeNodeInfo[treeNodeInfoCounter].split(NODE_DELIMITER);
-
-            int nodeCounter = 0;
-            while (nodeCounter < nodes.length) {
-                TreeNode currentNode = queue.poll();
-
-                String leftNodeVal = nodes[nodeCounter++];
-                if (leftNodeVal.equals(" ")) {
-                    currentNode.left = null;
-                } else {
-                    int leftVal = Integer.parseInt(leftNodeVal);
-                    final TreeNode leftNode = new TreeNode(leftVal);
-                    currentNode.left = leftNode;
-                    queue.add(leftNode);
-                }
-
-                String rightNodeVal = nodes[nodeCounter++];
-                if (rightNodeVal.equals(" ")) {
-                    currentNode.right = null;
-                } else {
-                    int rightVal = Integer.parseInt(rightNodeVal);
-                    final TreeNode rightNode = new TreeNode(rightVal);
-                    currentNode.right = rightNode;
-                    queue.add(rightNode);
-                }
+        // Encodes a tree to a single string.
+        /*
+            Time complexity : O(n)
+            Space complexity: O(n)
+         */
+        public String serialize(final TreeNode root) {
+            if (root == null) {
+                return "";
             }
+            final StringBuilder sb = new StringBuilder();
+            final Queue<TreeNode> q = new LinkedList<>();
+            q.add(root);
+            sb.append(root.val).append(LEVEL_END);
+
+            while (!q.isEmpty()) {
+                final int queueSize = q.size();
+                for (int i = 0; i < queueSize; i++) {
+                    final TreeNode currentNode = q.poll();
+                    if (currentNode.left == null) {
+                        sb.append(NULL_NODE);
+                    } else {
+                        sb.append(currentNode.left.val);
+                        q.add(currentNode.left);
+                    }
+                    sb.append(NODE_DELIMITER);
+
+                    if (currentNode.right == null) {
+                        sb.append(NULL_NODE);
+                    } else {
+                        sb.append(currentNode.right.val);
+                        q.add(currentNode.right);
+                    }
+                    sb.append(NODE_DELIMITER);
+                }
+                sb.append(LEVEL_END);
+            }
+
+            return sb.toString();
         }
-        return returnNode;
+
+
+        // Decodes your encoded data to tree.
+        /*
+            Time complexity : O(n)
+            Space complexity: O(n)
+         */
+        public TreeNode deserialize(final String data) {
+            if (data.length() == 0) {
+                return null;
+            }
+
+            final String[] treeNodeInfo = data.split(LEVEL_END);
+
+            final Queue<TreeNode> queue = new LinkedList<>();
+            final TreeNode returnNode = createTreeNode(treeNodeInfo[0]);
+            queue.add(returnNode);
+
+            int treeNodeInfoCounter = 1;
+            while (!queue.isEmpty()) {
+
+                final String[] nodes = treeNodeInfo[treeNodeInfoCounter].split(NODE_DELIMITER);
+                int nodeCounter = 0;
+
+                while (nodeCounter < nodes.length) {
+                    final TreeNode currentNode = queue.poll();
+
+                    final String leftNodeVal = nodes[nodeCounter++];
+                    if (NULL_NODE.equals(leftNodeVal)) {
+                        currentNode.left = null;
+                    } else {
+                        final TreeNode leftNode = createTreeNode(leftNodeVal);
+                        currentNode.left = leftNode;
+                        queue.add(leftNode);
+                    }
+
+                    final String rightNodeVal = nodes[nodeCounter++];
+                    if (NULL_NODE.equals(rightNodeVal)) {
+                        currentNode.right = null;
+                    } else {
+                        final TreeNode rightNode = createTreeNode(rightNodeVal);
+                        currentNode.right = rightNode;
+                        queue.add(rightNode);
+                    }
+                }
+
+                treeNodeInfoCounter++;
+            }
+            return returnNode;
+        }
+
+        private TreeNode createTreeNode(final String rightNodeVal) {
+            final int rightVal = Integer.parseInt(rightNodeVal);
+            return new TreeNode(rightVal);
+        }
+
     }
 
 }

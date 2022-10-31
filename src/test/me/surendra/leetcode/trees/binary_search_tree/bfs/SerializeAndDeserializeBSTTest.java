@@ -12,11 +12,25 @@ public class SerializeAndDeserializeBSTTest {
 
     final SerializeAndDeserializeBST serializeAndDeserializeBST = new SerializeAndDeserializeBST();
 
-    private void callAndVerify(final TreeNode treeNode) {
+    private TreeNode callDfs(final TreeNode treeNode) {
+        final SerializeAndDeserializeBST.DFS dfs = serializeAndDeserializeBST.new DFS();
+
+        final String serialize = dfs.serialize(treeNode);
+        final TreeNode deserialize = dfs.deserialize(serialize);
+        return deserialize;
+    }
+
+    private TreeNode callBfs(final TreeNode treeNode) {
         final SerializeAndDeserializeBST.BFS bfs = serializeAndDeserializeBST.new BFS();
 
         final String serialize = bfs.serialize(treeNode);
         final TreeNode deserialize = bfs.deserialize(serialize);
+        return deserialize;
+    }
+
+    private void callAndVerify(final TreeNode treeNode) {
+        final TreeNode deserialize = callDfs(treeNode);
+//        final TreeNode deserialize = callBfs(treeNode);
 
         assertThat(deserialize, equalTo(treeNode));
     }
