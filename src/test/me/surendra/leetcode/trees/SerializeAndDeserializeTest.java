@@ -43,11 +43,17 @@ public class SerializeAndDeserializeTest {
     }
 
     @Test
-    public void withMultipleNodes() {
-        final TreeNode treeNode = BinaryTreeNodeCreator.fromPreOrder(1, 2, 3, null, null, 4, 5);
+    public void withOneChild() {
+        final TreeNode treeNode = BinaryTreeNodeCreator.fromPreOrder(1, 2);
 
         callAndVerify(treeNode);
     }
 
+    @Test
+    public void withManyChilds() {
+        final TreeNode treeNode = BinaryTreeNodeCreator.fromPreOrder(1, 2, 3, null, null, 4, 5);
+
+        callAndVerify(treeNode);
+    }
 
 }
