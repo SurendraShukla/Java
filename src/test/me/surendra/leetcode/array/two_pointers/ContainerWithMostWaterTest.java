@@ -1,4 +1,4 @@
-package me.surendra.leetcode.array.hard;
+package me.surendra.leetcode.array.two_pointers;
 
 import org.junit.Test;
 
@@ -8,9 +8,11 @@ import static org.junit.Assert.assertThat;
 
 public class ContainerWithMostWaterTest {
 
+    private final ContainerWithMostWater containerWithMostWater = new ContainerWithMostWater();
+
     private int callMethod(final int[] height) {
-        return new ContainerWithMostWater().maxAreaUsing2Pointers(height);
-//        return new ContainerWithMostWater().maxAreaUsingBruteForce(height);
+        return containerWithMostWater.maxAreaUsing2Pointers(height);
+//        return containerWithMostWater.maxAreaUsingBruteForce(height);
     }
 
     @Test
@@ -20,7 +22,7 @@ public class ContainerWithMostWaterTest {
 
     @Test
     public void maxAreaOf2() {
-        assertThat(callMethod(new int[]{1,2,1}), equalTo(2));
+        assertThat(callMethod(new int[]{1, 2, 1}), equalTo(2));
     }
 
     @Test
@@ -30,12 +32,12 @@ public class ContainerWithMostWaterTest {
 
     @Test
     public void maxAreaOf49() {
-        assertThat(callMethod(new int[]{1,8,6,2,5,4,8,3,7}), equalTo(49));
+        assertThat(callMethod(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}), equalTo(49));
     }
 
     @Test
     public void maxAreaOf17() {
-        assertThat(callMethod(new int[]{2,3,4,5,18,17,6}), equalTo(17));
+        assertThat(callMethod(new int[]{2, 3, 4, 5, 18, 17, 6}), equalTo(17));
     }
 
 }
