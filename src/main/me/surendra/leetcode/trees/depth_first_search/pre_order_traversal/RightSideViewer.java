@@ -1,4 +1,4 @@
-package me.surendra.leetcode.trees.depth_first_search;
+package me.surendra.leetcode.trees.depth_first_search.pre_order_traversal;
 
 import me.surendra.leetcode.trees.TreeNode;
 
@@ -27,8 +27,8 @@ public class RightSideViewer {
         if (rightSideViewNodeValues.size() == level) {
             rightSideViewNodeValues.add(root.val);
         }
-        populateRightSideViewNodeValues(root.right, level+1);
-        populateRightSideViewNodeValues(root.left, level+1);
+        populateRightSideViewNodeValues(root.right, level + 1);
+        populateRightSideViewNodeValues(root.left, level + 1);
     }
 
 }

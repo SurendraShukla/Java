@@ -1,13 +1,11 @@
-package me.surendra.leetcode.trees.depth_first_search;
+package me.surendra.leetcode.trees.depth_first_search.pre_order_traversal;
 
-import me.surendra.TestUtil;
 import me.surendra.leetcode.trees.TreeNode;
-import me.surendra.leetcode.trees.TreeNodeCreator;
+import me.surendra.leetcode.trees.BinaryTreeNodeCreator;
 import org.assertj.core.util.Lists;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class RightSideViewerTest {
 
     private List<Integer> callMethod(final List<Integer> treeValuesList) {
-        final TreeNode treeNode = TreeNodeCreator.fromPreOrder(treeValuesList);
+        final TreeNode treeNode = BinaryTreeNodeCreator.fromPreOrder(treeValuesList);
 
         return new RightSideViewer().rightSideView(treeNode);
     }
