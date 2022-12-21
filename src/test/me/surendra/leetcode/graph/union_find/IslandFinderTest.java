@@ -67,4 +67,16 @@ public class IslandFinderTest {
         assertThat(callAndVerify(grid), equalTo(1));
     }
 
+
+    @Test
+    public void islands4() {
+        final char[][] grid = {
+            {'1', '0', '1', '1', '1'},
+            {'1', '0', '1', '0', '1'},
+            {'1', '1', '1', '0', '1'}
+        };
+
+        assertThat(callAndVerify(grid), equalTo(1));
+    }
+
 }
