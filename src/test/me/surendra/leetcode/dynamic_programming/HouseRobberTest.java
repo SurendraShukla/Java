@@ -7,63 +7,51 @@ import static org.junit.Assert.assertThat;
 
 public class HouseRobberTest {
 
+    private final HouseRobber houseRobber = new HouseRobber();
+
     private int callMethod(final int[] houseHoldingMoney) {
-//        return new HouseRobber().robUsingRecursionWithMemoization(houseHoldingMoney);
+        return houseRobber.robUsingRecursionWithMemoization(houseHoldingMoney);
 
-//        return new HouseRobber().robUsingDpBottomUpApproachWithTable(houseHoldingMoney);
-        return new HouseRobber().robUsingDpBottomUpApproachWithVariables(houseHoldingMoney);
+//        return houseRobber.robFromLastHouseUsingBottomUpApproachWithVariable(houseHoldingMoney);
+//        return houseRobber.robFromFirstHouseUsingBottomUpApproachWithVariable(houseHoldingMoney);
 
-//        return new HouseRobber().robUsingDpTopDownApproachWithVariables(houseHoldingMoney);
-//        return new HouseRobber().robUsingDpTopDownApproachWithTable(houseHoldingMoney);
+//        return houseRobber.robFromFirstHouseUsingBottomUpApproachWithTable(houseHoldingMoney);
+//        return houseRobber.robFromLastHouseUsingBottomUpApproachWithTable(houseHoldingMoney);
     }
 
     @Test
     public void moneyRobbedWorthOf1() {
-        int[] houseHoldingMoney = {1};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(1));
+        assertThat(callMethod(new int[]{1}), equalTo(1));
     }
 
     @Test
     public void moneyRobbedWorthOf2() {
-        int[] houseHoldingMoney = {1, 2};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(2));
+        assertThat(callMethod(new int[]{1, 2}), equalTo(2));
     }
 
     @Test
     public void moneyRobbedWorthOf4FromOddHouses() {
-        int[] houseHoldingMoney = {1, 2, 3};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(4));
+        assertThat(callMethod(new int[]{1, 2, 3}), equalTo(4));
     }
 
     @Test
     public void moneyRobbedWorthOf4FromEvenHouses() {
-        int[] houseHoldingMoney = {1, 2, 3, 1};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(4));
+        assertThat(callMethod(new int[]{1, 2, 3, 1}), equalTo(4));
     }
 
     @Test
     public void moneyRobbedWorthOf12() {
-        int[] houseHoldingMoney = {2, 7, 9, 3, 1};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(12));
+        assertThat(callMethod(new int[]{2, 7, 9, 3, 1}), equalTo(12));
     }
 
     @Test
     public void moneyRobbedWorthAtNextToNextHouse() {
-        int[] houseHoldingMoney = {2, 1, 1, 2};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(4));
+        assertThat(callMethod(new int[]{2, 1, 1, 2}), equalTo(4));
     }
 
     @Test
-    public void moneyRobbedWorthAtNextToNextCopuleOfHouses() {
-        int[] houseHoldingMoney = {6,3,10,8,2,10,3,5,10,5,3};
-
-        assertThat(callMethod(houseHoldingMoney), equalTo(39));
+    public void moneyRobbedWorthAtNextToNextCoupleOfHouses() {
+        assertThat(callMethod(new int[]{6, 3, 10, 8, 2, 10, 3, 5, 10, 5, 3}), equalTo(39));
     }
 
 }
