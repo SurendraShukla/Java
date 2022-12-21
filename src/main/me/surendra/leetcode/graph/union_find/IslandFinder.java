@@ -8,8 +8,8 @@ public class IslandFinder {
 
     public class DFS {
         /*
-            Time complexity : O(n)
-            Space complexity: O(n)
+            Time complexity : O(n * m) M is no. of rows & N is no. of cols
+            Space complexity: O(n * m) M is no. of rows & N is no. of cols
          */
         int rowLen;
         int colLen;
@@ -43,9 +43,13 @@ public class IslandFinder {
     }
 
     public class UF {
+
+        /*
+            Time complexity : O(n * m) M is no. of rows & N is no. of cols
+            Space complexity: O(n * m) M is no. of rows & N is no. of cols
+         */
         int rowMax;
         int colMax;
-
         public int numIslands(final char[][] grid) {
             rowMax = grid.length;
             colMax = grid[0].length;

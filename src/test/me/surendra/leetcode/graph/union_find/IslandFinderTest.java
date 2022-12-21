@@ -21,10 +21,8 @@ public class IslandFinderTest {
     }
 
     private int callAndVerify(final char[][] grid) {
-//        final int noOfIslands = callDfs(grid);
-        final int noOfIslands = callUnionFind(grid);
-
-        return noOfIslands;
+//        return callDfs(grid);
+        return callUnionFind(grid);
     }
 
     @Test

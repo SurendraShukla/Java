@@ -6,7 +6,7 @@ public class UnionFind {
     int[] rank;
     int count;
 
-    UnionFind(final int n) {
+    public UnionFind(final int n) {
         count = n;
         rank = new int[n];
         parents = new int[n];
@@ -15,7 +15,7 @@ public class UnionFind {
         }
     }
 
-    boolean union(final int node1, final int node2) {
+    public boolean union(final int node1, final int node2) {
         final int p1 = find(node1);
         final int p2 = find(node2);
         if (p1 == p2) {
@@ -32,16 +32,15 @@ public class UnionFind {
         return true;
     }
 
-    int find(final int idx) {
+    public int find(final int idx) {
         if (idx == parents[idx]) {
             return idx;
         }
-//        final int parentIdx = parents[idx];
         parents[idx] = find(parents[idx]);
         return parents[idx];
     }
 
-    int getCount() {
+    public int getCount() {
         return count;
     }
 
