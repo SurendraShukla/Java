@@ -1,4 +1,4 @@
-package me.surendra.leetcode.dynamic_programming;
+package me.surendra.leetcode.dynamic_programming.one_d;
 
 import org.junit.Test;
 

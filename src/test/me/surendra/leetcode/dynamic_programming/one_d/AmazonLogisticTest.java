@@ -1,4 +1,4 @@
-package me.surendra.leetcode.dynamic_programming;
+package me.surendra.leetcode.dynamic_programming.one_d;
 
 import org.assertj.core.util.Lists;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class AmazonLogisticTest {
     @Test
     public void shouldReturn0ForOddNumberWheels() {
         final List<Integer> wheels = new ArrayList<>();
-        for (int i = 1; i <= 36; i+=2) {
+        for (int i = 1; i <= 36; i += 2) {
             wheels.add(i);
         }
 
@@ -39,9 +39,9 @@ public class AmazonLogisticTest {
     @Test
     public void shouldReturnQuotientPlusOneForEvenNumberWheels() {
         int noOfWays = 1;
-        for(int noOfWheels=4; noOfWheels<=36; noOfWheels+=4) {
+        for (int noOfWheels = 4; noOfWheels <= 36; noOfWheels += 4) {
             final List<Integer> list = new ArrayList<>();
-            for(int wheels=noOfWheels; wheels<noOfWheels+4; wheels+=2) {
+            for (int wheels = noOfWheels; wheels < noOfWheels + 4; wheels += 2) {
                 list.add(wheels);
             }
 
