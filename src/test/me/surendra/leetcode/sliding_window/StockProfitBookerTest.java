@@ -1,6 +1,5 @@
-package me.surendra.leetcode.dynamic_programming;
+package me.surendra.leetcode.sliding_window;
 
-import me.surendra.leetcode.dynamic_programming.StockProfitBooker;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -14,16 +13,18 @@ public class StockProfitBookerTest {
 
     @Test
     public void test1() {
-        final int[] prices = {7, 1, 5, 3, 6, 4};
-
-        assertThat(callMethod(prices), equalTo(5));
+        assertThat(callMethod(
+            new int[]{7, 1, 5, 3, 6, 4}),
+            equalTo(5)
+        );
     }
 
     @Test
     public void test2() {
-        final int[] prices = {7, 6, 4, 3, 1};
-
-        assertThat(callMethod(prices), equalTo(0));
+        assertThat(callMethod(
+            new int[]{7, 6, 4, 3, 1}),
+            equalTo(0)
+        );
     }
 
 /*
