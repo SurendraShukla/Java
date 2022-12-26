@@ -1,4 +1,4 @@
-package me.surendra.leetcode;
+package me.surendra.leetcode.search.binary_search;
 
 public class Binary {
 
@@ -8,13 +8,13 @@ public class Binary {
      *
      * @see <a href="https://leetcode.com/problems/max-consecutive-ones/">Max Consecutive Ones</a>
      */
-    public static int findMaxConsecutiveOnes(int[] nums) {
+    public static int findMaxConsecutiveOnes(final int[] nums) {
         int maxConsecutiveOnes = 0;
         int currentConsecutiveOnes = 0;
         for (final int num : nums) {
             if (num == 1) {
                 currentConsecutiveOnes++;
-            }else{
+            } else {
                 if (maxConsecutiveOnes < currentConsecutiveOnes) {
                     maxConsecutiveOnes = currentConsecutiveOnes;
                 }
