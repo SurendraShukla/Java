@@ -9,18 +9,18 @@ public class BinarySearch {
         Time Complexity - O(n log n)
         Space Complexity - O(1)
      */
-    public int search(int[] nums, int target) {
+    public int search(final int[] nums, final int target) {
         int low = 0;
-        int max = nums.length-1;
+        int max = nums.length - 1;
 
         while (low <= max) {
-            int mid = ((max-low)/2) + low;
+            final int mid = ((max - low) / 2) + low;
             if (target == nums[mid]) {
                 return mid;
-            }else if(target < nums[mid]) {
-                max = mid-1;
-            }else{
-                low = mid+1;
+            } else if (target < nums[mid]) {
+                max = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
         return -1;

@@ -8,13 +8,15 @@ import static org.junit.Assert.assertThat;
 
 public class BinarySearchTest {
 
+    private final BinarySearch binarySearch = new BinarySearch();
+
     private int callMethod(final int[] nums, final int target) {
-        return new BinarySearch().search(nums, target);
+        return binarySearch.search(nums, target);
     }
 
     @Test
     public void test1() {
-        int[] nums = {-1,0,3,5,9,12};
+        final int[] nums = {-1, 0, 3, 5, 9, 12};
 
         assertThat(callMethod(nums, 9), equalTo(4));
         assertThat(callMethod(nums, 2), equalTo(-1));
@@ -22,7 +24,7 @@ public class BinarySearchTest {
 
     @Test
     public void test2() {
-        int[] nums = {1,2,3,4,5,6,7,8,9};
+        final int[] nums = {1,  2, 3, 4, 5, 6, 7, 8, 9};
 
         assertThat(callMethod(nums, 1), equalTo(0));
         assertThat(callMethod(nums, 2), equalTo(1));
@@ -38,7 +40,7 @@ public class BinarySearchTest {
 
     @Test
     public void test3() {
-        int[] nums = {1,2,3,4,5,6,7,8};
+        final int[] nums = {1, 2, 3, 4, 5, 6, 7, 8};
 
         assertThat(callMethod(nums, 1), equalTo(0));
         assertThat(callMethod(nums, 2), equalTo(1));
