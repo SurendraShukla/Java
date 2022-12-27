@@ -30,6 +30,7 @@ public class IslandPerimeterTest {
     public void test2() {
         assertThat(callMethod(new int[][]{{1}}), equalTo(4));
         assertThat(callMethod(new int[][]{{1, 0}}), equalTo(4));
+        assertThat(callMethod(new int[][]{{1, 1}, {1, 1}}), equalTo(8));
     }
 
 }

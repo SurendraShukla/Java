@@ -34,4 +34,12 @@ public class LeafSimilarTreesTest {
 
         assertThat(callMethod(root1Values, root2Values), equalTo(false));
     }
+
+    @Test
+    public void test3() {
+        final Integer[] root1Values = {3, 5, 1, 6, 2, 9, 8, null, null, 7, 14};
+        final Integer[] root2Values = {3, 5, 1, 6, 71, 4, 2, null, null, null, null, null, null, 9, 8};
+
+        assertThat(callMethod(root1Values, root2Values), equalTo(false));
+    }
 }
