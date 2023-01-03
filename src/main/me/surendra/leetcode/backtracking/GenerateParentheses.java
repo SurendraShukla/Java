@@ -4,43 +4,85 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @see <a href="https://leetcode.com/problems/generate-parentheses/">Generate Parentheses</a>
  */
 public class GenerateParentheses {
 
-    int n;
-    int totalBrackets;
+    /*
+        Time complexity: 0(4 ^ n)
+        Space complexity: 0(4 ^ n)
+     */
+    /**
+        Time complexity: O(n * (2 ^ 2n))
+                The recursion tree in this problem is a binary tree where
+                    vertices represent incomplete sequences of brackets and
+                    edges represent the choice of the next bracket (either left or the right).
+                The height of the tree is 2n, since we must branch once per bracket.
+                    So the number of vertices is at most 2^2n and
+                    the number of leaves is at most half the number of vertices of a perfect tree,
+                so asymptotically O(2^2n).
+
+                Additionally we do linear work per leaf to copy the sequence to output.
+                A more complete analysis would take into account that some bracket choices are invalid,
+                    which leads to asymptotically fewer leaves in the tree.
+                However since we are interested in upper bounds,
+                    it's still correct to say that time complexity is O(n*(2^2n)),
+                    even though it's not the most accurate upper bound.
+        Space complexity: (n * (2 ^ 2n))
+     */
+    int no;
     List<String> returnList = new ArrayList<>();
-    public List<String> generateParenthesisUsingBacktracking(final int n) {
-        this.n = n;
-        totalBrackets = n * 2;
-        backtracking(0, new StringBuilder());
+    public List<String> generateParenthesisUsingStringBuilderForBacktracking(final int n) {
+        this.no = n;
+        backtrack(0, 0, new StringBuilder());
         return returnList;
     }
 
-    private void backtracking(final int idx, final StringBuilder stringBuilder) {
-        if (idx == totalBrackets) {
-            returnList.add(stringBuilder.toString());
+    private void backtrack(final int open, final int close, final StringBuilder sb) {
+        if (open == no && close == no) {
+            returnList.add(sb.toString());
             return;
         }
-        if (idx < n) {
-            stringBuilder.append("(");
-            backtracking(idx + 1, stringBuilder);
-            stringBuilder.deleteCharAt(idx);
+        if (open < no) {
+            sb.append("(");
+            backtrack(open + 1, close, sb);
+            sb.deleteCharAt(sb.length() - 1);
         }
-        if (stringBuilder.length() < totalBrackets) {
-            stringBuilder.append(")");
-            backtracking(idx + 1, stringBuilder);
-            stringBuilder.deleteCharAt(idx);
+        if (close < open) {
+            sb.append(")");
+            backtrack(open, close + 1, sb);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 
     /*
-        Time complexity: O(n)
-        Space complexity: O(n)
+        Time complexity: O(n * (2 ^ 2n))
+        Space complexity: (n * (2 ^ 2n))
+     */
+    public List<String> generateParenthesisUsingStringForBacktracking(final int n) {
+        this.no = n;
+        backtrack(0, 0, "");
+        return returnList;
+    }
+
+    private void backtrack(final int open, final int close, final String str) {
+        if (open == no && close == no) {
+            returnList.add(str);
+            return;
+        }
+        if (open < no) {
+            backtrack(open + 1, close, str + "(");
+        }
+        if (close < open) {
+            backtrack(open, close + 1, str + ")");
+        }
+    }
+
+    /*
+        Time complexity: O(4 ^ n)
+        Space complexity: O(4 ^ n)
      */
     public List<String> generateParenthesisUsingIterativeInsertion(final int n) {
         Set<String> returnList = new HashSet<>();
@@ -48,7 +90,7 @@ public class GenerateParentheses {
             final Set<String> tmpList = new HashSet<>();
             if (i == 0) {
                 tmpList.add("()");
-            }else{
+            } else {
                 for (final String str : returnList) {
                     for (int j = 0; j < str.length(); j++) {
                         tmpList.add(str.substring(0, j) + "()" + str.substring(j));
@@ -57,7 +99,7 @@ public class GenerateParentheses {
             }
             returnList = tmpList;
         }
-        return returnList.stream().collect(Collectors.toList());
+        return new ArrayList<>(returnList);
     }
 
 }
