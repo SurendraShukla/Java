@@ -18,7 +18,24 @@ public class BinaryTreeNodeCreator {
 
     /*
         Time complexity : O(n)
-        Space complexity: O(B) - Breadth of Tree
+        Space complexity: O(log n) - space because the tree is height-balanced.
+     */
+    public TreeNode fromSortedArray(final int[] nums) {
+        return fromSortedArray(nums, 0, nums.length - 1);
+    }
+
+    private TreeNode fromSortedArray(final int[] nums, final int left, final int right) {
+        if (left > right) return null;
+        final int mid = (right + left) / 2;
+        final TreeNode root = new TreeNode(nums[mid]);
+        root.left = fromSortedArray(nums, left, mid - 1);
+        root.right = fromSortedArray(nums, mid + 1, right);
+        return root;
+    }
+
+    /*
+        Time complexity : O(n)
+        Space complexity: O(b) - Breadth of Tree
      */
     public static TreeNode fromPreOrder(final List<Integer> integerList) {
         if (integerList == null || integerList.isEmpty()) {
