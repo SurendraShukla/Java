@@ -10,6 +10,7 @@ import java.util.Stack;
 public class MinStackImplWithOneStack implements MinStack {
 
     private Stack<int[]> stack = new Stack<>();
+    @Override
     public void push(final int x) {
         /* If the stack is empty, then the min value
          * must just be the first value we add. */
@@ -22,14 +23,17 @@ public class MinStackImplWithOneStack implements MinStack {
         stack.push(new int[]{x, Math.min(x, currentMin)});
     }
 
+    @Override
     public void pop() {
         stack.pop();
     }
 
+    @Override
     public int top() {
         return stack.peek()[0];
     }
 
+    @Override
     public int getMin() {
         return stack.peek()[1];
     }

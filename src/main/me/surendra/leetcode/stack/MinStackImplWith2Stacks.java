@@ -11,6 +11,7 @@ public class MinStackImplWith2Stacks implements MinStack {
 
     final Stack<Integer> noStack = new Stack<>();
     final Stack<Integer> minValStack = new Stack<>();
+    @Override
     public void push(final int val) {
         if (noStack.isEmpty()) {
             noStack.add(val);
@@ -25,15 +26,18 @@ public class MinStackImplWith2Stacks implements MinStack {
         noStack.add(val);
     }
 
+    @Override
     public void pop() {
         noStack.pop();
         minValStack.pop();
     }
 
+    @Override
     public int top() {
         return noStack.peek();
     }
 
+    @Override
     public int getMin() {
         return minValStack.peek();
     }
