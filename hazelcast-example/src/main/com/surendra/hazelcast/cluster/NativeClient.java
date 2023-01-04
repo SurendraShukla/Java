@@ -17,18 +17,20 @@ import java.util.Set;
 public class NativeClient {
 
     public static void main(final String[] args) {
-        System.out.println("Surendra1");
-        usingClientConfig();
-        System.out.println("Surendra2");
+//        System.out.println("Surendra1");
+//        usingClientConfig();
+//        System.out.println("Surendra2");
     }
 
 
     private static void usingClientConfig() {
+//        System.out.println("1 sum=["+sum+"] carry=["+carry+"]");
+
         final ClientConfig config = new ClientConfig();
 //        config.setClusterName("dev");
 //        config.getNetworkConfig().addAddress("127.0.0.1:7000");
-        config.setClusterName("local-cerium");
-        config.getNetworkConfig().addAddress("127.0.0.1:6700", "localhost:6700", "0.0.0.0:6700");
+        config.setClusterName("local-central");
+        config.getNetworkConfig().addAddress("127.0.0.1:6760", "localhost:6760", "0.0.0.0:6760");
         final HazelcastInstance hazelcastInstanceClient = HazelcastClient.newHazelcastClient(config);
         final Map<Long, String> map = hazelcastInstanceClient.getMap("data");
         for (Map.Entry<Long, String> entry : map.entrySet()) {
