@@ -1,8 +1,8 @@
 package me.surendra.leetcode.intervals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedList;
+
 
 /**
  * @see <a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">Minimum Number of Arrows to Burst Balloons</a>
@@ -26,16 +26,15 @@ public class ArrowsToBurstBalloons {
             return 1;
         });
 
-        final List<int[]> mergedIntervals = new ArrayList<>();
+        final LinkedList<int[]> mergedIntervals = new LinkedList<>();
         mergedIntervals.add(points[0]);
-        int listIndex = 0;
+
         for (int i = 1; i < points.length; i++) {
-            final int[] previousInterval = mergedIntervals.get(listIndex);
+            final int[] previousInterval = mergedIntervals.getLast();
             final int[] currentInterval = points[i];
             // If previousInterval ends before currentInterval start
             if (previousInterval[1] < currentInterval[0]) {
                 mergedIntervals.add(currentInterval);
-                listIndex++;
                 // If overlapping intervals
             } else {
                 previousInterval[1] = Math.min(previousInterval[1], currentInterval[1]);
