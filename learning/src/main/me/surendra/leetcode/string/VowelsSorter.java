@@ -13,6 +13,10 @@ import java.util.Set;
  */
 public class VowelsSorter {
 
+    /*
+        Time Complexity - O(n log n)
+        Space Complexity- O(n)
+     */
     public String sortVowels(final String s) {
         final char[] sChars = s.toCharArray();
         final Set<Character> vowelSet = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
@@ -34,7 +38,6 @@ public class VowelsSorter {
                 sb.append(ch);
             }
         }
-
 
         return sb.toString();
     }
