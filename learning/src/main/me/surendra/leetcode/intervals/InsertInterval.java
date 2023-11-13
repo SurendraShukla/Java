@@ -48,7 +48,7 @@ public class InsertInterval {
             mergedIntervals.add(newInterval);
         }
 
-        return mergedIntervals.toArray(new int[mergedIntervals.size()][]);
+        return mergedIntervals.toArray(new int[mergedIntervals.size()][2]);
     }
 
 }

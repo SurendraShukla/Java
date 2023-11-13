@@ -96,4 +96,16 @@ public class InsertIntervalTest {
         assertThat(actual, equalTo(expected));
     }
 
+    @Test
+    public void subInterval() {
+        final int[][] intervals = {{1, 5}};
+        final int[] newInterval = {2, 3};
+
+        // execute
+        final int[][] actual = callMethod(intervals, newInterval);
+
+        final int[][] expected = {{1, 5}};
+        assertThat(actual, equalTo(expected));
+    }
+
 }
