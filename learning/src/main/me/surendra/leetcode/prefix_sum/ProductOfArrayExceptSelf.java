@@ -1,4 +1,4 @@
-package me.surendra.leetcode.array.prefix_sum;
+package me.surendra.leetcode.prefix_sum;
 
 
 /**

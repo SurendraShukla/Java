@@ -1,4 +1,4 @@
-package me.surendra.leetcode.array.prefix_sum;
+package me.surendra.leetcode.prefix_sum;
 
 
 import org.junit.Test;
@@ -8,8 +8,10 @@ import static org.junit.Assert.assertThat;
 
 public class ProductOfArrayExceptSelfTest {
 
+    private final ProductOfArrayExceptSelf productOfArrayExceptSelf = new ProductOfArrayExceptSelf();
+
     int[] callMethod(final int[] nums) {
-        return new ProductOfArrayExceptSelf().productExceptSelf(nums);
+        return productOfArrayExceptSelf.productExceptSelf(nums);
     }
 
     @Test
