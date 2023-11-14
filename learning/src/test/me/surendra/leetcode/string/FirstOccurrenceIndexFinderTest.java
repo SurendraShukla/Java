@@ -18,6 +18,7 @@ public class FirstOccurrenceIndexFinderTest {
     public void test() {
         assertThat(callMethod("a", "a"), equalTo(0));
         assertThat(callMethod("aaa", "a"), equalTo(0));
+        assertThat(callMethod("hello", "ll"), equalTo(2));
         assertThat(callMethod("sadbutsad", "sad"), equalTo(0));
         assertThat(callMethod("leetcode", "leeto"), equalTo(-1));
     }
