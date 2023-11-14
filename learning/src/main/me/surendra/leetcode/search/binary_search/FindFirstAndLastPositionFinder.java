@@ -29,7 +29,7 @@ public class FindFirstAndLastPositionFinder {
         int right = numArr.length - 1;
         int mid;
         while (left <= right) {
-            mid = left + ((right - left) /2);
+            mid = left + ((right - left) / 2);
             if (numArr[mid] == target) {
                 if (first) {
                     leftMin = Math.min(leftMin, mid);
