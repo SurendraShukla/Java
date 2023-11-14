@@ -6,6 +6,10 @@ package me.surendra.leetcode.search.binary_search;
  */
 public class FindFirstAndLastPositionFinder {
 
+    /*
+        Time Complexity - O(n long n)
+        Space Complexity - O(1)
+    */
     int[] numArr;
     public int[] searchRange(final int[] nums, final int target) {
         this.numArr = nums;
