@@ -7,13 +7,16 @@ import static org.junit.Assert.assertThat;
 
 public class BadVersionFinderTest {
 
-    @Test
-    public void test1() {
-        assertThat(new BadVersionFinder().firstBadVersion(5), equalTo(4));
+    private final BadVersionFinder badVersionFinder = new BadVersionFinder();
+
+    private int callMethod(final int n) {
+        return badVersionFinder.firstBadVersion(n);
     }
 
     @Test
-    public void test2() {
-        assertThat(new BadVersionFinder().firstBadVersion(1), equalTo(1));
+    public void test1() {
+        assertThat(callMethod(5), equalTo(4));
+        assertThat(callMethod(1), equalTo(1));
     }
+
 }
