@@ -11,10 +11,10 @@ public class MajorityElement {
         Time Complexity - O(n)
         Space Complexity - O(1)
      */
-    public int majorityElementUsingBoyerMooreVotingAlgorithm(int[] nums) {
+    public int majorityElementUsingBoyerMooreVotingAlgorithm(final int[] nums) {
         int count = 0;
         int majorityNo = nums[0];
-        for (int i=0; i<nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (count == 0) {
                 majorityNo = nums[i];
             }
@@ -27,9 +27,9 @@ public class MajorityElement {
         Time Complexity - O(n log n)
         Space Complexity - O(1)
      */
-    public int majorityElementUsingArraySort(int[] nums) {
+    public int majorityElementUsingArraySort(final int[] nums) {
         Arrays.sort(nums);
-        return nums[nums.length/2];
+        return nums[nums.length / 2];
     }
 
 }
