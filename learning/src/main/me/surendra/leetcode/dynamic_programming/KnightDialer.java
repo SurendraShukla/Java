@@ -24,7 +24,7 @@ public class KnightDialer {
         Time Complexity - O(n)
         Space Complexity - O(n)
      */
-    public int knightDialer(int n) {
+    public int knightDialer(final int n) {
         cache = new Integer[10][n + 1];
 
         int result = 0;
