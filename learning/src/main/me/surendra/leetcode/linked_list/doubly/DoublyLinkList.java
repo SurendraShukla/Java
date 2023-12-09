@@ -2,15 +2,19 @@ package me.surendra.leetcode.linked_list.doubly;
 
 
 public class DoublyLinkList {
-    int key;
-    int value;
-    DoublyLinkList prev;
-    DoublyLinkList next;
 
-    // Constructor to create a new node
-    // next and prev is by default initialized as null
-    DoublyLinkList(final int key, final int value) {
+    public int key;
+    public int val;
+    public DoublyLinkList prev;
+    public DoublyLinkList next;
+
+    public DoublyLinkList(final int key, final int val) {
         this.key = key;
-        this.value = value;
+        this.val = val;
+    }
+
+    @Override
+    public String toString() {
+        return "key=[" + key + "] val=[" + val + "] \n next=[" + next + "]";
     }
 }
