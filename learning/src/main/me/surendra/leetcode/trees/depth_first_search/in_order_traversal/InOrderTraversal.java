@@ -18,15 +18,19 @@ public class InOrderTraversal {
         Time complexity: O(n)
         Space complexity: O(n)
      */
-    public List<Integer> inorderTraversal(TreeNode root) {
-        final List<Integer> integerList = new ArrayList<>();
-        if(root == null) {
-            return integerList;
-        }
-        integerList.addAll(inorderTraversal(root.left)); // Traverse the left subtree
-        integerList.add(root.val); // Visit the root
-        integerList.addAll(inorderTraversal(root.right)); // Traverse the right subtree
+    final List<Integer> integerList = new ArrayList<>();
+    public List<Integer> inorderTraversal(final TreeNode root) {
+        populate(root);
         return integerList;
+    }
+
+    private void populate(final TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        inorderTraversal(root.left);    // Traverse the left subtree
+        integerList.add(root.val);      // Visit the root
+        inorderTraversal(root.right);   // Traverse the right subtree
     }
 
 }
