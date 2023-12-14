@@ -33,7 +33,7 @@ public class LongestValidObstacleCourseFinder {
 
     // Find the rightmost insertion position. We use a fixed-length array and a changeable right boundary
     // to represent an arraylist of dynamic size.
-    private int bisectRight(final int[] A, final int target, final int r) {
+    private int bisectRight(final int[] arr, final int target, final int r) {
         if (r == 0) {
             return 0;
         }
@@ -42,7 +42,7 @@ public class LongestValidObstacleCourseFinder {
         int mid;
         while (left < right) {
             mid = left + (right - left) / 2;
-            if (A[mid] <= target)
+            if (arr[mid] <= target)
                 left = mid + 1;
             else
                 right = mid;
