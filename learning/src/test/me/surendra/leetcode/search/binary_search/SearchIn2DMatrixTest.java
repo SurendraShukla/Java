@@ -20,6 +20,8 @@ public class SearchIn2DMatrixTest {
 
         assertThat(callMethod(matrix, 3), equalTo(true));
         assertThat(callMethod(matrix, 13), equalTo(false));
+        assertThat(callMethod(new int[][]{{1, 1}}, 2), equalTo(false));
+        assertThat(callMethod(new int[][]{{1}, {3}}, 3), equalTo(true));
     }
 
 }

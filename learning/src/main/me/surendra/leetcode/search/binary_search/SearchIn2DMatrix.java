@@ -6,6 +6,10 @@ package me.surendra.leetcode.search.binary_search;
  */
 public class SearchIn2DMatrix {
 
+    /*
+        Time Complexity - O(n)
+        Space Complexity - O(1)
+     */
     public boolean searchMatrix(final int[][] matrix, final int target) {
         final int rowMax = matrix.length;
         final int colMax = matrix[0].length;
