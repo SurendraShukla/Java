@@ -17,8 +17,8 @@ import java.util.function.Function;
  */
 public class Pair<L, R> {
 
-    private final L left;
-    private final R right;
+    private L left;
+    private R right;
 
     @Nonnull
     public static <L, R> Pair<L, R> of(final L left, final R right) {
@@ -30,16 +30,32 @@ public class Pair<L, R> {
         this.right = right;
     }
 
+    public void setLeft(final L left) {
+        this.left = left;
+    }
+
     public final L getLeft() {
         return left;
+    }
+
+    public void setRight(final R right) {
+        this.right = right;
     }
 
     public final R getRight() {
         return right;
     }
 
+    public void setKey(final L key) {
+        this.left = key;
+    }
+
     public final L getKey() {
         return left;
+    }
+
+    public void setValue(final R value) {
+        this.right = value;
     }
 
     public final R getValue() {
