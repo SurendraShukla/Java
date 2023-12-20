@@ -1,5 +1,6 @@
-package me.surendra.leetcode.array;
+package me.surendra.leetcode.hash_map;
 
+import me.surendra.leetcode.array.DuplicateNumberFinder;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
