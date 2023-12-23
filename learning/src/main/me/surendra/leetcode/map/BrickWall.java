@@ -1,4 +1,4 @@
-package me.surendra.leetcode.hash_map;
+package me.surendra.leetcode.map;
 
 import java.util.HashMap;
 import java.util.List;

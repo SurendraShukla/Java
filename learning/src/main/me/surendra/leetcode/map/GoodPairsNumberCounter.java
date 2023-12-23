@@ -1,4 +1,4 @@
-package me.surendra.leetcode.hash_map;
+package me.surendra.leetcode.map;
 
 import me.surendra.learning.generics.Pair;
 
