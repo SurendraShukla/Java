@@ -20,6 +20,7 @@ public class MaximumScoreAfterSplittingStringTest {
         assertThat(callMethod("011101"), equalTo(5));
         assertThat(callMethod("00111"), equalTo(5));
         assertThat(callMethod("1111"), equalTo(3));
+        assertThat(callMethod("00"), equalTo(1));
     }
 
 }
