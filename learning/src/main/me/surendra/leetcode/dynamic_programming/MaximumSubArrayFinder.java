@@ -1,5 +1,6 @@
 package me.surendra.leetcode.dynamic_programming;
 
+
 /**
  * @see <a href="https://leetcode.com/problems/maximum-subarray/">Maximum Subarray</a>
  */
@@ -17,14 +18,6 @@ public class MaximumSubArrayFinder {
             maxSubArray = Math.max(maxSubArray, currentMaxSubArray);
         }
         return maxSubArray;
-    }
-
-    /*
-        Time Complexity - O(n ^ 2) 2 nested for loops, with each loop iterating through nums.
-        Space Complexity - O(1)
-     */
-    public int maxSubArrayUsingBruteForceAlgo(final int[] nums) {
-        return 0;
     }
 
 }
