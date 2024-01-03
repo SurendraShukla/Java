@@ -10,8 +10,8 @@ public class MinimumTimeToMakeRopeColorfulTest {
     private final MinimumTimeToMakeRopeColorful minimumTimeToMakeRopeColorful = new MinimumTimeToMakeRopeColorful();
 
     private int callMethod(final String abaac, final int[] neededTime) {
-//        return minimumTimeToMakeRopeColorful.minCost(abaac, neededTime);
-        return minimumTimeToMakeRopeColorful.minCost2Pointers(abaac, neededTime);
+        return minimumTimeToMakeRopeColorful.minCost(abaac, neededTime);
+//        return minimumTimeToMakeRopeColorful.minCost2Pointers(abaac, neededTime);
     }
 
     @Test
