@@ -14,7 +14,6 @@ public class CampusBikes {
 
     // https://leetcode.com/problems/campus-bikes/discuss/305603/Java-Fully-Explained
     public int[] assignBikes(final int[][] workers, final int[][] bikes) {
-        final int totalWorkers = workers.length;
         final PriorityQueue<int[]> pq = new PriorityQueue<>((a1, a2) -> {
             if (a1[0] == a2[0]) {
                 if(a1[1] == a2[1]) {
@@ -35,25 +34,25 @@ public class CampusBikes {
         }
 
         // Initialize all values to false, to signify no bikes have been taken
-        final Set<Integer> visited = new HashSet<>();
+        final Set<Integer> bikeAssigned = new HashSet<>();
 
         // Initialize all index to -1, to mark all the workers available
-        final int[] workerStatus = new int[workers.length];
-        Arrays.fill(workerStatus, -1);
+        final int[] workerBikeInfoArr = new int[workers.length];
+        Arrays.fill(workerBikeInfoArr, -1);
 
-        while (visited.size() < workers.length) {
+        while (bikeAssigned.size() < workers.length) {
             final int[] bikePosition = pq.remove();
             final int worker = bikePosition[1];
             final int bike = bikePosition[2];
 
-            if (workerStatus[worker] == -1 && !visited.contains(bike)) {
+            if (workerBikeInfoArr[worker] == -1 && !bikeAssigned.contains(bike)) {
                 // If both worker and bike are free, assign them to each other
-                visited.add(bike);
-                workerStatus[worker] = bike;
+                bikeAssigned.add(bike);
+                workerBikeInfoArr[worker] = bike;
             }
         }
 
-        return workerStatus;
+        return workerBikeInfoArr;
     }
 
 }
