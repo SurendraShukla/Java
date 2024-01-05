@@ -16,6 +16,7 @@ public class BinaryTreeMaximumPathSumFinder {
     int maxSum = Integer.MIN_VALUE;
     public int maxPathSum(final TreeNode root) {
         maxGain(root);
+//        populate(root);
         return maxSum;
     }
 
@@ -35,6 +36,28 @@ public class BinaryTreeMaximumPathSumFinder {
         // for recursion :
         // return the max gain if continue the same path
         return node.val + Math.max(leftGain, rightGain);
+    }
+
+
+    int populate(final TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        final int left = populate(root.left);
+        final int right = populate(root.right);
+
+        final int leftSum = left + root.val;
+        final int rightSum = right + root.val;
+        final int totalSum = left + right + root.val;
+
+        final int leftRightMax = Math.max(leftSum, rightSum);
+        final int sumMax = Math.max(leftRightMax, totalSum);
+        final int currentSum = Math.max(sumMax, root.val);
+
+        maxSum = Math.max(maxSum, currentSum);
+
+        return Math.max(Math.max(leftSum, rightSum), root.val);
     }
 
 }
