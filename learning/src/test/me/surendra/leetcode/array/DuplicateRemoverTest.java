@@ -5,35 +5,20 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+
 public class DuplicateRemoverTest {
 
+    private final DuplicateRemover duplicateRemover = new DuplicateRemover();
+
     private int callMethod(final int[] input) {
-        return new DuplicateRemover().removeDuplicatesFromSortedArrayUsing2Pointers(input);
+        return duplicateRemover.removeDuplicatesFromSortedArrayUsing2Pointers(input);
     }
 
     @Test
-    public void test1() {
-        final int[] input = new int[] {1,2,3};
-
-        int result = callMethod(input);
-        assertThat(result, equalTo(3));
+    public void test() {
+        assertThat(callMethod(new int[] {1, 2, 3}), equalTo(3));
+        assertThat(callMethod(new int[] {1, 1, 2}), equalTo(2));
+        assertThat(callMethod(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}), equalTo(5));
     }
-
-    @Test
-    public void test2() {
-        final int[] input = new int[] {1,1,2};
-
-        int result = callMethod(input);
-        assertThat(result, equalTo(2));
-    }
-
-    @Test
-    public void test3() {
-        final int[] input = new int[] {0,0,1,1,1,2,2,3,3,4};
-
-        int result = callMethod(input);
-        assertThat(result, equalTo(5));
-    }
-
 
 }
