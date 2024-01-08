@@ -1,4 +1,4 @@
-package me.surendra.leetcode.search.binary_search;
+package me.surendra.leetcode.binary_search;
 
 /**
  * @see <a href="https://leetcode.com/problems/check-if-a-number-is-majority-element-in-a-sorted-array/">Check If a Number Is Majority Element in a Sorted Array</a>

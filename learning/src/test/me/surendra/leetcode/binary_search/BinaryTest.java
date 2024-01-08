@@ -1,8 +1,8 @@
-package me.surendra.leetcode.search.binary_search;
+package me.surendra.leetcode.binary_search;
 
 import org.junit.Test;
 
-import static me.surendra.leetcode.search.binary_search.Binary.findMaxConsecutiveOnes;
+import static me.surendra.leetcode.binary_search.Binary.findMaxConsecutiveOnes;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 

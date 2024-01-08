@@ -1,6 +1,5 @@
-package me.surendra.leetcode.search.binary_search;
+package me.surendra.leetcode.binary_search;
 
-import me.surendra.leetcode.search.binary_search.PeakElementFinder;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
