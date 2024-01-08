@@ -1,9 +1,16 @@
-package me.surendra.leetcode.binary_search;
+package me.surendra.leetcode.binary_search.api;
+
 
 /**
  * @see <a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a>
  */
 public class BadVersionFinder {
+
+    BadVersion badVersion;
+
+    public BadVersionFinder(final BadVersion badVersion) {
+        this.badVersion = badVersion;
+    }
 
     /*
         Time Complexity - O(n long n)
@@ -16,17 +23,13 @@ public class BadVersionFinder {
 
         while (left <= right) {
             mid = left + (right - left) / 2;
-            if (isBadVersion(mid)) {
+            if (badVersion.isBadVersion(mid)) {
                 right = mid - 1;
             } else {
                 left = mid + 1;
             }
         }
         return left;
-    }
-
-    private boolean isBadVersion(final int no) {
-        return no > 3;
     }
 
 }
