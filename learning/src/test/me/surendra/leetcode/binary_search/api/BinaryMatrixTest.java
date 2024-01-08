@@ -18,6 +18,7 @@ public class BinaryMatrixTest {
         assertThat(callMethod(new int[][]{{0, 0}, {1, 1}}), equalTo(0));
         assertThat(callMethod(new int[][]{{0, 0}, {0, 1}}), equalTo(1));
         assertThat(callMethod(new int[][]{{0, 0}, {0, 0}}), equalTo(-1));
+        assertThat(callMethod(new int[][]{{0, 0, 0, 1}, {0, 0, 1, 1}, {0, 1, 1, 1}}), equalTo(1));
     }
 
 }

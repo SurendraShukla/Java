@@ -4,6 +4,7 @@ package me.surendra.leetcode.binary_search.api;
 import java.util.Arrays;
 import java.util.List;
 
+
 /**
  * @see <a href="https://leetcode.com/problems/leftmost-column-with-at-least-a-one/">Leftmost Column with at Least a One</a>
  */
