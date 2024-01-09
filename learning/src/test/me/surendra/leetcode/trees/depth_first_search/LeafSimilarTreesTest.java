@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+
 public class LeafSimilarTreesTest {
 
     private final LeafSimilarTrees leafSimilarTrees = new LeafSimilarTrees();
@@ -21,25 +22,26 @@ public class LeafSimilarTreesTest {
 
     @Test
     public void test1() {
-        final Integer[] root1Values = {3, 5, 1, 6, 2, 9, 8, null, null, 7, 4};
-        final Integer[] root2Values = {3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8};
 
-        assertThat(callMethod(root1Values, root2Values), equalTo(true));
+        assertThat(
+            callMethod(
+                new Integer[]{3, 5, 1, 6, 2, 9, 8, null, null, 7, 4},
+                new Integer[]{3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8}
+            ),
+            equalTo(true)
+        );
+
+        assertThat(
+            callMethod(new Integer[]{1, 2, 3}, new Integer[]{1, 3, 2}),
+            equalTo(false));
+
+        assertThat(
+            callMethod(
+                new Integer[]{3, 5, 1, 6, 2, 9, 8, null, null, 7, 14},
+                new Integer[]{3, 5, 1, 6, 71, 4, 2, null, null, null, null, null, null, 9, 8}
+            ),
+            equalTo(false)
+        );
     }
 
-    @Test
-    public void test2() {
-        final Integer[] root1Values = {1, 2, 3};
-        final Integer[] root2Values = {1, 3, 2};
-
-        assertThat(callMethod(root1Values, root2Values), equalTo(false));
-    }
-
-    @Test
-    public void test3() {
-        final Integer[] root1Values = {3, 5, 1, 6, 2, 9, 8, null, null, 7, 14};
-        final Integer[] root2Values = {3, 5, 1, 6, 71, 4, 2, null, null, null, null, null, null, 9, 8};
-
-        assertThat(callMethod(root1Values, root2Values), equalTo(false));
-    }
 }

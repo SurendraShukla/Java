@@ -5,6 +5,7 @@ import me.surendra.leetcode.trees.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * @see <a href="https://leetcode.com/problems/leaf-similar-trees/">Leaf-Similar Trees</a>
  */
@@ -25,15 +26,16 @@ public class LeafSimilarTrees {
     }
 
     private void leafSimilar(final TreeNode root, final List<Integer> list) {
-        if (root == null) {
-            return;
-        }
-        leafSimilar(root.left, list);
-        if (root.left == null && root.right == null) {
+        if (root.left == null && root.right == null)  {
             list.add(root.val);
             return;
         }
-        leafSimilar(root.right, list);
+        if (root.left != null) {
+            leafSimilar(root.left, list);
+        }
+        if (root.right != null) {
+            leafSimilar(root.right, list);
+        }
     }
 
 }
