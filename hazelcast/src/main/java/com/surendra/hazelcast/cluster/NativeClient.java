@@ -23,9 +23,10 @@ public class NativeClient {
 //        System.out.println("1 sum=["+sum+"] carry=["+carry+"]");
 
         final ClientConfig config = new ClientConfig();
-        config.setClusterName("dev");
+//        config.setClusterName("dev");
 //        config.getNetworkConfig().addAddress("127.0.0.1:7000");
         config.setClusterName("local-central");
+//        config.getNetworkConfig().addAddress("127.0.0.1:5760", "localhost:5760", "0.0.0.0:5760");
         config.getNetworkConfig().addAddress("127.0.0.1:6760", "localhost:6760", "0.0.0.0:6760");
         final HazelcastInstance hazelcastInstanceClient = HazelcastClient.newHazelcastClient(config);
         final Map<Long, String> map = hazelcastInstanceClient.getMap("data");
