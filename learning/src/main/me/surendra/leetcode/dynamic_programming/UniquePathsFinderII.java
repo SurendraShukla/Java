@@ -7,7 +7,7 @@ package me.surendra.leetcode.dynamic_programming;
 public class UniquePathsFinderII {
 
     /*
-        Time Complexity - O(n*m)
+        Time Complexity - O(n * m)
         Space Complexity - O(n)
      */
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {

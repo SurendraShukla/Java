@@ -8,99 +8,83 @@ import static org.junit.Assert.assertThat;
 
 public class UniquePathsFinderIITest {
 
+    private final UniquePathsFinderII unit = new UniquePathsFinderII();
+
     private void callAndAssert(final int[][] obstacleGrid, final int expected) {
-        final long actual = new UniquePathsFinderII().uniquePathsWithObstacles(obstacleGrid);
-//        final long actual = new UniquePathsFinderII().uniquePathsWithObstaclesUsingExtraSpace(obstacleGrid);
+        final long actual = unit.uniquePathsWithObstacles(obstacleGrid);
+//        final long actual = unit.uniquePathsWithObstaclesUsingExtraSpace(obstacleGrid);
 
         assertThat(actual, equalTo(Integer.valueOf(expected).longValue()));
     }
 
     @Test
     public void obstacleInMiddle() {
-        int[][] obstacleGrid = {
+        callAndAssert(new int[][]{
             {0, 0, 0},
             {0, 1, 0},
             {0, 0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 2);
+        }, 2);
     }
 
     @Test
     public void obstacleInRight() {
-        int[][] obstacleGrid = {
+        callAndAssert(new int[][]{
             {0, 1},
             {0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 1);
+        }, 1);
     }
 
     @Test
     public void obstacleAt2RowAnd2Column() {
-        int[][] obstacleGrid = {
+        callAndAssert(new int[][]{
             {0, 0, 0, 0},
             {0, 1, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 8);
+        }, 8);
     }
 
     @Test
-    public void obstacleOnStartCell() {
-        int[][] obstacleGrid = {
+    public void obstacleOnStartCellAnd1Row() {
+        callAndAssert(new int[][]{
+            {1, 0},
+        }, 0);
+    }
+
+    @Test
+    public void obstacleOnStartCellAnd2Row() {
+        callAndAssert(new int[][]{
             {1, 0},
             {0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 0);
+        }, 0);
     }
 
     @Test
     public void obstaclesOnWholeRow() {
-        int[][] obstacleGrid = {
+        callAndAssert(new int[][]{
             {0, 0},
             {1, 1},
             {0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 0);
+        }, 0);
     }
 
     @Test
     public void obstacleOnImmediateRightAndBelow() {
-        int[][] obstacleGrid = {
+        callAndAssert(new int[][]{
             {0, 1, 0},
             {1, 0, 0},
             {0, 0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 0);
+        }, 0);
     }
 
     @Test
     public void obstacleOnImmediateRightAndBelow2() {
-        int[][] obstacleGrid = {
+        callAndAssert(new int[][]{
             {0, 1, 0, 0, 0},
             {1, 0, 0, 0, 0},
             {0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0}
-        };
-
-        callAndAssert(obstacleGrid, 0);
+        }, 0);
     }
-
-    @Test
-    public void inputMinLimit() {
-//        assertThat(callMethod(1, 1), equalTo(1L));
-    }
-
-    @Test
-    public void inputMaxLimit() {
-//        assertThat(callMethod(100, 100), equalTo(4631081169483718960L));
-    }
-
 
 }

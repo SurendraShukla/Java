@@ -1,13 +1,14 @@
 package me.surendra.leetcode.graph.union_find;
 
+
 public class UnionFind {
 
     int[] parents;
     int[] rank;
-    int count;
+    int group;
 
     public UnionFind(final int n) {
-        count = n;
+        group = n;
         rank = new int[n];
         parents = new int[n];
         for (int i = 0; i < n; i++) {
@@ -28,7 +29,7 @@ public class UnionFind {
             parents[p2] = p1;
             rank[p1] += rank[p2];
         }
-        count--;
+        group--;
         return true;
     }
 
@@ -41,7 +42,7 @@ public class UnionFind {
     }
 
     public int getCount() {
-        return count;
+        return group;
     }
 
 }

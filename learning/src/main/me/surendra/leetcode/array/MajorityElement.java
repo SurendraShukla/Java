@@ -2,6 +2,7 @@ package me.surendra.leetcode.array;
 
 import java.util.Arrays;
 
+
 /**
  * @see <a href="https://leetcode.com/problems/majority-element/">Majority Element</a>
  */
